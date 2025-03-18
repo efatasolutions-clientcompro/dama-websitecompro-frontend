@@ -1,22 +1,117 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+interface Props {
+  title: string;
+}
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+const { title } = Astro.props;
+
+let logoUrl = '/logob.png'; // Default logo URL
+const backendUrl = import.meta.env.BACKEND_URL; // Ambil BACKEND_URL dari variabel lingkungan
+
+try {
+  const response = await fetch(backendUrl);
+  if (response.ok) {
+    const data = await response.json();
+    if (data && data.dama_logo) {
+      logoUrl = data.dama_logo;
+    }
+  } else {
+    console.error('Failed to fetch logo from backend:', response.status);
+  }
+} catch (error) {
+  console.error('Error fetching logo from backend:', error);
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style is:global>
+    @import '../styles/global.css';
+    @import '../styles/layout.css';
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <nav class="nav-left">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li class="dropdown">
+            <a href="/services">Service</a>
+            <div class="dropdown-content">
+              <a href="/services/individual">Individual</a>
+              <a href="/services/special">Special</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="logo">
+        <img src={logoUrl} alt="Your Logo">
+      </div>
+      <nav class="nav-right">
+        <ul>
+          <li><a href="/portofolio">Our Works</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <nav class="nav-mobile">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li class="dropdown">
+            <a href="/services">Service</a>
+            <div class="dropdown-content">
+              <a href="/services/individual">Individual</a>
+              <a href="/services/special">Special</a>
+            </div>
+          </li>
+          <li><a href="/portofolio">Our Works</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+    <nav>
+      <ul>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/follow">Follow Us</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <div class="cv-dama">CV DAMA ADICIPTA KREASI MODE</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.querySelector('.hamburger');
+      const navMobile = document.querySelector('.nav-mobile');
+
+      if (hamburger && navMobile) {
+        hamburger.addEventListener('click', () => {
+          navMobile.classList.toggle('active');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

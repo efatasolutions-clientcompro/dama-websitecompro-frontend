@@ -1,0 +1,37 @@
+/* global.css */
+@font-face {
+    font-family: 'Avenir Next LT Pro';
+    src: url('/fonts/AvenirNextLTPro-Regular.woff2') format('woff2'),
+         url('/fonts/AvenirNextLTPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Avenir Next LT Pro';
+    src: url('/fonts/AvenirNextLTPro-Bold.woff2') format('woff2'),
+         url('/fonts/AvenirNextLTPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Avenir Next LT Pro';
+    src: url('/fonts/AvenirNextLTPro-It.woff2') format('woff2'),
+         url('/fonts/AvenirNextLTPro-It.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+:root {
+    --font-1: 'EB Garamond', sans-serif;
+    --font-2: 'Avenir Next LT Pro', sans-serif;
+    --color-1: #000;
+    --color-2: #2b2b2b;
+    --color-3: #6d625d;
+    --color-4: #e7e4de;
+    --color-5: #f6f5f3;
+}
