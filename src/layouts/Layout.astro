@@ -5,8 +5,8 @@ interface Props {
 
 const { title } = Astro.props;
 
-let logoUrl = '/logob.png'; // Default logo URL
-const backendUrl = import.meta.env.BACKEND_URL; // Ambil BACKEND_URL dari variabel lingkungan
+let logoUrl = '/logob.png';
+const backendUrl = import.meta.env.BACKEND_URL;
 
 try {
   const response = await fetch(backendUrl);
@@ -109,6 +109,13 @@ try {
       if (hamburger && navMobile) {
         hamburger.addEventListener('click', () => {
           navMobile.classList.toggle('active');
+          hamburger.classList.toggle('active');
+
+          if (navMobile.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+          } else {
+            document.body.style.overflow = 'auto';
+          }
         });
       }
     });

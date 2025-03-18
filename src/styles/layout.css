@@ -119,7 +119,7 @@ nav ul li a {
 /* Mobile Navigation Styles */
 .nav-mobile {
     display: none;
-    position: fixed; /* Ubah ke fixed */
+    position: fixed;
     top: 60px; /* Sesuaikan dengan tinggi header Anda */
     left: 0;
     width: 100%;
@@ -127,7 +127,11 @@ nav ul li a {
     flex-direction: column;
     align-items: center;
     padding: 1rem 0;
-    z-index: 1000; /* Pastikan z-index tinggi */
+    z-index: 1000;
+}
+
+.hamburger.active .bar {
+    background-color: var(--color-3); /* Ubah warna bar saat aktif */
 }
 
 .nav-mobile ul {
