@@ -1,0 +1,183 @@
+/* src/components/admin.module.css */
+.adminContainer {
+    font-family: var(--font-2);
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.adminContainer h2 {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.uploadButton {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.uploadButton:hover {
+    background-color: #0056b3;
+}
+
+.taglineForm, .toServiceForm {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    border: 1px solid var(--gray-color);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.taglineForm label, .toServiceForm label {
+    margin-bottom: 5px;
+}
+
+.inputField {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--gray-color);
+    border-radius: 5px;
+}
+
+.imageUploadContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.imageUploadBox {
+    border: 2px dashed var(--gray-color);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.imageUploadBox label {
+    cursor: pointer;
+}
+
+.imagePreview {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+    margin: 10px auto;
+    display: block;
+}
+
+.actionButton, .cancelButton, .deleteButton {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.actionButton {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.actionButton:hover {
+    background-color: #218838;
+}
+
+.cancelButton {
+    background-color: var(--gray-color);
+    color: white;
+}
+
+.cancelButton:hover {
+    background-color: #5a6268;
+}
+
+.deleteButton {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.deleteButton:hover {
+    background-color: #c82333;
+}
+
+.taglineList, .toServiceList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.taglineItem, .toServiceItem {
+    border: 1px solid var(--gray-color);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.taglineContent, .toServiceContent {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.taglineImage, .toServiceImage {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+    margin-right: 15px;
+}
+
+.taglineContent div span, .toServiceContent span {
+    font-weight: bold;
+    display: block;
+}
+
+.taglineActions, .toServiceActions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.taglineItem .taglineForm, .toServiceItem .toServiceForm {
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .taglineList, .toServiceList {
+        grid-template-columns: 1fr;
+    }
+
+    .taglineContent, .toServiceContent {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .taglineImage, .toServiceImage {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

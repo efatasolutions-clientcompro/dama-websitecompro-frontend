@@ -27,11 +27,15 @@
 }
 
 :root {
-    --font-1: 'EB Garamond', sans-serif;
+    --font-1: 'EB Garamond', serif; /* Perbaiki typo 'sans-serif' ke 'serif' */
     --font-2: 'Avenir Next LT Pro', sans-serif;
     --color-1: #000;
     --color-2: #2b2b2b;
     --color-3: #6d625d;
     --color-4: #e7e4de;
     --color-5: #f6f5f3;
+    --primary-color: #007bff; /* Warna biru untuk tombol utama */
+    --success-color: #28a745; /* Warna hijau untuk sukses */
+    --error-color: #dc3545; /* Warna merah untuk error */
+    --gray-color: #6c757d; /* Warna abu-abu */
 }

@@ -1,0 +1,43 @@
+.adminContainer {
+    padding: 20px;
+    text-align: center;
+    font-family: var(--font-2);
+    color: var(--color-2);
+}
+
+.buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.adminButton {
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-grow: 1;
+    font-family: var(--font-2);
+}
+
+.adminButton:hover {
+    background-color: #0056b3;
+}
+
+.adminButton.active {
+    background-color: var(--success-color); /* Warna tombol saat aktif */
+}
+
+@media (max-width: 600px) {
+    .buttonContainer {
+        flex-direction: column;
+    }
+
+    .adminButton {
+        width: 100%;
+    }
+}

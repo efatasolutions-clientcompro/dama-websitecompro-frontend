@@ -1,0 +1,247 @@
+.adminContainer {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.adminContainer h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.uploadButton {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.taglineForm {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.taglineForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.inputField,
+.includeInput,
+.taglineForm textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.taglineForm textarea {
+    height: 150px;
+}
+
+.includeContainer {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.includeInput {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.includeButton,
+.removeInclude {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.removeInclude {
+    background-color: #dc3545;
+    margin-left: 5px;
+}
+
+.includeList {
+    list-style: none;
+    padding: 0;
+}
+
+.includeItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border: 1px solid #eee;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.imageUploadContainer {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.imageUploadBox label {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.imagePreview {
+    max-width: 100px; /* Perkecil ukuran gambar preview */
+    max-height: 100px; /* Perkecil ukuran gambar preview */
+    margin-top: 10px;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+.actionButton,
+.cancelButton,
+.deleteButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.actionButton {
+    background-color: #007bff;
+    color: white;
+}
+
+.cancelButton {
+    background-color: #6c757d;
+    color: white;
+}
+
+.deleteButton {
+    background-color: #dc3545;
+    color: white;
+}
+
+.taglineList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.taglineItem {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.taglineContent h3,
+.taglineContent h4 {
+    margin-bottom: 10px;
+}
+
+.taglineContent ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.taglineImage {
+    max-width: 150px; /* Perkecil ukuran gambar tagline */
+    max-height: 150px; /* Perkecil ukuran gambar tagline */
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+    object-fit: contain;
+}
+
+.taglineActions {
+    margin-top: 15px;
+    text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .taglineList {
+        grid-template-columns: 1fr;
+    }
+
+    .includeContainer {
+        flex-direction: column;
+    }
+
+    .includeInput {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .actionButton,
+    .cancelButton,
+    .deleteButton {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+/* Form Edit */
+.taglineForm.editForm {
+    margin-top: 20px;
+    border-color: #007bff;
+    background-color: #f0f8ff;
+}
+/* servicesadmin.module.css */
+.buttonHeader {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.backButton {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.backButton:hover {
+    background-color: #e0e0e0;
+}
