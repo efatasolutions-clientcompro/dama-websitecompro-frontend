@@ -1,9 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SpecialDisplay from '../components/display/specialdisplay';
+import TaglineDisplay from '../components/display/taglinedisplay';
+import ToServicesDisplay from '../components/display/toservicesdisplay';
+import ClientDisplay from '../components/display/clientdisplay';
 ---
 
 <Layout title="Home Page">
-    <SpecialDisplay client:load />
+    <TaglineDisplay client:load />
+    <ToServicesDisplay client:load/>
+    <ClientDisplay client:load/>
 </Layout>
 

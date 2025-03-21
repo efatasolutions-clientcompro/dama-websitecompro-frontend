@@ -1,5 +1,5 @@
 .adminContainer {
-    padding: 20px;
+    padding: var(--padding-medium);
     max-width: 1200px;
     margin: 0 auto;
     font-family: var(--font-2);
@@ -8,14 +8,16 @@
 }
 
 .adminContainer h2 {
-    margin-bottom: 20px;
+    margin-bottom: var(--margin-medium);
     text-align: center;
     color: var(--color-1);
+    font-size: var(--font-size-medium);
+    font-weight: bold;
 }
 
 .message {
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: var(--padding-small);
+    margin-bottom: var(--margin-small);
     border-radius: 5px;
     text-align: center;
 }
@@ -35,28 +37,29 @@
 .uploadButton {
     background-color: var(--primary-color);
     color: white;
-    padding: 10px 20px;
+    padding: var(--padding-small) var(--padding-medium);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: var(--margin-medium);
     display: block;
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    font-weight: bold;
 }
 
 .workForm {
     border: 1px solid var(--color-3);
-    padding: 20px;
+    padding: var(--padding-medium);
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: var(--margin-medium);
     background-color: var(--color-5);
 }
 
 .workForm label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: var(--margin-small);
     font-weight: bold;
     color: var(--color-1);
 }
@@ -64,12 +67,12 @@
 .inputField,
 .workForm textarea {
     width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: var(--padding-small);
+    margin-bottom: var(--margin-small);
     border: 1px solid var(--color-3);
     border-radius: 5px;
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: var(--font-size-default);
     color: var(--color-1);
 }
 
@@ -78,24 +81,24 @@
 }
 
 .imageUploadContainer {
-    margin-bottom: 15px;
+    margin-bottom: var(--margin-small);
     text-align: center;
 }
 
 .imageUploadBox label {
     background-color: var(--primary-color);
     color: white;
-    padding: 10px 15px;
+    padding: var(--padding-small) var(--padding-small);
     border-radius: 5px;
     cursor: pointer;
 }
 
 .imagePreview {
-    max-width: 100px;
-    max-height: 100px;
-    margin-top: 10px;
+    width: 80px; /* Ukuran gambar 1:1, lebih kecil */
+    height: 80px;
+    margin-top: var(--margin-small);
     border-radius: 5px;
-    object-fit: contain;
+    object-fit: cover; /* Mengisi kotak dengan memotong gambar jika perlu */
 }
 
 .actionButton,
@@ -103,12 +106,13 @@
 .deleteButton,
 .addButton,
 .removeButton {
-    padding: 10px 20px;
+    padding: var(--padding-small) var(--padding-medium);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 10px;
-    margin-bottom: 5px;
+    margin-right: var(--margin-small);
+    margin-bottom: var(--margin-small);
+    font-weight: bold;
 }
 
 .actionButton {
@@ -139,39 +143,39 @@
 .workList {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: var(--margin-medium);
 }
 
 .workItem {
     border: 1px solid var(--color-3);
-    padding: 20px;
+    padding: var(--padding-medium);
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: var(--margin-medium);
     background-color: var(--color-5);
 }
 
 .workContent h3,
 .workContent h4 {
-    margin-bottom: 10px;
+    margin-bottom: var(--margin-small);
     color: var(--color-1);
+    font-weight: bold;
 }
 
 .workContent p {
-    margin-bottom: 10px;
+    margin-bottom: var(--margin-small);
     color: var(--color-1);
 }
 
 .workImage {
-    max-width: 150px;
-    max-height: 150px;
-    height: auto;
+    width: 100px; /* Ukuran gambar 1:1 */
+    height: 100px;
     border-radius: 5px;
-    margin-top: 10px;
-    object-fit: contain;
+    margin-top: var(--margin-small);
+    object-fit: cover; /* Mengisi kotak dengan memotong gambar jika perlu */
 }
 
 .workActions {
-    margin-top: 15px;
+    margin-top: var(--margin-small);
     text-align: right;
 }
 
@@ -187,63 +191,38 @@
     .removeButton {
         width: 100%;
         margin-right: 0;
-        margin-bottom: 5px;
+        margin-bottom: var(--margin-small);
     }
 }
 
 .workForm.editForm {
-    margin-top: 20px;
+    margin-top: var(--margin-medium);
     border-color: var(--primary-color);
     background-color: var(--accent-color-3);
-}
-
-.adminContainer h2 {
-    font-weight: bold;
-}
-
-.workList h3 {
-    font-weight: bold;
-}
-
-.workList h4 {
-    font-weight: bold;
 }
 
 .imageCaption {
     font-weight: bold;
 }
 
-.actionButton,
-.deleteButton,
-.uploadButton,
-.addButton,
-.removeButton,
-.cancelButton {
-    font-weight: bold;
-}
-
-.workForm label {
-    font-weight: bold;
-}
-
 /* Search Bar Styles */
 .searchBar {
-    margin-bottom: 20px;
+    margin-bottom: var(--margin-medium);
     display: flex;
     justify-content: center;
 }
 
 .searchInput {
-    padding: 10px 15px;
+    padding: var(--padding-small) var(--padding-small);
     border: 1px solid var(--color-3);
     border-radius: 5px;
-    width: 300px; /* Adjust width as needed */
-    font-size: 16px;
+    width: 300px;
+    font-size: var(--font-size-default);
     color: var(--color-1);
-    background-color: var(--color-5); /* Match form background */
+    background-color: var(--color-5);
 }
 
 .searchInput:focus {
     outline: none;
-    border-color: var(--primary-color); /* Highlight on focus */
+    border-color: var(--primary-color);
 }

@@ -1,125 +1,193 @@
 /* components/workdetailcontent.module.css */
 
+.section-1 {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  padding: 100px 0;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-30px); /* Lebih jauh untuk efek dramatis */
+  animation: fadeInSlideDown 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; /* Easing lebih dinamis */
+}
+
+@keyframes fadeInSlideDown {
+  from {
+      opacity: 0;
+      transform: translateY(-30px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.section-1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.section-1 > * {
+  z-index: 2;
+}
+
+.section-1 h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: white;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInSlideText 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s forwards; /* Delay dan easing berbeda */
+}
+
+.section-1 h2 {
+  font-size: 1.5rem;
+  color: white;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInSlideText 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s forwards; /* Delay dan easing berbeda */
+}
+
+@keyframes fadeInSlideText {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
 .section-2 {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 20px;
-    gap: 10px;
-    scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 20px;
+  gap: 10px;
+  scroll-snap-type: x mandatory;
+  opacity: 0;
+  transform: translateY(30px); /* Lebih jauh untuk efek dramatis */
+  animation: fadeInSlideUp 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s forwards; /* Delay dan easing berbeda */
+}
+
+@keyframes fadeInSlideUp {
+  from {
+      opacity: 0;
+      transform: translateY(30px);
   }
-  
-  .section-2 img {
-    height: 150px;
-    margin-right: 10px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    scroll-snap-align: start;
-    transition: transform 0.3s ease;
+  to {
+      opacity: 1;
+      transform: translateY(0);
   }
-  
-  .section-2 img:hover {
-    transform: scale(1.1);
+}
+
+.section-2 img {
+  height: 150px;
+  margin-right: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+  transform: scale(0.9); /* Efek scale kecil */
+  opacity: 0;
+  animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.6s forwards; /* Animasi scale-in */
+}
+
+@keyframes scaleIn {
+  from {
+      transform: scale(0.9);
+      opacity: 0;
   }
-  
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.section-2 img:hover {
+  transform: scale(1.1);
+}
+
+.section-3 {
+  display: flex;
+  padding: 20px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(30px); /* Lebih jauh untuk efek dramatis */
+  animation: fadeInSlideUp 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s forwards; /* Delay dan easing berbeda */
+}
+
+.section-3-left {
+  flex: 1;
+  margin-bottom: 20px;
+  transform: scale(0.9); /* Efek scale kecil */
+  opacity: 0;
+  animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.7s forwards; /* Animasi scale-in */
+}
+
+.section-3-left img {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+}
+
+.section-3-right {
+  flex: 1;
+  padding-left: 20px;
+  font-family: var(--font-2);
+  color: var(--color-2);
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInSlideText 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.8s forwards; /* Delay dan easing berbeda */
+}
+
+.section-3-right p {
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+.section-3-right strong {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--color-1);
+}
+
+.work-logo {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: gainsboro;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
   .section-3 {
-    display: flex;
-    padding: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .section-3-left {
-    flex: 1;
-    margin-bottom: 20px;
-  }
-  
-  .section-3-left img {
-    width: 100%;
-    max-width: 600px;
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    object-fit: contain;
-  }
-  
-  .section-3-right {
-    flex: 1;
-    padding-left: 20px;
-    font-family: var(--font-2);
-    color: var(--color-2);
-    margin-bottom: 20px;
-  }
-  
-  .section-3-right p {
-    margin-bottom: 10px;
-    line-height: 1.8;
-  }
-  
-  .section-3-right strong {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: var(--color-1);
-  }
-  
-  .work-logo {
-    width: 100px;
-    height: auto;
-    display: block;
-    margin-top: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: gainsboro;
-    object-fit: contain;
-  }
-  
-  .section-1 {
-    position: relative;
-    width: 100%;
-    min-height: 500px;
-    padding: 100px 0;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-  }
-  
-  .section-1::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-  }
-  
-  .section-1 > * {
-    z-index: 2;
-  }
-  
-  .section-1 h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: white;
-  }
-  
-  .section-1 h2 {
-    font-size: 1.5rem;
-    color: white;
-  }
-  
-  @media (max-width: 768px) {
-    .section-3 {
       flex-direction: column;
-    }
-  
-    .section-3-right {
-      padding-left: 0;
-    }
   }
+
+  .section-3-right {
+      padding-left: 0;
+  }
+}

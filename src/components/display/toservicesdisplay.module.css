@@ -1,0 +1,110 @@
+.toServicesContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Mengurangi padding */
+    max-width: 1000px;
+    height: auto; /* Mengubah tinggi ke auto */
+    margin: 20px auto; /* Menambahkan margin atas dan bawah */
+    font-family: var(--font-2), sans-serif;
+    color: var(--color-1);
+    flex-direction: column; /* Mengubah arah flex ke column untuk mobile */
+}
+
+.textColumn {
+    width: 100%; /* Lebar penuh */
+    margin-bottom: 20px;
+    text-align: center; /* Teks rata tengah di mobile */
+}
+
+.imageColumn {
+    width: 100%; /* Lebar penuh */
+    display: flex;
+    justify-content: center; /* Gambar rata tengah di mobile */
+}
+
+.toServicesImageContainer {
+    width: 90%; /* Lebar gambar responsif */
+    max-width: 300px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto 20px; /* Menambahkan margin bawah */
+}
+
+.toServicesImageContainer::before {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.toServicesImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column; /* Tombol disusun vertikal di mobile */
+    gap: 10px;
+    width: 100%; /* Lebar penuh */
+}
+
+.specialPackagesButton,
+.individualServicesButton {
+    padding: 12px 20px; /* Padding lebih besar untuk sentuhan */
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: var(--font-2), sans-serif;
+    transition: color 0.3s ease-in-out;
+    width: 100%; /* Lebar penuh */
+    text-align: center; /* Teks rata tengah */
+}
+
+.specialPackagesButton:hover,
+.individualServicesButton:hover {
+    text-decoration: underline;
+}
+
+.specialPackagesButton {
+    background-color: var(--primary-color);
+    color: var(--color-4);
+}
+
+.individualServicesButton {
+    background-color: var(--accent-color-2);
+    color: var(--color-2);
+}
+
+/* Media query untuk desktop */
+@media (min-width: 769px) {
+    .toServicesContainer {
+        flex-direction: row;
+        padding: 40px;
+        height: 80vh;
+    }
+
+    .textColumn {
+        flex: 1;
+        padding-right: 20px;
+        text-align: left; /* Teks rata kiri di desktop */
+    }
+
+    .imageColumn {
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .toServicesImageContainer {
+        width: 300px;
+    }
+
+    .buttonContainer {
+        flex-direction: row; /* Tombol disusun horizontal di desktop */
+        width: auto; /* Lebar otomatis */
+    }
+}

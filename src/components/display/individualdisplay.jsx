@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./specialdisplay.module.css"; // Menggunakan styles dari specialdisplay
+import styles from "./specialdisplay.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp, faTiktok, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -74,6 +74,11 @@ const IndividualDisplay = () => {
             <div className={styles.specialDisplayColumn}>
                 {servicesIndividualData.map(service => (
                     <div key={service.id} className={styles.specialDisplayItem}>
+                        <div className={styles.imageColumn}>
+                            {service.services_individual_img && (
+                                <img src={service.services_individual_img} alt={service.services_individual_name} className={styles.specialImage} />
+                            )}
+                        </div>
                         <div className={styles.textColumn}>
                             <div className={styles.combinedText}>
                                 <h3>{service.services_individual_name}</h3>
@@ -124,11 +129,6 @@ const IndividualDisplay = () => {
                                     </div>
                                 )}
                             </div>
-                        </div>
-                        <div className={styles.imageColumn}>
-                            {service.services_individual_img && (
-                                <img src={service.services_individual_img} alt={service.services_individual_name} className={styles.specialImage} />
-                            )}
                         </div>
                     </div>
                 ))}

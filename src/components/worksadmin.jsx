@@ -452,29 +452,7 @@ const WorksAdmin = () => {
                     <div key={work.id} className={styles.workItem}>
                         <div className={styles.workContent}>
                             <h3>{work.work_title}</h3>
-                            <h4>{work.work_subtitle}</h4>
-                            <p>{work.work_desc}</p>
-                            <p>{work.work_detail}</p>
-                            <p>{work.work_people}</p>
                             <p>{work.work_category}</p>
-                            {work.work_main_img && (
-                                <div className={styles.imagePreviewContainer}>
-                                    <img src={work.work_main_img} alt={work.work_title} className={styles.workImage} />
-                                    <p className={styles.imageCaption}>Main Image</p>
-                                </div>
-                            )}
-                            {work.work_logo_img && (
-                                <div className={styles.imagePreviewContainer}>
-                                    <img src={work.work_logo_img} alt={`${work.work_title} Logo`} className={styles.workImage} />
-                                    <p className={styles.imageCaption}>Logo Image</p>
-                                </div>
-                            )}
-                            {work.work_img && work.work_img.map((img, idx) => (
-                                <div key={idx} className={styles.imagePreviewContainer}>
-                                    <img src={img} alt={`${work.work_title} ${idx + 1}`} className={styles.workImage} />
-                                    <p className={styles.imageCaption}>Work Image {idx + 1}</p>
-                                </div>
-                            ))}
                         </div>
                         <div className={styles.workActions}>
                             <button onClick={() => handleEdit(work, index)} className={styles.actionButton}>Edit</button>
