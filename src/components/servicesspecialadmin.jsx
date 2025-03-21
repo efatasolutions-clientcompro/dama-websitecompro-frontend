@@ -17,6 +17,7 @@ const ServicesSpecialAdmin = () => {
     const [showForm, setShowForm] = useState(false);
     const [editIndex, setEditIndex] = useState(null);
     const [includeInput, setIncludeInput] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         const fetchServicesSpecialData = async () => {
@@ -140,7 +141,7 @@ const ServicesSpecialAdmin = () => {
                 });
                 setSelectedServiceSpecial(null);
                 setImagePreview(null);
-                setShowForm(false); 
+                setShowForm(false);
                 setEditIndex(null);
             } else {
                 const errorData = await response.json();
@@ -235,9 +236,13 @@ const ServicesSpecialAdmin = () => {
         });
     };
 
+    const filteredServices = servicesSpecialData.filter(serviceSpecial =>
+        serviceSpecial.services_special_name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <section className={styles.adminContainer}>
-            <h2>Services Special Admin</h2>
+            <h2><a href="/adminonlydama/homedama">Services Special Admin</a></h2>
             {message && (
                 <p className={`${styles.message} ${message.startsWith("Failed") ? styles.error : styles.success}`}>
                     {message}
@@ -245,6 +250,14 @@ const ServicesSpecialAdmin = () => {
             )}
 
             <button onClick={handleUpload} className={styles.uploadButton}>Add Services Special</button>
+
+            <input
+                type="text"
+                placeholder="Search Services Special"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className={styles.searchInput}
+            />
 
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>
@@ -321,7 +334,7 @@ const ServicesSpecialAdmin = () => {
             )}
 
             <div className={styles.taglineList}>
-                {servicesSpecialData.map((serviceSpecial, index) => (
+                {filteredServices.map((serviceSpecial, index) => (
                     <div key={serviceSpecial.id} className={styles.taglineItem}>
                         <div className={styles.taglineContent}>
                             <h3>{serviceSpecial.services_special_name}</h3>
@@ -404,11 +417,12 @@ const ServicesSpecialAdmin = () => {
                                 </button>
                                 <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
                             </form>
-                        )}</div>
-                    ))}
-                </div>
-            </section>
-        );
-    };
-    
-    export default ServicesSpecialAdmin;
+                        )}
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+};
+
+export default ServicesSpecialAdmin;

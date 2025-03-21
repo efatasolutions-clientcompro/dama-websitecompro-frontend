@@ -97,6 +97,12 @@ const MyHomeAdmin = () => {
                 >
                     Individual Services
                 </button>
+                <button
+                    onClick={() => navigateTo('/adminonlydama/worksdama')}
+                    className={styles.adminButton}
+                >
+                    Works Dama
+                </button>
             </div>
 
             {showTaglines && <TaglinesAdmin />}

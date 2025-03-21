@@ -5,32 +5,36 @@
     max-width: 1200px;
     margin: 0 auto;
     padding-bottom: 40px;
+    background-color: var(--color-4); /* Latar belakang abu-abu sangat terang */
+    color: var(--color-1); /* Warna teks hitam */
 }
 
 .adminContainer h2 {
     margin-bottom: 20px;
+    color: var(--color-1); /* Warna teks hitam */
 }
 
 .message {
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
+    text-align: center;
 }
 
 .message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background-color: var(--accent-color-3); /* Abu-abu dengan sentuhan warm gray */
+    color: var(--color-2); /* Abu-abu sangat gelap untuk teks sukses */
+    border: 1px solid var(--color-3); /* Border abu-abu kecoklatan */
 }
 
 .message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background-color: var(--accent-color-2); /* Abu-abu dengan sentuhan light taupe */
+    color: var(--color-2); /* Abu-abu sangat gelap untuk teks error */
+    border: 1px solid var(--color-3); /* Border abu-abu kecoklatan */
 }
 
 .uploadButton {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color); /* Tombol abu-abu gelap netral */
     color: white;
     padding: 10px 15px;
     border: none;
@@ -40,27 +44,31 @@
 }
 
 .uploadButton:hover {
-    background-color: #0056b3;
+    background-color: var(--color-2); /* Hover abu-abu sangat gelap */
 }
 
 .taglineForm, .toServiceForm {
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
-    border: 1px solid var(--gray-color);
+    border: 1px solid var(--color-3); /* Border abu-abu kecoklatan */
     padding: 20px;
     border-radius: 5px;
+    background-color: var(--color-5); /* Latar belakang abu-abu sangat terang */
 }
 
 .taglineForm label, .toServiceForm label {
     margin-bottom: 5px;
+    color: var(--color-1); /* Warna label hitam */
 }
 
 .inputField {
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid var(--gray-color);
+    border: 1px solid var(--color-3); /* Border input abu-abu kecoklatan */
     border-radius: 5px;
+    background-color: white; /* Latar belakang input putih */
+    color: var(--color-1); /* Warna teks input hitam */
 }
 
 .imageUploadContainer {
@@ -70,7 +78,7 @@
 }
 
 .imageUploadBox {
-    border: 2px dashed var(--gray-color);
+    border: 2px dashed var(--gray-color); /* Border dashed abu-abu */
     padding: 20px;
     text-align: center;
     cursor: pointer;
@@ -90,7 +98,9 @@
     display: block;
 }
 
-.actionButton, .cancelButton, .deleteButton {
+.actionButton {
+    background-color: var(--primary-color); /* Tombol abu-abu gelap netral */
+    color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -98,31 +108,36 @@
     margin-top: 5px;
 }
 
-.actionButton {
-    background-color: var(--success-color);
-    color: white;
-}
-
 .actionButton:hover {
-    background-color: #218838;
+    background-color: var(--color-2); /* Hover abu-abu sangat gelap */
 }
 
 .cancelButton {
-    background-color: var(--gray-color);
+    background-color: var(--gray-color); /* Tombol abu-abu */
     color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
 }
 
 .cancelButton:hover {
-    background-color: #5a6268;
+    background-color: var(--accent-color-1); /* Hover abu-abu dengan sentuhan beige */
 }
 
 .deleteButton {
-    background-color: var(--error-color);
+    background-color: var(--error-color); /* Tombol abu-abu terang netral */
     color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
 }
 
 .deleteButton:hover {
-    background-color: #c82333;
+    background-color: var(--accent-color-2); /* Hover abu-abu dengan sentuhan light taupe */
 }
 
 .taglineList, .toServiceList {
@@ -132,10 +147,11 @@
 }
 
 .taglineItem, .toServiceItem {
-    border: 1px solid var(--gray-color);
+    border: 1px solid var(--color-3); /* Border item abu-abu kecoklatan */
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 20px;
+    background-color: var(--color-5); /* Latar belakang abu-abu sangat terang */
 }
 
 .taglineContent, .toServiceContent {
@@ -154,6 +170,7 @@
 .taglineContent div span, .toServiceContent span {
     font-weight: bold;
     display: block;
+    color: var(--color-1); /* Warna teks span hitam */
 }
 
 .taglineActions, .toServiceActions {

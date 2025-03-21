@@ -1,0 +1,86 @@
+/* components/workdetailcontent.module.css */
+
+.section-2 {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px;
+  }
+  
+  .section-2 img {
+    height: 150px; /* Sesuaikan tinggi thumbnail */
+    margin-right: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tambahkan sedikit shadow */
+  }
+  
+  .section-3 {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .section-3-left {
+    flex: 1;
+  }
+  
+  .section-3-left img {
+    width: 100%; /* Lebar gambar mengikuti lebar container */
+    /* height: auto;  Hapus height untuk menjaga aspek rasio gambar */
+    max-width: 600px; /* Opsional: Batasi lebar maksimum gambar */
+    display: block; /* Mencegah margin tambahan dari inline elements */
+    margin: 0 auto; /* Tengah-tengah gambar di dalam container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section-3-right {
+    flex: 1;
+    padding-left: 20px;
+    font-family: var(--font-2); /* Gunakan font-family dari global.css */
+    color: var(--color-2); /* Gunakan warna teks dari global.css */
+  }
+  
+  .section-3-right p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  
+  .section-3-right strong {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--color-1); /* Gunakan warna judul dari global.css */
+  }
+  
+  .work-logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tambahkan sedikit shadow */
+    background-color:gainsboro;
+  }
+ 
+
+.section-1 {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Sesuaikan tinggi sesuai kebutuhan */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+  
+  .section-1 h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .section-1 h2 {
+    font-size: 1.5rem;
+  }
+  
+ 

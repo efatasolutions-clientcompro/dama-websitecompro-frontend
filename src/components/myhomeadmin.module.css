@@ -1,8 +1,15 @@
+/* myhomeadmin.module.css */
+
 .adminContainer {
     padding: 20px;
     text-align: center;
     font-family: var(--font-2);
     color: var(--color-2);
+    background-color: var(--color-4);
+}
+
+.adminContainer h2 { /* Menambahkan margin bawah pada judul */
+    margin-bottom: 20px; /* Sesuaikan nilai sesuai kebutuhan Anda */
 }
 
 .buttonContainer {
@@ -22,14 +29,15 @@
     cursor: pointer;
     flex-grow: 1;
     font-family: var(--font-2);
+    margin: 5px;
 }
 
 .adminButton:hover {
-    background-color: #0056b3;
+    background-color: var(--color-2);
 }
 
 .adminButton.active {
-    background-color: var(--success-color); /* Warna tombol saat aktif */
+    background-color: var(--success-color);
 }
 
 @media (max-width: 600px) {
@@ -39,5 +47,6 @@
 
     .adminButton {
         width: 100%;
+        margin: 5px 0;
     }
 }

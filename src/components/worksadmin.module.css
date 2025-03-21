@@ -1,4 +1,3 @@
-/* myserviceadmin.css */
 .adminContainer {
     padding: 20px;
     max-width: 1200px;
@@ -47,7 +46,7 @@
     margin-right: auto;
 }
 
-.taglineForm {
+.workForm {
     border: 1px solid var(--color-3);
     padding: 20px;
     border-radius: 5px;
@@ -55,7 +54,7 @@
     background-color: var(--color-5);
 }
 
-.taglineForm label {
+.workForm label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
@@ -63,8 +62,7 @@
 }
 
 .inputField,
-.includeInput,
-.taglineForm textarea {
+.workForm textarea {
     width: calc(100% - 22px);
     padding: 10px;
     margin-bottom: 15px;
@@ -75,49 +73,8 @@
     color: var(--color-1);
 }
 
-.taglineForm textarea {
+.workForm textarea {
     height: 150px;
-}
-
-.includeContainer {
-    display: flex;
-    margin-bottom: 15px;
-}
-
-.includeInput {
-    flex: 1;
-    margin-right: 10px;
-}
-
-.includeButton,
-.removeInclude {
-    background-color: var(--success-color);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.removeInclude {
-    background-color: var(--error-color);
-    margin-left: 5px;
-}
-
-.includeList {
-    list-style: none;
-    padding: 0;
-}
-
-.includeItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 10px;
-    border: 1px solid var(--color-3);
-    margin-bottom: 5px;
-    border-radius: 5px;
-    color: var(--color-1);
 }
 
 .imageUploadContainer {
@@ -143,7 +100,9 @@
 
 .actionButton,
 .cancelButton,
-.deleteButton {
+.deleteButton,
+.addButton,
+.removeButton {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -167,13 +126,23 @@
     color: white;
 }
 
-.taglineList {
+.addButton,
+.removeButton {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.removeButton {
+    background-color: var(--error-color);
+}
+
+.workList {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.taglineItem {
+.workItem {
     border: 1px solid var(--color-3);
     padding: 20px;
     border-radius: 5px;
@@ -181,20 +150,18 @@
     background-color: var(--color-5);
 }
 
-.taglineContent h3,
-.taglineContent h4 {
+.workContent h3,
+.workContent h4 {
     margin-bottom: 10px;
     color: var(--color-1);
 }
 
-.taglineContent ul {
-    list-style: disc;
-    margin-left: 20px;
+.workContent p {
     margin-bottom: 10px;
     color: var(--color-1);
 }
 
-.taglineImage {
+.workImage {
     max-width: 150px;
     max-height: 150px;
     height: auto;
@@ -203,51 +170,80 @@
     object-fit: contain;
 }
 
-.taglineActions {
+.workActions {
     margin-top: 15px;
     text-align: right;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-    .taglineList {
+    .workList {
         grid-template-columns: 1fr;
-    }
-
-    .includeContainer {
-        flex-direction: column;
-    }
-
-    .includeInput {
-        margin-right: 0;
-        margin-bottom: 10px;
     }
 
     .actionButton,
     .cancelButton,
-    .deleteButton {
+    .deleteButton,
+    .addButton,
+    .removeButton {
         width: 100%;
         margin-right: 0;
         margin-bottom: 5px;
     }
 }
 
-/* Form Edit */
-.taglineForm.editForm {
+.workForm.editForm {
     margin-top: 20px;
     border-color: var(--primary-color);
     background-color: var(--accent-color-3);
 }
 
-/* Search Bar Styling */
-.searchInput {
-    width: 100%; /* Make it take full width */
-    padding: 10px;
+.adminContainer h2 {
+    font-weight: bold;
+}
+
+.workList h3 {
+    font-weight: bold;
+}
+
+.workList h4 {
+    font-weight: bold;
+}
+
+.imageCaption {
+    font-weight: bold;
+}
+
+.actionButton,
+.deleteButton,
+.uploadButton,
+.addButton,
+.removeButton,
+.cancelButton {
+    font-weight: bold;
+}
+
+.workForm label {
+    font-weight: bold;
+}
+
+/* Search Bar Styles */
+.searchBar {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.searchInput {
+    padding: 10px 15px;
     border: 1px solid var(--color-3);
     border-radius: 5px;
-    box-sizing: border-box;
+    width: 300px; /* Adjust width as needed */
     font-size: 16px;
     color: var(--color-1);
-    background-color: var(--color-5);
+    background-color: var(--color-5); /* Match form background */
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--primary-color); /* Highlight on focus */
 }

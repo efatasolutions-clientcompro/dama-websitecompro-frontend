@@ -27,15 +27,18 @@
 }
 
 :root {
-    --font-1: 'EB Garamond', serif; /* Perbaiki typo 'sans-serif' ke 'serif' */
+    --font-1: 'EB Garamond', serif;
     --font-2: 'Avenir Next LT Pro', sans-serif;
-    --color-1: #000;
-    --color-2: #2b2b2b;
-    --color-3: #6d625d;
-    --color-4: #e7e4de;
-    --color-5: #f6f5f3;
-    --primary-color: #007bff; /* Warna biru untuk tombol utama */
-    --success-color: #28a745; /* Warna hijau untuk sukses */
-    --error-color: #dc3545; /* Warna merah untuk error */
-    --gray-color: #6c757d; /* Warna abu-abu */
+    --color-1: #222; /* Hitam sedikit lebih lembut */
+    --color-2: #3A3A3A; /* Abu-abu sangat gelap sedikit lebih hangat */
+    --color-3: #7A7570; /* Abu-abu kecoklatan lebih netral */
+    --color-4: #EAE9E6; /* Abu-abu sangat terang dengan sentuhan hangat */
+    --color-5: #F5F4F2; /* Abu-abu sangat terang (sedikit lebih terang dari --color-4) dengan sentuhan hangat */
+    --primary-color: #666666; /* Abu-abu gelap netral untuk tombol utama */
+    --success-color: #999999; /* Abu-abu sedang netral untuk sukses */
+    --error-color: #BDBDBD; /* Abu-abu terang netral untuk error */
+    --gray-color: #707070; /* Warna abu-abu yang ada, sedikit lebih netral */
+    --accent-color-1: #A09E9A; /* Abu-abu dengan sentuhan beige */
+    --accent-color-2: #C2C0BD; /* Abu-abu dengan sentuhan light taupe */
+    --accent-color-3: #D4D2CF; /* Abu-abu dengan sentuhan warm gray */
 }
