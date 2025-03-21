@@ -1,0 +1,163 @@
+.specialDisplayContainer {
+    font-family: var(--font-2);
+    color: var(--color-1);
+    padding: 20px 50px; /* Padding untuk desktop */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.specialDisplayColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.specialDisplayItem {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--accent-color-3);
+    padding-bottom: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.imageColumn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.textColumn {
+    flex: 2;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.specialImage {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.combinedText {
+    margin-bottom: 10px;
+}
+
+.combinedText h3 {
+    margin-bottom: 5px;
+}
+
+.combinedText h4 {
+    margin-bottom: 5px;
+}
+
+.divider {
+    border-bottom: 1px solid var(--accent-color-2);
+    margin: 10px 0;
+}
+
+.includesToggle {
+    margin-top: 10px;
+}
+
+.includesButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.toggleIcon {
+    margin-left: 10px;
+}
+
+.includesList {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.contactUsSection {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contactIcons {
+    display: flex;
+    justify-content: center;
+}
+
+.contactIconLink {
+    margin: 0 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.contactIcon {
+    font-size: 24px;
+}
+
+.sectionTitle {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: var(--primary-color);
+}
+
+/* Media query untuk layar kecil (mobile) */
+@media (max-width: 768px) {
+    .specialDisplayContainer {
+        padding: 20px 10px;
+    }
+
+    .specialDisplayItem {
+        flex-direction: column;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        width: 95%;
+    }
+
+    .imageColumn {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+
+    .textColumn {
+        width: 100%;
+        padding: 0;
+    }
+
+    .combinedText h3 {
+        font-size: 1.2em;
+    }
+
+    .combinedText h4 {
+        font-size: 1em;
+    }
+
+    .combinedText p {
+        font-size: 0.9em;
+    }
+
+    .includesList li {
+        font-size: 0.9em;
+    }
+
+    .contactIcon {
+        font-size: 20px;
+    }
+
+    .sectionTitle {
+        margin-bottom: 20px;
+        font-size: 1.5em;
+    }
+}
