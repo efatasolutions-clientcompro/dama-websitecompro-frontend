@@ -45,7 +45,6 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     min-width: 200px; /* Sesuaikan min-width untuk layar kecil */
-    border-radius: 8px; /* Tambahkan border-radius */
   }
   
   .workItem:hover {
