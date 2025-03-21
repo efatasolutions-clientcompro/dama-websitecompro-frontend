@@ -4,50 +4,61 @@
     overflow-x: auto;
     white-space: nowrap;
     padding: 20px;
+    gap: 10px;
+    scroll-snap-type: x mandatory;
   }
   
   .section-2 img {
-    height: 150px; /* Sesuaikan tinggi thumbnail */
+    height: 150px;
     margin-right: 10px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tambahkan sedikit shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+  }
+  
+  .section-2 img:hover {
+    transform: scale(1.1);
   }
   
   .section-3 {
     display: flex;
     padding: 20px;
+    flex-wrap: wrap;
   }
   
   .section-3-left {
     flex: 1;
+    margin-bottom: 20px;
   }
   
   .section-3-left img {
-    width: 100%; /* Lebar gambar mengikuti lebar container */
-    /* height: auto;  Hapus height untuk menjaga aspek rasio gambar */
-    max-width: 600px; /* Opsional: Batasi lebar maksimum gambar */
-    display: block; /* Mencegah margin tambahan dari inline elements */
-    margin: 0 auto; /* Tengah-tengah gambar di dalam container */
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: contain;
   }
   
   .section-3-right {
     flex: 1;
     padding-left: 20px;
-    font-family: var(--font-2); /* Gunakan font-family dari global.css */
-    color: var(--color-2); /* Gunakan warna teks dari global.css */
+    font-family: var(--font-2);
+    color: var(--color-2);
+    margin-bottom: 20px;
   }
   
   .section-3-right p {
     margin-bottom: 10px;
-    line-height: 1.6;
+    line-height: 1.8;
   }
   
   .section-3-right strong {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: var(--color-1); /* Gunakan warna judul dari global.css */
+    color: var(--color-1);
   }
   
   .work-logo {
@@ -55,15 +66,16 @@
     height: auto;
     display: block;
     margin-top: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tambahkan sedikit shadow */
-    background-color:gainsboro;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: gainsboro;
+    object-fit: contain;
   }
- 
-
-.section-1 {
+  
+  .section-1 {
     position: relative;
     width: 100%;
-    height: 500px; /* Sesuaikan tinggi sesuai kebutuhan */
+    min-height: 500px;
+    padding: 100px 0;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -72,6 +84,7 @@
     align-items: center;
     color: white;
     text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
   
   .section-1 h1 {
@@ -83,4 +96,12 @@
     font-size: 1.5rem;
   }
   
- 
+  @media (max-width: 768px) {
+    .section-3 {
+      flex-direction: column;
+    }
+  
+    .section-3-right {
+      padding-left: 0;
+    }
+  }
