@@ -36,13 +36,25 @@ const ToServicesDisplay = () => {
     if (error) return <p>Error: {error}</p>;
     if (!toService) return <p>No services available.</p>;
 
+    const handleSpecialPackagesClick = () => {
+        window.location.href = '/services/special';
+    };
+
+    const handleIndividualServicesClick = () => {
+        window.location.href = '/services/individual';
+    };
+
     return (
         <div className={styles.toServicesContainer}>
             <div className={styles.textColumn}>
                 <h2>{toService.toservices_text}</h2>
                 <div className={styles.buttonContainer}>
-                    <button className={styles.specialPackagesButton}>Special Packages</button>
-                    <button className={styles.individualServicesButton}>Individual Services</button>
+                    <button className={styles.specialPackagesButton} onClick={handleSpecialPackagesClick}>
+                        Special Packages
+                    </button>
+                    <button className={styles.individualServicesButton} onClick={handleIndividualServicesClick}>
+                        Individual Services
+                    </button>
                 </div>
             </div>
             <div className={styles.imageColumn}>
