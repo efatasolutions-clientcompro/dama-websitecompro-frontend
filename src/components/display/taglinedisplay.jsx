@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import styles from "./taglineDisplay.module.css";
+import styles from "./taglinedisplay.module.css";
 
 const TaglineDisplay = () => {
     const [taglines, setTaglines] = useState([]);
