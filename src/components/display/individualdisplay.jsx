@@ -121,7 +121,7 @@ const IndividualDisplay = () => {
                                 <div className={styles.contactUsSection}>
                                     {contactData && contactData.dama_whatsapp && (
                                         <a href={`https://wa.me/${contactData.dama_whatsapp}`} target="_blank" rel="noopener noreferrer" className={styles.whatsappButton}>
-                                            Contact Us via WhatsApp
+                                            Contact Us
                                         </a>
                                     )}
                                 </div>

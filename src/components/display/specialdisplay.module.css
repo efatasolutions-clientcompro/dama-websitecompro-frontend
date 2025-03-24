@@ -1,3 +1,4 @@
+/* CONTAINER */
 .specialDisplayContainer {
     font-family: var(--font-2);
     color: var(--color-1);
@@ -6,23 +7,28 @@
     background-color: var(--color-5);
 }
 
+/* COLUMN LAYOUT */
 .specialDisplayColumn {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: fit-content;
 }
 
-.specialDisplayItem {
-    display: flex;
-    padding: 50px 80px;
-    border-bottom: 1px solid var(--accent-color-3);
-    width: 100%;
-    max-width: 100vw;
-    opacity: 0;
-    transform: translateY(30px);
+/* SPECIAL DISPLAY ITEM */
+.specialDisplayItem {  
+    display: flex;  
+    flex-direction: column;  
+    padding: 50px 100px;   
+    width: 90%;  
+    max-width: 100vw; 
+    height: auto !important; /* Menyesuaikan tinggi dengan konten */
+    min-height: fit-content;
+    opacity: 0;  
+    transform: translateY(30px);  
     animation: fadeInSlideUp 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
-    min-height: 300px;
-}
+    overflow: visible;
+}  
 
 .specialDisplayItem:nth-child(even) {
     animation-delay: 0.3s;
@@ -32,6 +38,7 @@
     animation-delay: 0.5s;
 }
 
+/* FADE IN SLIDE UP ANIMATION */
 @keyframes fadeInSlideUp {
     from {
         opacity: 0;
@@ -43,18 +50,19 @@
     }
 }
 
-.row {
+/* ROW LAYOUT */
+.row,
+.rowReverse {
     display: flex;
-    flex-direction: row;
     width: 100%;
+    height: fit-content;
 }
 
 .rowReverse {
-    display: flex;
     flex-direction: row-reverse;
-    width: 100%;
 }
 
+/* IMAGE COLUMN */
 .imageColumn {
     flex: 1;
     display: flex;
@@ -78,44 +86,45 @@
     }
 }
 
+/* TEXT COLUMN */
 .textColumn {
     flex: 2;
     margin: 20px;
+    height: fit-content;
 }
 
+/* IMAGE STYLING */
 .specialImage {
     width: 100%;
     aspect-ratio: 1 / 1;
-    object-fit: contain;
+    object-fit: cover;
     transition: height 0.3s ease;
+    height: 100%;
 }
 
 .zoomedImage {
     transform: scale(1.1);
 }
 
+/* TEXT ANIMATION */
 .combinedText {
     margin-bottom: 10px;
 }
 
-.combinedText h3 {
-    margin-bottom: 5px;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeInSlideText 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.6s forwards;
-}
-
-.combinedText h4 {
-    margin-bottom: 5px;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeInSlideText 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.7s forwards;
-}
-
+.combinedText h3,
+.combinedText h4,
 .combinedText p {
     opacity: 0;
     transform: translateY(10px);
-    animation: fadeInSlideText 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.8s forwards;
+    animation: fadeInSlideText 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+.combinedText h4 {
+    animation-delay: 0.1s;
+}
+
+.combinedText p {
+    animation-delay: 0.2s;
 }
 
 @keyframes fadeInSlideText {
@@ -129,11 +138,12 @@
     }
 }
 
+/* DIVIDER */
 .divider {
     border-bottom: 1.5px solid var(--accent-color-2);
-    margin: 0;
 }
 
+/* INCLUDES TOGGLE */
 .includesToggle {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -152,43 +162,33 @@
     cursor: pointer;
 }
 
+/* TOGGLE ICON */
 .toggleIcon {
     margin-left: 10px;
 }
 
+/* LIST STYLING */
 .includesList {
     list-style-type: disc;
     padding-left: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
+/* CONTACT SECTION */
 .contactUsSection {
     margin-top: 20px;
     text-align: center;
 }
 
-.contactIcons {
-    display: flex;
-    justify-content: center;
-}
-
-.contactIconLink {
-    margin: 0 10px;
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-.contactIcon {
-    font-size: 24px;
-}
-
+/* SECTION TITLE */
 .sectionTitle {
     text-align: center;
     font-size: 2em;
     color: var(--primary-color);
     background-color: var(--color-4);
+    padding: 20px 0;
     opacity: 0;
     transform: translateY(-30px);
     animation: fadeInSlideDown 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
@@ -205,77 +205,72 @@
     }
 }
 
-/* Media query untuk layar kecil (mobile) */
+/* ================== RESPONSIVE DESIGN FOR MOBILE ================== */
 @media (max-width: 768px) {
     .specialDisplayContainer {
-        padding: 20px 10px;
+        padding: 10px;
     }
 
     .specialDisplayItem {
         flex-direction: column;
-        margin-bottom: 20px;
-        padding-bottom: 15px;
-        width: 95%;
+        padding: 15px; /* Mengurangi padding */
+        width: 100%;
     }
 
-    .row, .rowReverse {
+    .row,
+    .rowReverse {
         flex-direction: column;
+        align-items: center;
     }
 
     .imageColumn {
         width: 100%;
-        padding: 0;
         margin-bottom: 10px;
+        transform: scale(1); /* Hapus efek scaling agar tidak mengecil */
     }
 
     .textColumn {
         width: 100%;
-        padding: 0;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .specialImage {
+        width: 100%;
+        height: auto;
+        object-fit: contain; /* Pastikan gambar tidak terpotong */
     }
 
     .combinedText h3 {
-        font-size: 1.2em;
+        font-size: 1.1em; /* Ukuran font lebih kecil */
     }
 
     .combinedText h4 {
-        font-size: 1em;
+        font-size: 0.95em;
     }
 
     .combinedText p {
-        font-size: 0.9em;
+        font-size: 0.85em;
+        line-height: 1.4;
     }
 
     .includesList li {
-        font-size: 0.9em;
-    }
-
-    .contactIcon {
-        font-size: 20px;
+        font-size: 0.85em;
     }
 
     .sectionTitle {
-        margin-bottom: 20px;
-        font-size: 1.5em;
+        margin-bottom: 15px;
+        font-size: 1.4em;
+        padding: 15px 0;
     }
-}
 
-/* Tambahkan style untuk loading dan error */
-.loadingContainer,
-.errorContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.8);
-    z-index: 1000;
-}
+    /* ANIMASI LIST */
+    .includesList {
+        font-size: 0.85em;
+    }
 
-.loadingContainer p,
-.errorContainer p {
-    font-size: 1.5em;
-    color: var(--color-2);
+    .includesButton {
+        font-size: 0.9em;
+        padding: 8px;
+    }
 }
