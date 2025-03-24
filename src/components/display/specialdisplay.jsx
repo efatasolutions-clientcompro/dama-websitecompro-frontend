@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./specialdisplay.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +12,10 @@ const SpecialDisplay = () => {
     const [contactData, setContactData] = useState(null);
     const [contactLoading, setContactLoading] = useState(true);
     const [contactError, setContactError] = useState(null);
+    const [imageHeights, setImageHeights] = useState({});
+    const [zoomedImages, setZoomedImages] = useState({});
+    const containerRefs = useRef({});
+    const [containerHeights, setContainerHeights] = useState({});
 
     useEffect(() => {
         const fetchServicesSpecialData = async () => {
@@ -55,9 +59,15 @@ const SpecialDisplay = () => {
     const toggleIncludes = (service) => {
         if (selectedService === service) {
             setShowIncludes(!showIncludes);
+            setImageHeights(prev => ({ ...prev, [service.id]: showIncludes ? 'auto' : containerRefs.current[service.id].clientHeight + 'px' }));
+            setZoomedImages(prev => ({ ...prev, [service.id]: !showIncludes }));
+            setContainerHeights(prev => ({ ...prev, [service.id]: showIncludes ? 'auto' : containerRefs.current[service.id].clientHeight + 'px' }));
         } else {
             setSelectedService(service);
             setShowIncludes(true);
+            setImageHeights({ [service.id]: containerRefs.current[service.id].clientHeight + 'px' });
+            setZoomedImages({ [service.id]: true });
+            setContainerHeights({ [service.id]: containerRefs.current[service.id].clientHeight + 'px' });
         }
     };
 
@@ -72,11 +82,16 @@ const SpecialDisplay = () => {
             <div className={styles.divider}></div>
             <div className={styles.specialDisplayColumn}>
                 {servicesSpecialData.map((service, index) => (
-                    <div key={service.id} className={styles.specialDisplayItem}>
+                    <div key={service.id} className={styles.specialDisplayItem} ref={el => containerRefs.current[service.id] = el} style={{ height: containerHeights[service.id] || 'auto' }}>
                         <div className={index % 2 === 0 ? styles.row : styles.rowReverse}>
                             <div className={styles.imageColumn}>
                                 {service.services_special_img && (
-                                    <img src={service.services_special_img} alt={service.services_special_name} className={styles.specialImage} />
+                                    <img
+                                        src={service.services_special_img}
+                                        alt={service.services_special_name}
+                                        className={`${styles.specialImage} ${zoomedImages[service.id] ? styles.zoomedImage : ''}`}
+                                        style={{ height: imageHeights[service.id] || 'auto', transition: 'height 0.3s ease' }}
+                                    />
                                 )}
                             </div>
                             <div className={styles.textColumn}>
