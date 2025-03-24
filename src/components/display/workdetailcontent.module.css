@@ -3,8 +3,8 @@
 .section-1 {
   position: relative;
   width: 100%;
-  min-height: 500px;
-  padding: 100px 0;
+  min-height: 50vh;
+  padding: 80px 20px; /* Adjusted padding for mobile */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -16,18 +16,18 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   opacity: 0;
-  transform: translateY(-30px); /* Lebih jauh untuk efek dramatis */
-  animation: fadeInSlideDown 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; /* Easing lebih dinamis */
+  transform: translateY(-30px);
+  animation: fadeInSlideDown 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
 
 @keyframes fadeInSlideDown {
   from {
-      opacity: 0;
-      transform: translateY(-30px);
+    opacity: 0;
+    transform: translateY(-30px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -47,75 +47,85 @@
 }
 
 .section-1 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem; /* Adjusted font size for mobile */
   margin-bottom: 10px;
   color: white;
   opacity: 0;
   transform: translateY(-20px);
-  animation: fadeInSlideText 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s forwards; /* Delay dan easing berbeda */
+  animation: fadeInSlideText 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s forwards;
 }
 
 .section-1 h2 {
-  font-size: 1.5rem;
+  font-size: 1.2rem; /* Adjusted font size for mobile */
   color: white;
   opacity: 0;
   transform: translateY(-20px);
-  animation: fadeInSlideText 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s forwards; /* Delay dan easing berbeda */
+  animation: fadeInSlideText 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s forwards;
 }
 
 @keyframes fadeInSlideText {
   from {
-      opacity: 0;
-      transform: translateY(-20px);
+    opacity: 0;
+    transform: translateY(-20px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+.section-2-3-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 100px 80px; /* Adjusted padding for mobile */
+}
+
 .section-2 {
-  overflow-x: auto;
-  white-space: nowrap;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: fit-content;
   padding: 20px;
   gap: 10px;
-  scroll-snap-type: x mandatory;
   opacity: 0;
-  transform: translateY(30px); /* Lebih jauh untuk efek dramatis */
-  animation: fadeInSlideUp 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s forwards; /* Delay dan easing berbeda */
+  transform: translateY(30px);
+  animation: fadeInSlideUp 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s forwards;
 }
 
 @keyframes fadeInSlideUp {
   from {
-      opacity: 0;
-      transform: translateY(30px);
+    opacity: 0;
+    transform: translateY(30px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 .section-2 img {
-  height: 150px;
-  margin-right: 10px;
+  width: 120px; /* Adjusted image size for mobile */
+  height: 120px; /* Adjusted image size for mobile */
+  object-fit: cover;
+  margin-bottom: 10px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  scroll-snap-align: start;
   transition: transform 0.3s ease;
-  transform: scale(0.9); /* Efek scale kecil */
+  transform: scale(0.9);
   opacity: 0;
-  animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.6s forwards; /* Animasi scale-in */
+  animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.6s forwards;
 }
 
 @keyframes scaleIn {
   from {
-      transform: scale(0.9);
-      opacity: 0;
+    transform: scale(0.9);
+    opacity: 0;
   }
   to {
-      transform: scale(1);
-      opacity: 1;
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -124,25 +134,28 @@
 }
 
 .section-3 {
+  flex: 2;
   display: flex;
-  padding: 20px;
   flex-wrap: wrap;
   opacity: 0;
-  transform: translateY(30px); /* Lebih jauh untuk efek dramatis */
-  animation: fadeInSlideUp 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s forwards; /* Delay dan easing berbeda */
+  transform: translateY(30px);
+  animation: fadeInSlideUp 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s forwards;
 }
 
 .section-3-left {
   flex: 1;
+  padding: 20px;
   margin-bottom: 20px;
-  transform: scale(0.9); /* Efek scale kecil */
+  transform: scale(0.9);
   opacity: 0;
-  animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.7s forwards; /* Animasi scale-in */
+  object-fit: contain;
+  animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.7s forwards;
 }
 
 .section-3-left img {
   width: 100%;
   max-width: 600px;
+  padding: 20px;
   display: block;
   margin: 0 auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -157,12 +170,12 @@
   margin-bottom: 20px;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInSlideText 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.8s forwards; /* Delay dan easing berbeda */
+  animation: fadeInSlideText 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.8s forwards;
 }
 
 .section-3-right p {
   margin-bottom: 10px;
-  line-height: 1.8;
+  line-height: 1.6; /* Adjusted line height for readability */
 }
 
 .section-3-right strong {
@@ -173,7 +186,7 @@
 }
 
 .work-logo {
-  width: 100px;
+  width: 80px; /* Adjusted logo size for mobile */
   height: auto;
   display: block;
   margin-top: 10px;
@@ -183,11 +196,19 @@
 }
 
 @media (max-width: 768px) {
+  .section-2-3-container {
+    flex-direction: column;
+    padding: 30px 10px; /* Further adjusted padding for smaller screens */
+  }
   .section-3 {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .section-3-right {
-      padding-left: 0;
+    padding-left: 0;
+  }
+
+  .section-1{
+    padding: 60px 10px;
   }
 }
