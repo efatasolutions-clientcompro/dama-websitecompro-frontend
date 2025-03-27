@@ -3,11 +3,19 @@ import Layout from '../layouts/Layout.astro';
 import TaglineDisplay from '../components/display/taglinedisplay';
 import ToServicesDisplay from '../components/display/toservicesdisplay';
 import ClientDisplay from '../components/display/clientdisplay';
+import ToWorksDisplay from '../components/display/toworksdisplay';
+import TestimonialsDisplay from '../components/display/testimonialsdisplay';
+import ConnectDisplay from '../components/display/connectdisplay';
+import InstagramsDisplay from '../components/display/instagramsdisplay';
 ---
 
 <Layout title="Home Page">
     <TaglineDisplay client:load />
     <ToServicesDisplay client:load/>
     <ClientDisplay client:load/>
+    <ToWorksDisplay client:load/>
+    <TestimonialsDisplay client:load/>
+    <ConnectDisplay client:load/>
+    <InstagramsDisplay client:load/>
 </Layout>
 

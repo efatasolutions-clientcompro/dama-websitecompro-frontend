@@ -5,6 +5,8 @@
     height: 100vh;
     gap: 0;
     flex-wrap: wrap;
+    opacity: 0; /* Mulai dengan opacity 0 */
+    animation: fadeIn 1s ease-out forwards; /* Animasi fadeIn */
 }
 
 .serviceItem {
@@ -14,6 +16,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: translateY(20px); /* Mulai dengan posisi sedikit di bawah */
+    opacity: 0; /* Mulai dengan opacity 0 */
+    animation: slideUp 0.8s ease-out forwards; /* Animasi slideUp */
+}
+
+/* Animasi slideUp untuk serviceItem genap */
+.serviceItem:nth-child(even) {
+    animation-delay: 0.2s; /* Delay sedikit untuk efek staggered */
+}
+
+/* Animasi slideUp untuk serviceItem kelipatan 3 */
+.serviceItem:nth-child(3n) {
+    animation-delay: 0.4s;
 }
 
 .serviceLink {
@@ -55,5 +70,30 @@
     .serviceItem {
         width: 100%;
         height: 50vh;
+    }
+    .serviceTitle{
+        font-size: 1.5em;
+    }
+}
+
+/* Keyframes untuk animasi fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Keyframes untuk animasi slideUp */
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }

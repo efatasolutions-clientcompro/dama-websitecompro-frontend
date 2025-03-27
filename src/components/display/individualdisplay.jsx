@@ -103,7 +103,7 @@ const IndividualDisplay = () => {
                                 <div className={styles.divider}></div>
                                 <div className={styles.includesToggle}>
                                     <button onClick={() => toggleIncludes(service)} className={styles.includesButton}>
-                                        What's Included
+                                        What's Included?
                                         <FontAwesomeIcon
                                             icon={selectedService === service && showIncludes ? faChevronUp : faChevronDown}
                                             className={styles.toggleIcon}
@@ -121,7 +121,7 @@ const IndividualDisplay = () => {
                                 <div className={styles.contactUsSection}>
                                     {contactData && contactData.dama_whatsapp && (
                                         <a href={`https://wa.me/${contactData.dama_whatsapp}`} target="_blank" rel="noopener noreferrer" className={styles.whatsappButton}>
-                                            Contact Us
+                                            Work with us
                                         </a>
                                     )}
                                 </div>

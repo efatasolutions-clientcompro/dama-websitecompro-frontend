@@ -13,9 +13,9 @@ const WorkDetailContent = ({ work }) => {
       <div className={styles['section-2-3-container']}>
         <section className={styles['section-3']}>
         <div className={styles['section-3-right']}>
-            <p><strong>Description:</strong> {work.work_desc}</p>
-            <p><strong>Detail:</strong> {work.work_detail}</p>
-            <p><strong>Client:</strong> {work.work_people}</p>
+            <p> {work.work_desc}</p>
+            <p> {work.work_detail}</p>
+            <p> {work.work_people}</p>
             <p><strong>Category:</strong> {work.work_category}</p>
             {work.work_logo_img && (
               <img src={work.work_logo_img} alt="Work Logo" className={styles['work-logo']} />

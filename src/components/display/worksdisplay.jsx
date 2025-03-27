@@ -1,4 +1,3 @@
-// components/WorksDisplay.jsx
 import React, { useState, useEffect } from "react";
 import styles from "./worksdisplay.module.css";
 
@@ -6,6 +5,7 @@ const WorksDisplay = () => {
     const [worksData, setWorksData] = useState([]);
     const [filteredWorks, setFilteredWorks] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("All");
+    const [workPage, setWorkPage] = useState(null);
 
     const VALID_WORK_CATEGORIES = [
         "Start Up Package",
@@ -33,7 +33,22 @@ const WorksDisplay = () => {
             }
         };
 
+        const fetchWorkPage = async () => {
+            try {
+                const response = await fetch("https://dama-backend.vercel.app/work_page");
+                if (response.ok) {
+                    const data = await response.json();
+                    setWorkPage(data[0]); // Assuming we take the first work page
+                } else {
+                    console.error("Fetch error:", response.status, response.statusText);
+                }
+            } catch (error) {
+                console.error("Error fetching Work Page data:", error);
+            }
+        };
+
         fetchWorksData();
+        fetchWorkPage();
     }, []);
 
     useEffect(() => {
@@ -51,6 +66,13 @@ const WorksDisplay = () => {
 
     return (
         <section className={styles.worksDisplayContainer}>
+            {workPage && (
+                <div className={styles.workPageSection} style={{ backgroundImage: `url(${workPage.work_page_img})` }}>
+                    <h1>{workPage.work_page_title}</h1>
+                    <h2>{workPage.work_page_subtitle}</h2>
+                </div>
+            )}
+            
             <div className={styles.categoryFilter}>
                 <button
                     className={`${styles.categoryButton} ${selectedCategory === "All" ? styles.active : ""}`}
@@ -78,9 +100,6 @@ const WorksDisplay = () => {
                                     <img src={work.work_main_img} alt={work.work_title} className={styles.workImage} />
                                 )}
                                 <div className={styles.workInfo}>
-                                    <h3>{work.work_title}</h3>
-                                    <h4>{work.work_subtitle}</h4>
-                                    <p>{work.work_category}</p>
                                     {work.work_logo_img && (
                                         <img src={work.work_logo_img} alt="Work Logo" className={styles.workLogo} />
                                     )}

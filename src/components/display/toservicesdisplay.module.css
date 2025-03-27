@@ -4,7 +4,7 @@
     align-items: center;
     padding: 20px; /* Mengurangi padding */
     max-width: 1000px;
-    height: auto; /* Mengubah tinggi ke auto */
+    height: 50vh; /* Mengubah tinggi ke auto */
     margin: 20px auto; /* Menambahkan margin atas dan bawah */
     font-family: var(--font-2), sans-serif;
     color: var(--color-1);

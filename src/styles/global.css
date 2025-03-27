@@ -44,8 +44,8 @@
     --accent-color-3: #D4D2CF;
 
     /* Ukuran Font */
-    --font-size-large: 2rem; /* 32px jika base font adalah 16px */
-    --font-size-medium: 1.2rem; /* 19.2px jika base font adalah 16px */
+    --font-size-large: 3rem; /* 32px jika base font adalah 16px */
+    --font-size-medium: 2rem; /* 19.2px jika base font adalah 16px */
     --font-size-default: 1rem; /* 16px */
     --font-size-small: 0.8rem; /* 12.8px jika base font adalah 16px */
 
