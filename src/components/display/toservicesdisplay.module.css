@@ -1,110 +1,109 @@
 .toServicesContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px; /* Mengurangi padding */
-    max-width: 1000px;
-    height: 50vh; /* Mengubah tinggi ke auto */
-    margin: 20px auto; /* Menambahkan margin atas dan bawah */
-    font-family: var(--font-2), sans-serif;
-    color: var(--color-1);
-    flex-direction: column; /* Mengubah arah flex ke column untuk mobile */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100vw;
+  height: 500px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
+  max-height: 500px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
+  overflow: hidden;
+  border-bottom: 1.5px solid #000;
 }
 
 .textColumn {
-    width: 100%; /* Lebar penuh */
-    margin-bottom: 20px;
-    text-align: center; /* Teks rata tengah di mobile */
+  width: 50%;
+  height: auto;
+  text-align: center;
+  padding: 100px;
+  box-sizing: border-box;
+}
+
+.textColumn h2 {
+  font-size: 24px; /* 1.5em = 24px */
+  padding: 20px;
 }
 
 .imageColumn {
-    width: 100%; /* Lebar penuh */
-    display: flex;
-    justify-content: center; /* Gambar rata tengah di mobile */
+  width: 50%;
+  height: auto;
+  display: flex;
+  border-left: 1.5px solid #000;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .toServicesImageContainer {
-    width: 90%; /* Lebar gambar responsif */
-    max-width: 300px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto 20px; /* Menambahkan margin bawah */
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .toServicesImageContainer::before {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
+  content: "";
+  display: block;
+  padding-bottom: 100%; /* Rasio aspek 1:1 */
 }
 
 .toServicesImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .buttonContainer {
-    display: flex;
-    flex-direction: column; /* Tombol disusun vertikal di mobile */
-    gap: 10px;
-    width: 100%; /* Lebar penuh */
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  max-width: 80%;
+  margin: 32px auto; /* 2em = 32px */
 }
 
 .specialPackagesButton,
 .individualServicesButton {
-    padding: 12px 20px; /* Padding lebih besar untuk sentuhan */
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
-    font-family: var(--font-2), sans-serif;
-    transition: color 0.3s ease-in-out;
-    width: 100%; /* Lebar penuh */
-    text-align: center; /* Teks rata tengah */
+  padding: 16px; /* 1em = 16px */
+  cursor: pointer;
+  font-size: 14px; /* 0.9em = 14.4px */
+  font-family: var(--font-2), sans-serif;
+  transition: color 0.3s ease-in-out;
+  width: 100%;
+  text-align: center;
+  color: var(--color-2);
+  border: 1px solid #000;
+  background-color: var(--color-4);
 }
 
 .specialPackagesButton:hover,
 .individualServicesButton:hover {
-    text-decoration: underline;
+  color: var(--color-4);
+  border: 1px solid var(--color-4);
+  background-color: var(--color-2);
 }
 
-.specialPackagesButton {
-    background-color: var(--primary-color);
-    color: var(--color-4);
-}
+/* Media query untuk mobile */
+@media (max-width: 768px) {
+  .toServicesContainer {
+      flex-direction: column;
+      height: 100%;
+      max-height: 900px;
+  }
 
-.individualServicesButton {
-    background-color: var(--accent-color-2);
-    color: var(--color-2);
-}
+  .textColumn,
+  .imageColumn {
+      width: 100%;
+      padding: 30px;
+  }
 
-/* Media query untuk desktop */
-@media (min-width: 769px) {
-    .toServicesContainer {
-        flex-direction: row;
-        padding: 40px;
-        height: 80vh;
-    }
+  .imageColumn {
+      border-left: none;
+  }
 
-    .textColumn {
-        flex: 1;
-        padding-right: 20px;
-        text-align: left; /* Teks rata kiri di desktop */
-    }
-
-    .imageColumn {
-        flex: 1;
-        justify-content: flex-end;
-    }
-
-    .toServicesImageContainer {
-        width: 300px;
-    }
-
-    .buttonContainer {
-        flex-direction: row; /* Tombol disusun horizontal di desktop */
-        width: auto; /* Lebar otomatis */
-    }
+  .buttonContainer {
+      flex-direction: column;
+      max-width: 100%;
+  }
 }

@@ -1,7 +1,9 @@
 .connectContainer {
     position: relative;
     width: 100%;
-    height: 50vh;
+    max-width: 100vw;
+    max-height: 640px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
+    height: 640px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,6 +12,7 @@
     justify-content: center;
     text-align: center;
     overflow: hidden;
+    border-bottom: 1px solid #000;
 }
 
 .connectContainer::before {
@@ -19,36 +22,57 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Overlay lebih gelap */
+    background: rgba(0, 0, 0, 0.5); /* Overlay lebih gelap */
     z-index: 1;
 }
 
 .connectContent {
     position: relative;
-    color: white;
     z-index: 2;
     padding: 20px;
 }
 
 .connectContent h2 {
-    font-size: 2rem;
+    font-size: 32px; /* 2rem = 32px */
     font-weight: bold;
+    color: var(--color-5);
     margin-bottom: 15px;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .contactButton {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: var(--color-2);
-    color: var(--color-4);
-    font-size: 1rem;
-    font-weight: bold;
+    color: var(--color-5);
+    font-size: 14px; /* 0.9rem = 14.4px */
+
     text-decoration: none;
-    transition: background 0.3s ease-in-out;
+    border: 1px solid var(--color-5);
 }
 
 .contactButton:hover {
-    background-color: var(--color-1);
+    background-color: var(--color-5);
+    color: var(--color-2);
+}
+
+/* Optimasi untuk tampilan mobile */
+@media (max-width: 768px) {
+    .connectContainer {
+        height: 300px; /* Biarkan tinggi menyesuaikan konten */
+        max-height: 300px; /* Hapus max-height untuk mobile */
+    }
+
+    .connectContent {
+        padding: 15px; /* Kurangi padding untuk mobile */
+    }
+
+    .connectContent h2 {
+        font-size: 24px; /* Ukuran font lebih kecil untuk mobile */
+        margin-bottom: 10px; /* Kurangi margin bawah untuk mobile */
+    }
+
+    .contactButton {
+        font-size: 12px; /* Ukuran font lebih kecil untuk mobile */
+        padding: 8px 16px; /* Kurangi padding tombol untuk mobile */
+    }
 }

@@ -1,0 +1,59 @@
+/* faqdisplay.module.css */
+
+.faqContainer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.searchBar {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #000;
+
+}
+
+.faqItem {
+    display: flex;
+    margin-bottom: 20px;
+    
+    padding-bottom: 10px;
+}
+
+.faqContent {
+    width: 90%; /* Mengubah lebar menjadi 50% */
+    padding: 0 20px;
+    text-align: end;
+    
+}
+
+.faqIndex {
+    width: 10%; /* Mengubah lebar menjadi 50% */
+    display: flex;
+    border: 1px solid #000;
+    justify-content: center;
+    align-items: center;
+}
+
+.faqQuestion {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.faqAnswer {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.indexNumber {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    
+}

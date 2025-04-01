@@ -49,12 +49,14 @@ const ToWorksDisplay = () => {
         <section className={styles.container}>
             {loading && <p className={styles.loading}>Loading...</p>}
             {message && <p className={styles.message}>{message}</p>}
+
             {toWork && (
                 <div className={styles.toworkContent}>
                     <h1 className={styles.toworksText}>{toWork.toworks_text}</h1>
                     <p className={styles.toworksSubText}>{toWork.toworks_sub_text}</p>
                 </div>
             )}
+
             <div className={styles.imageGallery}>
                 {workImages.map((work) => (
                     <div key={work.id} className={styles.imageContainer}>
@@ -63,9 +65,11 @@ const ToWorksDisplay = () => {
                     </div>
                 ))}
             </div>
+
             <div className={styles.buttonContainer}>
                 <a href="/works" className={styles.portfolioButton}>View Our Portfolio</a>
             </div>
+
         </section>
     );
 };

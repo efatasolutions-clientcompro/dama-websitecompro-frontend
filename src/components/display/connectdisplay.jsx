@@ -35,7 +35,7 @@ const ConnectDisplay = () => {
         <div className={styles.connectContainer} style={{ backgroundImage: `url(${connectData.connect_img})` }}>
             <div className={styles.connectContent}>
                 <h2>{connectData.connect_text}</h2>
-                <a href="/contact" className={styles.contactButton}>Get in Touch</a>
+                <a href="/contact" className={styles.contactButton}>Work with us</a>
             </div>
         </div>
     );

@@ -84,6 +84,7 @@ const TaglineDisplay = () => {
 
     return (
         <div className={styles.taglineContainer}>
+
             <div className={styles.backgroundImage}>
                 <img
                     src={currentTagline.tagline_img}
@@ -102,6 +103,7 @@ const TaglineDisplay = () => {
                     }}
                 />
             </div>
+
             <div className={styles.taglineContent}>
                 <h2>{currentTagline.tagline_text}</h2>
                 <p>{currentTagline.tagline_sub_text}</p>
@@ -109,6 +111,7 @@ const TaglineDisplay = () => {
                     Our Services
                 </a>
             </div>
+
             <div className={styles.taglineIndicators}>
                 {taglines.map((_, index) => (
                     <div
@@ -117,6 +120,7 @@ const TaglineDisplay = () => {
                     />
                 ))}
             </div>
+            
         </div>
     );
 };

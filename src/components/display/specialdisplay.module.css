@@ -24,22 +24,27 @@
   width: 100vw;
   margin: 0;
   max-width: 100vw;
-  height: auto !important; /* Menyesuaikan tinggi dengan konten */
-  min-height: 100vh;
+  height: auto !important;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInSlideUp 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
   overflow: visible;
+  border-bottom: 1.5px solid var(--accent-color-2);
 }
 
 .specialDisplayItem:nth-child(even) {
-  animation-delay: 0.3s;
+  animation-delay: 300ms; /* 0.3s diubah menjadi 300ms */
+  background-color: var(--color-4);
 }
 
-.specialDisplayItem:nth-child(3n) {
-  animation-delay: 0.5s;
+.specialDisplayItem:nth-child(odd) {
+  animation-delay: 500ms; /* 0.5s diubah menjadi 500ms */
+  background-color: var(--color-5);
 }
 
+.specialDisplayItem:nth-child(even) .includesButton{
+  background-color: var(--color-4);
+}
 /* FADE IN SLIDE UP ANIMATION */
 @keyframes fadeInSlideUp {
   from {
@@ -66,13 +71,13 @@
 
 /* IMAGE COLUMN */
 .imageColumn {
-  width: 50vw; /* Lebar 50% dari viewport */
+  width: 50vw; /* Tetap menggunakan vw, karena terkait viewport */
   display: flex;
   justify-content: center;
   align-items: center;
   transform: scale(0.9);
   opacity: 0;
-  animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s forwards;
+  animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 300ms forwards; /* 0.3s diubah menjadi 300ms */
   overflow: hidden;
 }
 
@@ -89,18 +94,18 @@
 
 /* TEXT COLUMN */
 .textColumn {
-  width: 50vw; /* Lebar 50% dari viewport */
+  width: 50vw; /* Tetap menggunakan vw, karena terkait viewport */
   margin: 0 55px;
-  height: fit-content;
+  height: 100%;
 }
 
 /* IMAGE STYLING */
 .specialImage {
-  width: 100%;
-  aspect-ratio: 5 / 4; /* Ubah rasio aspek menjadi 5:4 */
+  width: 500px;
+  aspect-ratio: 5 / 4;
   object-fit: cover;
   transition: height 0.3s ease;
-  height: 100%;
+  height: fit-content;
 }
 
 /* TEXT ANIMATION */
@@ -117,18 +122,18 @@
 }
 
 .combinedText h3 {
-  font-size: 2.5em; /* Ukuran font lebih besar */
-  letter-spacing: 1px; /* Menambahkan jarak antar huruf */
+  font-size: 40px; /* 2.5em diubah menjadi 40px (1em = 16px) */
+  letter-spacing: 1px;
 }
 
 .combinedText h4 {
-  font-size: 1.2em; /* Ukuran font lebih besar */
-  letter-spacing: 0.5px; /* Menambahkan jarak antar huruf */
-  animation-delay: 0.1s;
+  font-size: 19px; /* 1.2em diubah menjadi 19px (1em = 16px) */
+  letter-spacing: 0.5px;
+  animation-delay: 100ms; /* 0.1s diubah menjadi 100ms */
 }
 
 .combinedText p {
-  animation-delay: 0.2s;
+  animation-delay: 200ms; /* 0.2s diubah menjadi 200ms */
 }
 
 @keyframes fadeInSlideText {
@@ -164,7 +169,7 @@
   color: var(--color-2);
   border: none;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 16px; /* 1em diubah menjadi 16px */
 }
 
 /* TOGGLE ICON */
@@ -178,22 +183,26 @@
   padding: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 0.9em;
+  font-size: 14px; /* 0.9em diubah menjadi 14px */
 }
 
 /* CONTACT SECTION */
 .contactUsSection {
+  width: 100px;
   margin-top: 20px;
-  text-align: left;
-  text-decoration: underline;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  
 }
 
 /* SECTION TITLE */
 .sectionTitle {
   text-align: center;
-  font-size: 2em;
+  font-size: 32px; /* 2em diubah menjadi 32px */
   color: var(--primary-color);
   background-color: var(--color-4);
+  border-bottom: 1px solid #000;
   padding: 20px 0;
   opacity: 0;
   transform: translateY(-30px);
@@ -214,67 +223,67 @@
 /* MOBILE STYLES */
 @media (max-width: 768px) {
   .specialDisplayItem {
-      padding: 60px; /* Padding lebih kecil untuk mobile */
-      min-height: auto; /* Tinggi menyesuaikan konten */
+      padding: 60px;
+      min-height: auto;
   }
 
   .row,
   .rowReverse {
-      flex-direction: column; /* Mengubah tata letak menjadi kolom */
+      flex-direction: column;
   }
 
   .imageColumn,
   .textColumn {
-      width: 100%; /* Lebar penuh */
-      margin: 0; /* Margin nol */
+      width: 100%;
+      margin: 0;
   }
 
   .imageColumn {
-      order: -1; /* Gambar di atas teks */
+      order: -1;
   }
 
   .imageColumn {
-      animation: none; /* Menghilangkan animasi gambar */
-      transform: scale(1); /* Menghilangkan efek skala */
-      opacity: 1; /*gambar tidak transparan*/
+      animation: none;
+      transform: scale(1);
+      opacity: 1;
   }
 
   .specialImage {
-      aspect-ratio: 1 / 1; /* Rasio aspek 1:1 untuk mobile */
+      aspect-ratio: 1 / 1;
   }
 
   .combinedText h3 {
-      font-size: 1.8em; /* Ukuran font lebih kecil untuk mobile */
+      font-size: 29px; /* 1.8em diubah menjadi 29px */
   }
 
   .combinedText h4 {
-      font-size: 1em; /* Ukuran font lebih kecil untuk mobile */
+      font-size: 16px; /* 1em diubah menjadi 16px */
   }
 
   .combinedText h3,
   .combinedText h4,
   .combinedText p {
-      animation: none; /* Menghilangkan animasi teks */
-      opacity: 1; /*text tidak transparan*/
-      transform: translateY(0); /* Menghilangkan efek geser */
+      animation: none;
+      opacity: 1;
+      transform: translateY(0);
   }
 
   .sectionTitle {
-      font-size: 1.5em; /* Ukuran font lebih kecil untuk mobile */
-      animation: none; /* Menghilangkan animasi judul */
-      opacity: 1; /*judul tidak transparan*/
-      transform: translateY(0); /* Menghilangkan efek geser */
+      font-size: 24px; /* 1.5em diubah menjadi 24px */
+      animation: none;
+      opacity: 1;
+      transform: translateY(0);
   }
 
-  .zoomedImage { /*menghilangkan zoom pada mobile*/
+  .zoomedImage {
       transform: scale(1);
   }
 
   .textColumn {
-    padding: 20px; /* Tambahkan padding pada kolom teks */
-}
+      padding: 20px;
+  }
 
-.combinedText {
-    margin-bottom: 20px; /* Tambahkan margin bawah pada teks gabungan */
-}
+  .combinedText {
+      margin-bottom: 20px;
+  }
 }

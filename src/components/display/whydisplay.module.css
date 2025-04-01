@@ -1,0 +1,48 @@
+.whyDisplayContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100vw;
+    text-align: center;
+    justify-content: center;
+    height: 600px;
+    max-height: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-bottom: 1.5px solid #000;
+}
+
+.whyDisplayContainer h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.whyItem {
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.whyItem p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Optimasi untuk tampilan mobile */
+@media (max-width: 768px) {
+    .whyDisplayContainer {
+        height: auto; /* Ubah tinggi menjadi auto */
+        max-height: none; /* Hapus max-height */
+        padding: 30px; /* Kurangi padding untuk mobile */
+    }
+
+    .whyDisplayContainer h2 {
+        font-size: 20px; /* Ukuran font heading lebih kecil */
+        margin-bottom: 15px; /* Margin bawah lebih kecil */
+    }
+
+    .whyItem p {
+        font-size: 14px; /* Ukuran font paragraf lebih kecil */
+        line-height: 1.4; /* Line height lebih kecil */
+    }
+}

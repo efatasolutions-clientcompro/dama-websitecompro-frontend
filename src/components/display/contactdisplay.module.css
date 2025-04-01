@@ -1,0 +1,40 @@
+.contactContainer {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Sesuaikan tinggi sesuai kebutuhan */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(100);
+    text-align: center;
+    color: var(--color-5); /* Warna teks dari global.css */
+    font-family: var(--font-2); /* Font dari global.css */
+}
+
+.contactContent {
+    position: relative;
+    z-index: 2; /* Pastikan konten di atas background */
+    
+    padding: var(--padding-large); /* Padding dari global.css */
+    border-radius: 10px;
+}
+
+.contactTitle {
+    color: var(--color-5);
+    font-size: var(--font-size-large); /* Ukuran font dari global.css */
+    margin-bottom: var(--margin-medium); /* Margin dari global.css */
+    font-weight: bold; /* Gunakan font-weight bold */
+}
+
+.contactSubtitle {
+    font-size: var(--font-size-medium); /* Ukuran font dari global.css */
+    margin-bottom: var(--margin-large); /* Margin dari global.css */
+}
+
+.whatsappLink {
+    color: var(--color-5); /* Warna teks dari global.css */
+    text-decoration: underline;
+    font-size: var(--font-size-default); /* Ukuran font dari global.css */
+}

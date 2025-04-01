@@ -1,8 +1,13 @@
 ---
+// Importing the DamaDisplay component
+import DamaDisplay from '../components/display/damadisplay.jsx';
+import Header from '../components/display/header.jsx'; // Import komponen Header
+
 interface Props {
     title: string;
 }
 
+// Extracting title from the Astro props
 const { title } = Astro.props;
 ---
 
@@ -19,81 +24,13 @@ const { title } = Astro.props;
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <nav class="nav-left">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li class="dropdown">
-                        <a href="/services">Service</a>
-                        <div class="dropdown-content">
-                            <a href="/services/individual">Individual</a>
-                            <a href="/services/special">Special</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-            <div class="logo">
-                <img src="/logoa.png" alt="Your Logo">
-            </div>
-            <nav class="nav-right">
-                <ul>
-                    <li><a href="/works">Our Works</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/contact">Contact Us</a></li>
-                </ul>
-            </nav>
-            <div class="hamburger">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <nav class="nav-mobile">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li class="dropdown">
-                        <a href="/services">Service</a>
-                        <div class="dropdown-content">
-                            <a href="/services/individual">Individual</a>
-                            <a href="/services/special">Special</a>
-                        </div>
-                    </li>
-                    <li><a href="/portofolio">Our Works</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/contact">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <Header client:load/> {/* Hapus client:load */}
 
     <main>
         <slot />
     </main>
 
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="/faq">FAQ</a></li>
-                <li><a href="/contact">Contact Us</a></li>
-                <li><a href="/follow">Follow Us</a></li>
-            </ul>
-        </nav>
-    </footer>
-    <div class="cv-dama">CV DAMA ADICIPTA KREASI MODE</div>
+    <DamaDisplay client:load/>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const hamburger = document.querySelector('.hamburger');
-            const navMobile = document.querySelector('.nav-mobile');
-
-            if (hamburger && navMobile) {
-                hamburger.addEventListener('click', () => {
-                    navMobile.classList.toggle('active');
-                });
-            }
-        });
-    </script>
 </body>
 </html>

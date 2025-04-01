@@ -1,10 +1,13 @@
 .taglineContainer {
   position: relative;
   width: 100%;
-  height: 60vh;
+  max-width: 100vw;
+  height: 500px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
+  max-height: 500px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border-bottom: 1.5px solid #000;
 }
 
 .backgroundImage {
@@ -35,30 +38,36 @@
   text-align: center;
   color: var(--color-4);
   z-index: 3;
-  padding: 0 10px; /* Tambahkan padding horizontal */
+  padding: 0 50px; /* Padding horizontal dalam piksel, sesuaikan jika perlu */
 }
 
 .taglineContent h2 {
-  font-size: 1.5em; /* Ukuran font lebih kecil */
-  margin-bottom: 5px; /* Margin lebih kecil */
+  font-size: 28px; /* 1.8em = 28.8px, sesuaikan jika perlu */
+  margin-bottom: 12px; /* 0.8em = 12.8px, sesuaikan jika perlu */
   color: var(--color-4);
+  line-height: 32px; /* 1.2em = 19.2px, sesuaikan jika perlu */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .taglineContent p {
-  font-size: 0.9em; /* Ukuran font lebih kecil */
-  margin-bottom: 10px; /* Margin lebih kecil */
-  line-height: 1.4; /* Line height lebih rapat */
+  font-size: 14px; /* 0.85em = 13.6px, sesuaikan jika perlu */
+  margin-bottom: 8px;
+  line-height: 20px; /* 1.4em = 22.4px, sesuaikan jika perlu */
 }
 
 .servicesButton {
-  background-color: var(--color-2);
   color: var(--color-4);
-  padding: 6px 12px; /* Padding lebih kecil */
-  border: none;
+  padding: 6px 12px;
+  border: 1px solid var(--color-4);
   text-decoration: none;
   font-family: var(--font-2);
-  font-size: 0.8em; /* Ukuran font lebih kecil */
+  font-size: 14px; /* 0.9em = 14.4px, sesuaikan jika perlu */
+}
+
+.servicesButton:hover {
+  color: var(--color-2);
+  border: 1px solid var(--color-2);
+  background-color: var(--color-4);
 }
 
 .loading,
@@ -73,23 +82,46 @@
 .taglineIndicators {
   display: flex;
   justify-content: center;
-  margin-top: 10px; /* Margin lebih kecil */
+  margin-top: 8px;
   z-index: 3;
   position: absolute;
-  bottom: 10px; /* Posisi bottom lebih kecil */
+  bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .taglineIndicator {
-  width: 8px; /* Ukuran lebih kecil */
-  height: 8px; /* Ukuran lebih kecil */
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: white;
-  margin: 0 3px; /* Margin lebih kecil */
+  margin: 0 2px;
   cursor: pointer;
 }
 
 .taglineIndicator.active {
   background-color: #ccc;
+}
+
+/* Media query untuk mobile */
+@media (max-width: 768px) {
+  .taglineContent {
+      padding: 0 20px; /* Padding horizontal dalam piksel, sesuaikan jika perlu */
+  }
+  .taglineContainer {
+      max-height: 300px; /* 70vh = 70% dari viewport height. Sesuaikan jika perlu. */
+      padding: 0;
+  }
+
+  .taglineContent h2 {
+      font-size: 20px; /* 1.8em = 28.8px, sesuaikan jika perlu */
+  }
+
+  .taglineContent p {
+      font-size: 13px; /* 0.8em = 12.8px, sesuaikan jika perlu */
+  }
+
+  .servicesButton {
+      font-size: 10px; /* 0.85em = 13.6px, sesuaikan jika perlu */
+  }
 }

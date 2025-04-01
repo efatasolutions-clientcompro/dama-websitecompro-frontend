@@ -1,0 +1,77 @@
+.aboutDisplayContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100vw;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.aboutItem {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1.5px solid #000;
+}
+
+.imageContainer {
+    width: 50%;
+    border-right: 1.5px solid #000;
+    height: 500px;
+    max-height: 500px;
+    box-sizing: border-box;
+}
+
+.aboutImage {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.textContainer {
+    width: 50%;
+    padding: 100px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+}
+
+.textContainer h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.textContainer p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Optimasi untuk tampilan mobile */
+@media (max-width: 768px) {
+    
+    .aboutDisplayContainer{
+        height: 100%;
+        
+    }
+    
+    .aboutItem {
+        flex-direction: column; /* Ubah tata letak menjadi kolom */
+    }
+
+    .imageContainer,
+    .textContainer {
+        width: 100%; /* Lebar penuh */
+        border: none; /* Hapus border */
+        height: 50%;
+    }
+
+    .textContainer {
+        padding: 30px; /* Kurangi padding untuk mobile */
+    }
+
+    .aboutImage {
+        border-bottom: 1px solid #000;
+        max-height: 200px; /* Kurangi tinggi gambar untuk mobile */
+    }
+}

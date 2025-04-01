@@ -55,58 +55,35 @@ const ClientDisplay = () => {
         }
     }, [duplicatedClients]);
 
-    if (loading) return <p>Loading clients...</p>;
-    if (error) return <p>Error: {error}</p>;
-
-    const styles = {
-        section: {
-            height: "20vh", // Tetap 50vh
-            textAlign: "center",
-            color: "var(--color-4)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-        },
-        message: {
-            color: "red",
-            marginBottom: "20px",
-        },
-        loading: {
-            marginBottom: "20px",
-        },
-        container: {
-            display: "flex",
-            overflowX: "hidden",
-            whiteSpace: "nowrap",
-            padding: "20px 0",
-            width: "100%",
-        },
-        clientlogoItem: {
-            margin: "0 30px",
-            cursor: "pointer",
-            display: "inline-block",
-        },
-        image: {
-            height: "80px",
-            objectFit: "contain",
-            maxWidth: "150px",
-        },
-    };
+    if (loading) return <p style={{ marginBottom: '20px' }}>Loading clients...</p>;
+    if (error) return <p style={{ color: 'red', marginBottom: '20px' }}>Error: {error}</p>;
 
     return (
-        <section style={styles.section}>
-            <div style={styles.container} ref={scrollContainerRef} role="region" aria-label="Client Logos">
+        <section style={{ height: 'fit-content', textAlign: 'center', color: 'var(--color-4)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', borderBottom: '1.5px solid #000' }}>
+            <div
+                style={{
+                    display: 'flex',
+                    overflowX: 'auto',
+                    whiteSpace: 'nowrap',
+                    width: '100%',
+                    padding: '10px 0',
+                    '-ms-overflow-style': 'none',
+                    'scrollbar-width': 'none',
+                }}
+                ref={scrollContainerRef}
+                role="region"
+                aria-label="Client Logos"
+            >
                 {duplicatedClients.map((client) => (
                     <a
                         key={`${client.id}-${Math.random()}`}
                         href={client.client_link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={styles.clientlogoItem}
+                        style={{ margin: '0 32px', cursor: 'pointer', display: 'inline-block' }}
                         aria-label={`Client logo: ${client.client_name}`}
                     >
-                        <img src={client.client_logo_img} alt={client.client_name} style={styles.image} />
+                        <img src={client.client_logo_img} alt={client.client_name} style={{ height: '80px', objectFit: 'contain', maxWidth: '160px' }} />
                     </a>
                 ))}
             </div>

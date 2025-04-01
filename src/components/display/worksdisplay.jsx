@@ -66,13 +66,17 @@ const WorksDisplay = () => {
 
     return (
         <section className={styles.worksDisplayContainer}>
+            
+            <section className={styles.worksDisplayBanner}>
             {workPage && (
                 <div className={styles.workPageSection} style={{ backgroundImage: `url(${workPage.work_page_img})` }}>
                     <h1>{workPage.work_page_title}</h1>
                     <h2>{workPage.work_page_subtitle}</h2>
                 </div>
             )}
+            </section>
             
+            <section className={styles.worksDisplayMain}>
             <div className={styles.categoryFilter}>
                 <button
                     className={`${styles.categoryButton} ${selectedCategory === "All" ? styles.active : ""}`}
@@ -103,12 +107,15 @@ const WorksDisplay = () => {
                                     {work.work_logo_img && (
                                         <img src={work.work_logo_img} alt="Work Logo" className={styles.workLogo} />
                                     )}
+                                    <p>{work.work_subtitle}</p>
                                 </div>
                             </div>
                         </a>
                     </div>
                 ))}
             </div>
+            </section>
+
         </section>
     );
 };

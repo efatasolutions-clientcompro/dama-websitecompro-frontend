@@ -1,86 +1,119 @@
 .testimonialContainer {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 640px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
+  max-height: 640px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1.5px solid #000;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.testimonialImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 2s ease-in-out;
+  will-change: opacity;
+  filter: brightness(0.5);
+}
+
+.testimonialContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--color-4);
+  z-index: 3;
+  padding: 0 10px;
+}
+
+.testimonialContent h2 {
+  font-size: 24px; /* 1.5em = 24px */
+  margin-bottom: 5px;
+  color: var(--color-4);
+}
+
+.testimonialContent p {
+  font-size: 14px; /* 0.9em = 14.4px */
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.loading,
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.testimonialIndicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  z-index: 3;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.testimonialIndicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: white;
+  margin: 0 3px;
+  cursor: pointer;
+}
+
+.testimonialIndicator.active {
+  background-color: #ccc;
+}
+
+/* Optimasi untuk tampilan mobile */
+@media (max-width: 768px) {
+  .testimonialContainer {
+      height: 300px; /* Biarkan tinggi menyesuaikan konten */
+      max-height: 300px; /* Hapus max-height untuk mobile */
   }
-  
-  .backgroundImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .testimonialImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 2s ease-in-out;
-    will-change: opacity;
-    filter: brightness(0.5);
-  }
-  
+
   .testimonialContent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: var(--color-4);
-    z-index: 3;
-    padding: 0 10px;
+      padding: 0 15px; /* Tambah padding horizontal untuk mobile */
   }
-  
+
   .testimonialContent h2 {
-    font-size: 1.5em;
-    margin-bottom: 5px;
-    color: var(--color-4);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-size: 12px; /* Ukuran font lebih kecil untuk mobile */
+      margin-bottom: 8px;
   }
-  
+
   .testimonialContent p {
-    font-size: 0.9em;
-    margin-bottom: 10px;
-    line-height: 1.4;
+      font-size: 10px; /* Ukuran font lebih kecil untuk mobile */
+      line-height: 1.6; /* Line height lebih besar untuk keterbacaan */
   }
-  
-  .loading,
-  .error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-  }
-  
+
   .testimonialIndicators {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    z-index: 3;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+      margin-top: 8px;
+      bottom: 8px;
   }
-  
+
   .testimonialIndicator {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: white;
-    margin: 0 3px;
-    cursor: pointer;
+      width: 6px; /* Ukuran indikator lebih kecil untuk mobile */
+      height: 6px;
+      margin: 0 2px;
   }
-  
-  .testimonialIndicator.active {
-    background-color: #ccc;
-  }
-  
+}

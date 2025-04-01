@@ -46,6 +46,7 @@ const ToServicesDisplay = () => {
 
     return (
         <div className={styles.toServicesContainer}>
+
             <div className={styles.textColumn}>
                 <h2>{toService.toservices_text}</h2>
                 <div className={styles.buttonContainer}>
@@ -57,11 +58,13 @@ const ToServicesDisplay = () => {
                     </button>
                 </div>
             </div>
+
             <div className={styles.imageColumn}>
                 <div className={styles.toServicesImageContainer}>
                     <img src={toService.toservices_img} alt={toService.toservices_text} className={styles.toServicesImage} />
                 </div>
             </div>
+            
         </div>
     );
 };

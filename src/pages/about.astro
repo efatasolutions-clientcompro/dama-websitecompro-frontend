@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AboutDisplay from '../components/display/aboutdisplay';
+import VisionMissionDisplay from '../components/display/visionmissiondisplay';
+import WhyDisplay from '../components/display/whydisplay';
+import PeopleDisplay from '../components/display/peopledisplay';
+---
+
+<Layout title="Home Page">
+    <AboutDisplay client:load />
+    <VisionMissionDisplay client:load />
+    <WhyDisplay client:load />
+    <PeopleDisplay client:load />
+</Layout>
+
