@@ -11,7 +11,7 @@
 
 .serviceItem {
     width: 50%;
-    height: 500px; /* Tetap menggunakan vh karena terkait viewport */
+    height: 800px; /* Tetap menggunakan vh karena terkait viewport */
     position: relative;
     display: flex;
     justify-content: center;

@@ -45,6 +45,11 @@ const ToWorksDisplay = () => {
         fetchWorkImages();
     }, []);
 
+    const goToDetailPage = (workTitle) => {
+        const formattedTitle = workTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        window.location.href = `/works/${formattedTitle}`;
+    };
+
     return (
         <section className={styles.container}>
             {loading && <p className={styles.loading}>Loading...</p>}
@@ -59,7 +64,11 @@ const ToWorksDisplay = () => {
 
             <div className={styles.imageGallery}>
                 {workImages.map((work) => (
-                    <div key={work.id} className={styles.imageContainer}>
+                    <div
+                        key={work.id}
+                        className={styles.imageContainer}
+                        onClick={() => goToDetailPage(work.work_title)}
+                    >
                         <img src={work.work_main_img} alt={work.work_title} className={styles.workImage} />
                         <div className={styles.imageOverlay}>{work.work_title}</div>
                     </div>
@@ -69,7 +78,6 @@ const ToWorksDisplay = () => {
             <div className={styles.buttonContainer}>
                 <a href="/works" className={styles.portfolioButton}>View Our Portfolio</a>
             </div>
-
         </section>
     );
 };

@@ -79,6 +79,7 @@
   opacity: 0;
   animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 300ms forwards; /* 0.3s diubah menjadi 300ms */
   overflow: hidden;
+  height: fit-content;
 }
 
 @keyframes scaleIn {
@@ -97,6 +98,7 @@
   width: 50vw; /* Tetap menggunakan vw, karena terkait viewport */
   margin: 0 55px;
   height: 100%;
+  max-height: 100%;
 }
 
 /* IMAGE STYLING */
@@ -105,7 +107,7 @@
   aspect-ratio: 5 / 4;
   object-fit: cover;
   transition: height 0.3s ease;
-  height: fit-content;
+  height: auto;
 }
 
 /* TEXT ANIMATION */
@@ -188,12 +190,17 @@
 
 /* CONTACT SECTION */
 .contactUsSection {
-  width: 100px;
+  width: 120px;
   margin-top: 20px;
+  font-size: 18px;
   margin-bottom: 15px;
   text-align: center;
   border-bottom: 1px solid #000;
-  
+}
+
+.contactUsSection:hover{
+  background-color: var(--color-1);
+  color: white;
 }
 
 /* SECTION TITLE */
