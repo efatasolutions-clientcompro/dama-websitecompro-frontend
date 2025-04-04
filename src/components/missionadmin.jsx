@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./admin.module.css";
+import styles from "./homeadmin.module.css"; // Menggunakan homeadmin.module.css
 
 const MissionAdmin = () => {
     const [missions, setMissions] = useState([]);
@@ -148,7 +148,7 @@ const MissionAdmin = () => {
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>
                     <label htmlFor="missionContent">Mission Content:</label>
-                    <textarea
+                    <textarea // Atau input, tergantung kebutuhan
                         id="missionContent"
                         placeholder="Mission Content"
                         value={newMission.mission_content}
@@ -176,7 +176,7 @@ const MissionAdmin = () => {
                         {showForm && editIndex === index && (
                             <form className={`${styles.taglineForm} ${styles.editForm}`}>
                                 <label htmlFor="editMissionContent">Mission Content:</label>
-                                <textarea
+                                <textarea // Atau input, tergantung kebutuhan
                                     id="editMissionContent"
                                     placeholder="Mission Content"
                                     value={newMission.mission_content}

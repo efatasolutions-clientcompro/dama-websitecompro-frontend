@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./admin.module.css";
+import styles from "./homeadmin.module.css";
 
 const ConnectAdmin = () => {
     const [connect, setConnect] = useState(null); // Ubah ke satu item

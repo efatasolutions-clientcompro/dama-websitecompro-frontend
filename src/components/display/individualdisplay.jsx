@@ -24,7 +24,9 @@ const IndividualDisplay = () => {
                 const response = await fetch("https://dama-backend.vercel.app/services_individual");
                 if (response.ok) {
                     const data = await response.json();
-                    setServicesIndividualData(data);
+                    // Urutkan data berdasarkan field 'order'
+                    const sortedData = data.sort((a, b) => a.order - b.order);
+                    setServicesIndividualData(sortedData);
                 } else {
                     throw new Error("Failed to fetch services data.");
                 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./admin.module.css";
+import styles from "./homeadmin.module.css";
 
 const TestimonialsAdmin = () => {
     const [testimonials, setTestimonials] = useState([]);
@@ -219,7 +219,8 @@ const TestimonialsAdmin = () => {
                         onChange={(e) => setNewTestimonial({ ...newTestimonial, testimonial_text: e.target.value })}
                         className={styles.inputField}
                     />
-                    <div className={styles.imageUploadContainer}><div className={styles.imageUploadBox}>
+                    <div className={styles.imageUploadContainer}>
+                        <div className={styles.imageUploadBox}>
                             <input
                                 type="file"
                                 accept="image/*"

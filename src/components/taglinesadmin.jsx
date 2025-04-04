@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./admin.module.css";
+import styles from "./homeadmin.module.css";
 
 const TaglinesAdmin = () => {
     const [taglines, setTaglines] = useState([]);
@@ -196,9 +196,9 @@ const TaglinesAdmin = () => {
                     {message}
                 </p>
             )}
-    
+
             <button onClick={handleUpload} className={styles.uploadButton}>Upload Tagline</button>
-    
+
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>
                     <label htmlFor="taglineText">Tagline Text:</label>
@@ -232,7 +232,7 @@ const TaglinesAdmin = () => {
                         </div>
                         {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
                     </div>
-    
+
                     <button onClick={selectedTagline ? updateTagline : addTagline} disabled={loading} className={styles.actionButton}>
                         {loading
                             ? selectedTagline
@@ -245,7 +245,7 @@ const TaglinesAdmin = () => {
                     <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
                 </form>
             )}
-    
+
             <div className={styles.taglineList}>
                 {taglines.map((tagline, index) => (
                     <div key={tagline.id} className={styles.taglineItem}>
@@ -293,7 +293,7 @@ const TaglinesAdmin = () => {
                                     </div>
                                     {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
                                 </div>
-    
+
                                 <button onClick={updateTagline} disabled={loading} className={styles.actionButton}>
                                     {loading ? "Updating..." : "Update Tagline"}
                                 </button>

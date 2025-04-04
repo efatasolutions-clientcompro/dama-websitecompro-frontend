@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import styles from "./admin.module.css";
+import styles from "./homeadmin.module.css"; // Menggunakan homeadmin.module.css
 
 const WhyAdmin = () => {
-    // ... (mirip dengan VisionAdmin)
     const [whys, setWhys] = useState([]);
     const [newWhy, setNewWhy] = useState({ why_content: "" });
     const [loading, setLoading] = useState(false);
@@ -149,7 +148,7 @@ const WhyAdmin = () => {
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>
                     <label htmlFor="whyContent">Why Content:</label>
-                    <textarea
+                    <textarea // Atau input, tergantung kebutuhan
                         id="whyContent"
                         placeholder="Why Content"
                         value={newWhy.why_content}
@@ -177,7 +176,7 @@ const WhyAdmin = () => {
                         {showForm && editIndex === index && (
                             <form className={`${styles.taglineForm} ${styles.editForm}`}>
                                 <label htmlFor="editWhyContent">Why Content:</label>
-                                <textarea
+                                <textarea // Atau input, tergantung kebutuhan
                                     id="editWhyContent"
                                     placeholder="Why Content"
                                     value={newWhy.why_content}

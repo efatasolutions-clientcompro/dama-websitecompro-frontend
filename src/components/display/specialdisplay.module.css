@@ -230,7 +230,7 @@
 /* MOBILE STYLES */
 @media (max-width: 768px) {
   .specialDisplayItem {
-      padding: 60px;
+      padding: 30px;
       min-height: auto;
   }
 
@@ -247,11 +247,15 @@
 
   .imageColumn {
       order: -1;
+      animation: none;
+      transform: none;
   }
 
   .imageColumn {
+    width: 100%;
+    aspect-ratio: 1/1;
       animation: none;
-      transform: scale(1);
+      transform: none;
       opacity: 1;
   }
 
@@ -283,7 +287,8 @@
   }
 
   .zoomedImage {
-      transform: scale(1);
+      transform: none;
+      animation: none;
   }
 
   .textColumn {

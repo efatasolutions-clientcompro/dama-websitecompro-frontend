@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./admin.module.css";
+import styles from "./homeadmin.module.css";
 
 const InstagramsAdmin = () => {
     const [instagrams, setInstagrams] = useState([]);
@@ -231,7 +231,8 @@ const InstagramsAdmin = () => {
                             <label htmlFor="imageUpload">Upload Image</label>
                         </div>
                         {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
-                    </div><button onClick={selectedInstagram ? updateInstagram : addInstagram} disabled={loading} className={styles.actionButton}>
+                    </div>
+                    <button onClick={selectedInstagram ? updateInstagram : addInstagram} disabled={loading} className={styles.actionButton}>
                         {loading
                             ? selectedInstagram
                                 ? "Updating..."

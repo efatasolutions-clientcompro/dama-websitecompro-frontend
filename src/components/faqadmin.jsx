@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./admin.module.css";
+import styles from "./homeadmin.module.css"; // Menggunakan homeadmin.module.css
 
 const FaqAdmin = () => {
     const [faqData, setFaqData] = useState([]);
@@ -222,20 +222,21 @@ const FaqAdmin = () => {
                                     id="editFaqAnswer"
                                     placeholder="Answer"
                                     value={newFaq.faq_answer}
-                                    onChange={(e) => setNewFaq({ ...newFaq, faq_answer: e.target.value })}className={styles.inputField}
-                                    />
-    
-                                    <button onClick={updateFaq} disabled={loading} className={styles.actionButton}>
-                                        {loading ? "Updating..." : "Update FAQ"}
-                                    </button>
-                                    <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
-                                </form>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </section>
-        );
-    };
-    
-    export default FaqAdmin;
+                                    onChange={(e) => setNewFaq({ ...newFaq, faq_answer: e.target.value })}
+                                    className={styles.inputField}
+                                />
+
+                                <button onClick={updateFaq} disabled={loading} className={styles.actionButton}>
+                                    {loading ? "Updating..." : "Update FAQ"}
+                                </button>
+                                <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
+                            </form>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+};
+
+export default FaqAdmin;

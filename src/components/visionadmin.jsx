@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./admin.module.css";
+import styles from "./homeadmin.module.css"; // Menggunakan homeadmin.module.css
 
 const VisionAdmin = () => {
     const [visions, setVisions] = useState([]);
@@ -148,7 +148,7 @@ const VisionAdmin = () => {
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>
                     <label htmlFor="visionContent">Vision Content:</label>
-                    <textarea
+                    <textarea // Atau input, tergantung kebutuhan
                         id="visionContent"
                         placeholder="Vision Content"
                         value={newVision.vision_content}
@@ -176,7 +176,7 @@ const VisionAdmin = () => {
                         {showForm && editIndex === index && (
                             <form className={`${styles.taglineForm} ${styles.editForm}`}>
                                 <label htmlFor="editVisionContent">Vision Content:</label>
-                                <textarea
+                                <textarea // Atau input, tergantung kebutuhan
                                     id="editVisionContent"
                                     placeholder="Vision Content"
                                     value={newVision.vision_content}

@@ -36,7 +36,7 @@ const Header = () => {
                 <nav className={styles.navRight}>
                     <ul>
                         <li><a href="/works">Our Works</a></li>
-                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/blogs">Blog</a></li>
                         <li><a href="/contact">Contact Us</a></li>
                     </ul>
                 </nav>
@@ -59,7 +59,7 @@ const Header = () => {
                             </div>
                         </li>
                         <li><a href="/works">Our Works</a></li>
-                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/blogs">Blog</a></li>
                         <li><a href="/contact">Contact Us</a></li>
                     </ul>
                 </nav>

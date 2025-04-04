@@ -1,4 +1,4 @@
-/* servicesadmin.module.css */
+/* homeadmin.module.css */
 
 .adminContainer {
     padding: 30px;
@@ -6,8 +6,8 @@
     border: 1px solid #000;
     font-family: var(--font-2), sans-serif;
     color: var(--color-2, #333);
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px; /* Batasi lebar container */
+    margin: 0 auto; /* Tengah-kan container */
 }
 
 .adminContainer h2 {
@@ -41,9 +41,9 @@
     cursor: pointer;
     margin-bottom: 20px;
     font-size: 12px;
-    display: block;
-    width: fit-content;
-    margin: 20px auto;
+    display: block; /* Buat tombol menjadi blok */
+    width: fit-content; /* Sesuaikan lebar dengan konten */
+    margin: 20px auto; /* Tengah-kan tombol */
 }
 
 .uploadButton:hover {
@@ -66,10 +66,9 @@
 }
 
 .inputField {
-    padding: 10px;
+    padding: 10px; /* Tambah padding */
     border: 1px solid #000;
-    font-size: 16px;
-    resize: vertical;
+    font-size: 16px; /* Tambah ukuran font */
 }
 
 .imageUploadContainer {
@@ -81,16 +80,16 @@
 
 .imageUploadBox {
     background-color: #f0f0f0;
-    padding: 15px;
+    padding: 15px; /* Tambah padding */
     border: 1px solid #000;
     cursor: pointer;
     text-align: center;
-    width: 100px;
-    height: 100px;
+    width: 200px; /* Tetapkan lebar */
+    height: 150px; /* Tetapkan tinggi */
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column; /* Atur arah flex menjadi kolom */
 }
 
 .imagePreview {
@@ -98,16 +97,17 @@
     max-height: 100px;
     margin-top: 10px;
     border-radius: 5px;
-    object-fit: contain;
+    object-fit: contain; /* Sesuaikan gambar agar muat di dalam container */
 }
 
 .actionButton,
 .deleteButton,
 .cancelButton {
-    padding: 12px 20px;
+    padding: 12px 20px; /* Tambah padding */
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 16px; /* Tambah ukuran font */
 }
 
 .actionButton {
@@ -140,14 +140,14 @@
 .taglineList {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 20px; /* Tambah gap antar item */
 }
 
 .taglineItem {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
+    flex-direction: column; /* Ubah arah flex menjadi kolom */
+    justify-content: flex-start; /* Ubah justify-content */
+    align-items: stretch; /* Ubah align-items */
     padding: 20px;
     background-color: var(--color-4);
     border-left: 1px solid #000;
@@ -155,98 +155,36 @@
 
 .taglineContent {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: start;
-}
-
-.taglineContent h3 {
-    margin: 0;
-    font-size: 1.5em;
-}
-
-.taglineContent h4 {
-    margin: 0;
-    font-size: 1.2em;
-}
-
-.taglineContent p {
-    margin: 0;
-}
-
-.taglineContent ul {
-    margin: 0;
+    align-items: center;
+    gap: 20px; /* Tambah gap antar elemen */
 }
 
 .taglineImage {
     border: 1px solid var(--color-1);
     width: 100px;
     height: 100px;
-    max-width: 200px;
-    max-height: 200px;
-    object-fit: cover;
-    margin-top: 10px;
+    max-width: 200px; /* Tambah lebar maksimum */
+    max-height: 200px; /* Tambah tinggi maksimum */
+    object-fit: cover; /* Sesuaikan gambar agar muat di dalam container */
 }
 
 .taglineActions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Tambahkan justify-content */
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 10px; /* Tambahkan margin-top */
 }
 
 .editForm {
-    margin-top: 20px;
+    margin-top: 20px; /* Tambahkan margin-top untuk memisahkan form dari konten */
     border: 1px solid #000;
     background-color: var(--color-5);
 }
 
-.includeContainer {
-    display: flex;
-    gap: 10px;
-}
-
-.includeInput {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #000;
-    font-size: 16px;
-}
-
-.includeButton {
-    padding: 10px 15px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.includeList {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
-}
-
-.includeItem {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    margin-bottom: 5px;
-}
-
-.removeInclude {
-    background: none;
-    border: none;
-    color: red;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.searchInput {
-    padding: 10px;
-    border: 1px solid #000;
-    margin-bottom: 20px;
-    width: 100%;
-    font-size: 16px;
+.peopleImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
 }

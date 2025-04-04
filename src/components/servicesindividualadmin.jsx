@@ -9,6 +9,7 @@ const ServicesIndividualAdmin = () => {
         services_individual_desc: "",
         services_individual_include: [],
         services_individual_img: null,
+        order: 0,
     });
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -18,7 +19,6 @@ const ServicesIndividualAdmin = () => {
     const [editIndex, setEditIndex] = useState(null);
     const [includeInput, setIncludeInput] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
-    const [filteredServices, setFilteredServices] = useState([]);
 
     useEffect(() => {
         const fetchServicesIndividualData = async () => {
@@ -47,15 +47,6 @@ const ServicesIndividualAdmin = () => {
         }
     }, []);
 
-    useEffect(() => {
-        const results = servicesIndividualData.filter(service =>
-            service.services_individual_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            service.services_individual_title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            service.services_individual_desc.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        setFilteredServices(results);
-    }, [searchTerm, servicesIndividualData]);
-
     const addServiceIndividual = async () => {
         if (!newServiceIndividual.services_individual_name || !newServiceIndividual.services_individual_title || !newServiceIndividual.services_individual_desc || newServiceIndividual.services_individual_include.length === 0) {
             setMessage("Name, title, description, and at least one include are required.");
@@ -81,7 +72,10 @@ const ServicesIndividualAdmin = () => {
             formData.append("services_individual_include", JSON.stringify(newServiceIndividual.services_individual_include));
             if (newServiceIndividual.services_individual_img) {
                 formData.append("services_individual_img", newServiceIndividual.services_individual_img);
+            } else {
+                formData.append("services_individual_img", ""); // Kirim string kosong jika tidak ada gambar
             }
+            formData.append("order", newServiceIndividual.order);
 
             const response = await fetch("https://dama-backend.vercel.app/services_individual", {
                 method: "POST",
@@ -98,6 +92,7 @@ const ServicesIndividualAdmin = () => {
                     services_individual_desc: "",
                     services_individual_include: [],
                     services_individual_img: null,
+                    order: 0,
                 });
                 setImagePreview(null);
                 setShowForm(false);
@@ -114,11 +109,6 @@ const ServicesIndividualAdmin = () => {
     };
 
     const updateServiceIndividual = async () => {
-        if (!newServiceIndividual.services_individual_name || !newServiceIndividual.services_individual_title || !newServiceIndividual.services_individual_desc || newServiceIndividual.services_individual_include.length === 0) {
-            setMessage("Name, title, description, and at least one include are required.");
-            return;
-        }
-
         setLoading(true);
         try {
             const formData = new FormData();
@@ -128,7 +118,10 @@ const ServicesIndividualAdmin = () => {
             formData.append("services_individual_include", JSON.stringify(newServiceIndividual.services_individual_include));
             if (newServiceIndividual.services_individual_img) {
                 formData.append("services_individual_img", newServiceIndividual.services_individual_img);
+            } else {
+                formData.append("services_individual_img", ""); // Kirim string kosong jika tidak ada gambar
             }
+            formData.append("order", newServiceIndividual.order);
 
             const response = await fetch(`https://dama-backend.vercel.app/services_individual/${selectedServiceIndividual.id}`, {
                 method: "PUT",
@@ -148,6 +141,7 @@ const ServicesIndividualAdmin = () => {
                     services_individual_desc: "",
                     services_individual_include: [],
                     services_individual_img: null,
+                    order: 0,
                 });
                 setSelectedServiceIndividual(null);
                 setImagePreview(null);
@@ -203,230 +197,255 @@ const ServicesIndividualAdmin = () => {
             services_individual_title: "",
             services_individual_desc: "",
             services_individual_include: [],
-            services_individual_img: null,});
-            setSelectedServiceIndividual(null);
-            setImagePreview(null);
-            setShowForm(true);
-            setEditIndex(null);
-        };
-    
-        const handleEdit = (serviceIndividual, index) => {
-            setSelectedServiceIndividual(serviceIndividual);
-            setNewServiceIndividual({
-                services_individual_name: serviceIndividual.services_individual_name,
-                services_individual_title: serviceIndividual.services_individual_title,
-                services_individual_desc: serviceIndividual.services_individual_desc,
-                services_individual_include: serviceIndividual.services_individual_include,
-                services_individual_img: serviceIndividual.services_individual_img,
-            });
-            setImagePreview(serviceIndividual.services_individual_img);
-            setEditIndex(index);
-            setShowForm(true);
-        };
-    
-        const handleIncludeChange = (e) => {
-            setIncludeInput(e.target.value);
-        };
-    
-        const handleAddInclude = () => {
-            if (includeInput) {
-                setNewServiceIndividual({
-                    ...newServiceIndividual,
-                    services_individual_include: [...newServiceIndividual.services_individual_include, includeInput],
-                });
-                setIncludeInput("");
-            }
-        };
-    
-        const handleRemoveInclude = (index) => {
+            services_individual_img: null,
+            order: 0,
+        });
+        setSelectedServiceIndividual(null);
+        setImagePreview(null);
+        setShowForm(true);
+        setEditIndex(null);
+    };
+
+    const handleEdit = (serviceIndividual, index) => {
+        setSelectedServiceIndividual(serviceIndividual);
+        setNewServiceIndividual({
+            services_individual_name: serviceIndividual.services_individual_name || "",
+            services_individual_title: serviceIndividual.services_individual_title || "",
+            services_individual_desc: serviceIndividual.services_individual_desc || "",
+            services_individual_include: serviceIndividual.services_individual_include || [],
+            services_individual_img: serviceIndividual.services_individual_img || null,
+            order: serviceIndividual.order || 0,
+        });
+        setImagePreview(serviceIndividual.services_individual_img);
+        setEditIndex(index);
+        setShowForm(true);
+    };
+
+    const handleIncludeChange = (e) => {
+        setIncludeInput(e.target.value);
+    };
+
+    const handleAddInclude = () => {
+        if (includeInput) {
             setNewServiceIndividual({
                 ...newServiceIndividual,
-                services_individual_include: newServiceIndividual.services_individual_include.filter((_, i) => i !== index),
+                services_individual_include: [...newServiceIndividual.services_individual_include, includeInput],
             });
-        };
-    
-        return (
-            <section className={styles.adminContainer}>
-                <h2><a href="/adminonlydama/homedama">Services Individual Admin</a></h2>
-                {message && (
-                    <p className={`${styles.message} ${message.startsWith("Failed") ? styles.error : styles.success}`}>
-                        {message}
-                    </p>
-                )}
-    
-                <button onClick={handleUpload} className={styles.uploadButton}>Add Services Individual</button>
-    
-                <input
-                    type="text"
-                    placeholder="Search Services"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className={styles.searchInput}
-                />
-    
-                {showForm && editIndex === null && (
-                    <form className={styles.taglineForm}>
-                        <label htmlFor="serviceIndividualName">Name:</label>
+            setIncludeInput("");
+        }
+    };
+
+    const handleRemoveInclude = (index) => {
+        setNewServiceIndividual({
+            ...newServiceIndividual,
+            services_individual_include: newServiceIndividual.services_individual_include.filter((_, i) => i !== index),
+        });
+    };
+
+    const filteredServices = servicesIndividualData.filter(serviceIndividual =>
+        serviceIndividual.services_individual_name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    return (
+        <section className={styles.adminContainer}>
+            <h2><a href="/adminonlydama/homedama">Services Individual Admin</a></h2>
+            {message && (
+                <p className={`${styles.message} ${message.startsWith("Failed") ? styles.error : styles.success}`}>
+                    {message}
+                </p>
+            )}
+
+            <button onClick={handleUpload} className={styles.uploadButton}>Add Services Individual</button>
+
+            <input
+                type="text"
+                placeholder="Search Services Individual"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className={styles.searchInput}
+            />
+
+            {showForm && (
+                <form className={styles.taglineForm}>
+                    <label htmlFor="serviceIndividualName">Name:</label>
+                    <input
+                        type="text"
+                        id="serviceIndividualName"
+                        placeholder="Name"
+                        value={newServiceIndividual.services_individual_name}
+                        onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_name: e.target.value })}
+                        className={styles.inputField}
+                    />
+                    <label htmlFor="serviceIndividualTitle">Title:</label>
+                    <input
+                        type="text"
+                        id="serviceIndividualTitle"
+                        placeholder="Title"
+                        value={newServiceIndividual.services_individual_title}
+                        onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_title: e.target.value })}
+                        className={styles.inputField}
+                    />
+                    <label htmlFor="serviceIndividualDesc">Description:</label>
+                    <textarea
+                        id="serviceIndividualDesc"
+                        placeholder="Description"
+                        value={newServiceIndividual.services_individual_desc}
+                        onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_desc: e.target.value })}
+                        className={styles.inputField}
+                    />
+                    <label>Includes:</label>
+                    <div className={styles.includeContainer}>
                         <input
                             type="text"
-                            id="serviceIndividualName"
-                            placeholder="Name"
-                            value={newServiceIndividual.services_individual_name}
-                            onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_name: e.target.value })}
-                            className={styles.inputField}
+                            placeholder="Add include"
+                            value={includeInput}
+                            onChange={handleIncludeChange}
+                            className={styles.includeInput}
                         />
-                        <label htmlFor="serviceIndividualTitle">Title:</label>
-                        <input
-                            type="text"
-                            id="serviceIndividualTitle"
-                            placeholder="Title"
-                            value={newServiceIndividual.services_individual_title}
-                            onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_title: e.target.value })}
-                            className={styles.inputField}
-                        />
-                        <label htmlFor="serviceIndividualDesc">Description:</label>
-                        <textarea
-                            id="serviceIndividualDesc"
-                            placeholder="Description"
-                            value={newServiceIndividual.services_individual_desc}
-                            onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_desc: e.target.value })}
-                            className={styles.inputField}
-                        />
-                        <label>Includes:</label>
-                        <div className={styles.includeContainer}>
+                        <button type="button" onClick={handleAddInclude} className={styles.includeButton}>Add</button>
+                    </div>
+                    <ul className={styles.includeList}>
+                        {newServiceIndividual.services_individual_include.map((include, index) => (
+                            <li key={index} className={styles.includeItem}>
+                                {include}
+                                <button type="button" onClick={() => handleRemoveInclude(index)} className={styles.removeInclude}>X</button>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className={styles.imageUploadContainer}>
+                        <div className={styles.imageUploadBox}>
                             <input
-                                type="text"
-                                placeholder="Add include"
-                                value={includeInput}
-                                onChange={handleIncludeChange}
-                                className={styles.includeInput}
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                                id="imageUpload"
+                                style={{ display: "none" }}
                             />
-                            <button type="button" onClick={handleAddInclude} className={styles.includeButton}>Add</button>
+                            <label htmlFor="imageUpload">Upload Image</label>
                         </div>
-                        <ul className={styles.includeList}>
-                            {newServiceIndividual.services_individual_include.map((include, index) => (
-                                <li key={index} className={styles.includeItem}>
-                                    {include}
-                                    <button type="button" onClick={() => handleRemoveInclude(index)} className={styles.removeInclude}>X</button>
-                                </li>
-                            ))}
-                        </ul>
-                        <div className={styles.imageUploadContainer}>
-                            <div className={styles.imageUploadBox}>
+                        {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
+                    </div>
+                    <label htmlFor="serviceIndividualOrder">Order:</label>
+                    <input
+                        type="number"
+                        id="serviceIndividualOrder"
+                        placeholder="Order"
+                        value={newServiceIndividual.order}
+                        onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, order: parseInt(e.target.value) })}
+                        className={styles.inputField}
+                    />
+                    <button onClick={selectedServiceIndividual ? updateServiceIndividual : addServiceIndividual} disabled={loading} className={styles.actionButton}>
+                        {loading
+                            ? selectedServiceIndividual
+                                ? "Updating..."
+                                : "Adding..."
+                            : selectedServiceIndividual
+                                ? "Update Services Individual"
+                                : "Add Services Individual"}
+                    </button>
+                    <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
+                </form>
+            )}
+
+            <div className={styles.taglineList}>
+                {filteredServices.map((serviceIndividual, index) => (
+                    <div key={serviceIndividual.id} className={styles.taglineItem}>
+                        <div className={styles.taglineContent}>
+                            <h3>{serviceIndividual.services_individual_name}</h3>
+                            <h4>{serviceIndividual.services_individual_title}</h4>
+                            <p>{serviceIndividual.services_individual_desc}</p>
+                            <ul>
+                                {serviceIndividual.services_individual_include.map((include, index) => (
+                                    <li key={index}>{include}</li>
+                                ))}
+                            </ul>
+                            {serviceIndividual.services_individual_img && <img src={serviceIndividual.services_individual_img} alt={serviceIndividual.services_individual_name} className={styles.taglineImage} />}
+                        </div>
+                        <div className={styles.taglineActions}>
+                            <button onClick={() => handleEdit(serviceIndividual, index)} className={styles.actionButton}>Edit</button>
+                            <button onClick={() => deleteServiceIndividual(serviceIndividual.id)} disabled={loading} className={styles.deleteButton}>Delete</button>
+                        </div>
+                        <p>Order: {serviceIndividual.order}</p>
+                        {showForm && editIndex === index && (
+                            <form className={`${styles.taglineForm} ${styles.editForm}`}>
+                                <label htmlFor="editServiceIndividualName">Name:</label>
                                 <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={handleImageChange}
-                                    id="imageUpload"
-                                    style={{ display: "none" }}
+                                    type="text"
+                                    id="editServiceIndividualName"
+                                    placeholder="Name"
+                                    value={newServiceIndividual.services_individual_name}
+                                    onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_name: e.target.value })}
+                                    className={styles.inputField}
                                 />
-                                <label htmlFor="imageUpload">Upload Image</label>
-                            </div>
-                            {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
-                        </div>
-    
-                        <button onClick={selectedServiceIndividual ? updateServiceIndividual : addServiceIndividual} disabled={loading} className={styles.actionButton}>
-                            {loading
-                                ? selectedServiceIndividual
-                                    ? "Updating..."
-                                    : "Adding..."
-                                : selectedServiceIndividual
-                                    ? "Update Services Individual"
-                                    : "Add Services Individual"}
-                        </button>
-                        <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
-                    </form>
-                )}
-    
-                <div className={styles.taglineList}>
-                    {filteredServices.map((serviceIndividual, index) => (
-                        <div key={serviceIndividual.id} className={styles.taglineItem}>
-                            <div className={styles.taglineContent}>
-                                <h3>{serviceIndividual.services_individual_name}</h3>
-                                <h4>{serviceIndividual.services_individual_title}</h4>
-                                <p>{serviceIndividual.services_individual_desc}</p>
-                                <ul>
-                                    {serviceIndividual.services_individual_include.map((include, index) => (
-                                        <li key={index}>{include}</li>
+                                <label htmlFor="editServiceIndividualTitle">Title:</label>
+                                <input
+                                    type="text"
+                                    id="editServiceIndividualTitle"
+                                    placeholder="Title"
+                                    value={newServiceIndividual.services_individual_title}
+                                    onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_title: e.target.value })}
+                                    className={styles.inputField}
+                                />
+                                <label htmlFor="editServiceIndividualDesc">Description:</label>
+                                <textarea
+                                    id="editServiceIndividualDesc"
+                                    placeholder="Description"
+                                    value={newServiceIndividual.services_individual_desc}
+                                    onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_desc: e.target.value })}
+                                    className={styles.inputField}
+                                />
+                                <label>Includes:</label>
+                                <div className={styles.includeContainer}>
+                                    <input
+                                        type="text"
+                                        placeholder="Add include"
+                                        value={includeInput}
+                                        onChange={handleIncludeChange}
+                                        className={styles.includeInput}
+                                    />
+                                    <button type="button" onClick={handleAddInclude} className={styles.includeButton}>Add</button>
+                                </div>
+                                <ul className={styles.includeList}>
+                                    {newServiceIndividual.services_individual_include.map((include, index) => (
+                                        <li key={index} className={styles.includeItem}>
+                                            {include}
+                                            <button type="button" onClick={() => handleRemoveInclude(index)} className={styles.removeInclude}>X</button>
+                                        </li>
                                     ))}
                                 </ul>
-                                {serviceIndividual.services_individual_img && <img src={serviceIndividual.services_individual_img} alt={serviceIndividual.services_individual_name} className={styles.taglineImage} />}
-                            </div>
-                            <div className={styles.taglineActions}>
-                                <button onClick={() => handleEdit(serviceIndividual, index)} className={styles.actionButton}>Edit</button>
-                                <button onClick={() => deleteServiceIndividual(serviceIndividual.id)} disabled={loading} className={styles.deleteButton}>Delete</button>
-                            </div>
-                            {showForm && editIndex === index && (
-                                <form className={`${styles.taglineForm} ${styles.editForm}`}>
-                                    <label htmlFor="editServiceIndividualName">Name:</label>
-                                    <input
-                                        type="text"
-                                        id="editServiceIndividualName"
-                                        placeholder="Name"
-                                        value={newServiceIndividual.services_individual_name}
-                                        onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_name: e.target.value })}
-                                        className={styles.inputField}
-                                    />
-                                    <label htmlFor="editServiceIndividualTitle">Title:</label>
-                                    <input
-                                        type="text"
-                                        id="editServiceIndividualTitle"
-                                        placeholder="Title"
-                                        value={newServiceIndividual.services_individual_title}
-                                        onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_title: e.target.value })}
-                                        className={styles.inputField}
-                                    />
-                                    <label htmlFor="editServiceIndividualDesc">Description:</label>
-                                    <textarea
-                                        id="editServiceIndividualDesc"
-                                        placeholder="Description"
-                                        value={newServiceIndividual.services_individual_desc}
-                                        onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, services_individual_desc: e.target.value })}
-                                        className={styles.inputField}
-                                    />
-                                    <label>Includes:</label>
-                                    <div className={styles.includeContainer}>
+                                <div className={styles.imageUploadContainer}>
+                                    <div className={styles.imageUploadBox}>
                                         <input
-                                            type="text"
-                                            placeholder="Add include"
-                                            value={includeInput}
-                                            onChange={handleIncludeChange}
-                                            className={styles.includeInput}
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={handleImageChange}
+                                            id="editImageUpload"
+                                            style={{ display: "none" }}
                                         />
-                                        <button type="button" onClick={handleAddInclude} className={styles.includeButton}>Add</button>
+                                        <label htmlFor="editImageUpload">Upload Image</label>
                                     </div>
-                                    <ul className={styles.includeList}>
-                                        {newServiceIndividual.services_individual_include.map((include, index) => (
-                                            <li key={index} className={styles.includeItem}>
-                                                {include}
-                                                <button type="button" onClick={() => handleRemoveInclude(index)} className={styles.removeInclude}>X</button>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <div className={styles.imageUploadContainer}>
-                                        <div className={styles.imageUploadBox}>
-                                            <input
-                                                type="file"
-                                                accept="image/*"
-                                                onChange={handleImageChange}
-                                                id="editImageUpload"
-                                                style={{ display: "none" }}/>
-                                                <label htmlFor="editImageUpload">Upload Image</label>
-                                            </div>
-                                            {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
-                                        </div>
-        
-                                        <button onClick={updateServiceIndividual} disabled={loading} className={styles.actionButton}>
-                                            {loading ? "Updating..." : "Update Services Individual"}
-                                        </button>
-                                        <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
-                                    </form>
-                                )}
-                            </div>
-                        ))}
+                                    {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
+                                </div>
+                                <label htmlFor="editServiceIndividualOrder">Order:</label>
+                                <input
+                                    type="number"
+                                    id="editServiceIndividualOrder"
+                                    placeholder="Order"
+                                    value={newServiceIndividual.order}
+                                    onChange={(e) => setNewServiceIndividual({ ...newServiceIndividual, order: parseInt(e.target.value) })}
+                                    className={styles.inputField}
+                                />
+                                <button onClick={updateServiceIndividual} disabled={loading} className={styles.actionButton}>
+                                    {loading ? "Updating..." : "Update Services Individual"}
+                                </button>
+                                <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
+                            </form>
+                        )}
                     </div>
-                </section>
-            );
-        };
-        
-        export default ServicesIndividualAdmin;
+                ))}
+            </div>
+        </section>
+    );
+};
+
+export default ServicesIndividualAdmin;

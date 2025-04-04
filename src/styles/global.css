@@ -1,4 +1,5 @@
 /* global.css */
+
 @font-face {
     font-family: 'Avenir Next LT Pro';
     src: url('/fonts/AvenirNextLTPro-Regular.woff2') format('woff2'),
@@ -42,20 +43,28 @@
     --accent-color-1: #A09E9A;
     --accent-color-2: #C2C0BD;
     --accent-color-3: #D4D2CF;
+}
 
-    /* Ukuran Font */
-    --font-size-large: 3rem; /* 32px jika base font adalah 16px */
-    --font-size-medium: 2rem; /* 19.2px jika base font adalah 16px */
-    --font-size-default: 1rem; /* 16px */
-    --font-size-small: 0.8rem; /* 12.8px jika base font adalah 16px */
+.loading-error-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+    font-family: var(--font-2), sans-serif;
+    color: var(--color-2);
+}
 
-    /* Padding */
-    --padding-large: 2rem; /* 32px */
-    --padding-medium: 1rem; /* 16px */
-    --padding-small: 0.5rem; /* 8px */
+.loading-error-message p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
 
-    /* Margin */
-    --margin-large: 2rem; /* 32px */
-    --margin-medium: 1rem; /* 16px */
-    --margin-small: 0.5rem; /* 8px */
+.loading-error-message.error {
+    color: var(--error-color);
+}
+
+.loading-error-message.loading {
+    color: var(--primary-color);
 }

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import styles from "./admin.module.css";
+import styles from "./homeadmin.module.css"; // Menggunakan homeadmin.module.css
 
 const ToServicesAdmin = () => {
-    const [toService, setToService] = useState(null); // Ubah ke satu item
+    const [toService, setToService] = useState(null);
     const [newToService, setNewToService] = useState({
         toservices_text: "",
         toservices_img: null,
@@ -20,7 +20,7 @@ const ToServicesAdmin = () => {
                 if (response.ok) {
                     const data = await response.json();
                     if (data.length > 0) {
-                        setToService(data[0]); // Ambil hanya item pertama
+                        setToService(data[0]);
                     }
                 } else {
                     setMessage("Failed to fetch to services.");
@@ -101,7 +101,7 @@ const ToServicesAdmin = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                setToService(data); // Perbarui dengan data yang diterima
+                setToService(data);
                 setMessage("Service updated successfully!");
                 setNewToService({ toservices_text: "", toservices_img: null });
                 setImagePreview(null);
@@ -128,19 +128,19 @@ const ToServicesAdmin = () => {
             )}
 
             {toService && (
-                <div className={styles.toServiceItem}>
-                    <div className={styles.toServiceContent}>
-                        <img src={toService.toservices_img} alt={toService.toservices_text} className={styles.toServiceImage} />
+                <div className={styles.taglineItem}>
+                    <div className={styles.taglineContent}>
+                        <img src={toService.toservices_img} alt={toService.toservices_text} className={styles.taglineImage} />
                         <span>{toService.toservices_text}</span>
                     </div>
-                    <div className={styles.toServiceActions}>
+                    <div className={styles.taglineActions}>
                         <button onClick={handleEdit} className={styles.actionButton}>Edit</button>
                     </div>
                 </div>
             )}
 
             {showForm && (
-                <form className={styles.toServiceForm} onSubmit={handleSubmit}>
+                <form className={styles.taglineForm} onSubmit={handleSubmit}>
                     <label htmlFor="toservicesText">Service Text:</label>
                     <input
                         type="text"

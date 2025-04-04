@@ -1,228 +1,266 @@
 .adminContainer {
-    padding: var(--padding-medium);
+    padding: 30px;
+    background-color: var(--color-5);
+    border: 1px solid #000;
+    font-family: var(--font-2), sans-serif;
+    color: var(--color-2);
     max-width: 1200px;
     margin: 0 auto;
-    font-family: var(--font-2);
-    color: var(--color-2);
-    background-color: var(--color-4);
 }
 
 .adminContainer h2 {
-    margin-bottom: var(--margin-medium);
+    margin-bottom: 20px;
     text-align: center;
-    color: var(--color-1);
-    font-size: var(--font-size-medium);
-    font-weight: bold;
 }
 
 .message {
-    padding: var(--padding-small);
-    margin-bottom: var(--margin-small);
+    padding: 10px;
+    margin-bottom: 20px;
     border-radius: 5px;
-    text-align: center;
 }
 
 .message.success {
-    background-color: var(--accent-color-3);
-    color: var(--color-2);
-    border: 1px solid var(--color-3);
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
 }
 
 .message.error {
-    background-color: var(--accent-color-2);
-    color: var(--color-2);
-    border: 1px solid var(--color-3);
-}
-
-.uploadButton {
-    background-color: var(--primary-color);
-    color: white;
-    padding: var(--padding-small) var(--padding-medium);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: var(--margin-medium);
-    display: block;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: bold;
-}
-
-.workForm {
-    border: 1px solid var(--color-3);
-    padding: var(--padding-medium);
-    border-radius: 5px;
-    margin-bottom: var(--margin-medium);
-    background-color: var(--color-5);
-}
-
-.workForm label {
-    display: block;
-    margin-bottom: var(--margin-small);
-    font-weight: bold;
-    color: var(--color-1);
-}
-
-.inputField,
-.workForm textarea {
-    width: calc(100% - 22px);
-    padding: var(--padding-small);
-    margin-bottom: var(--margin-small);
-    border: 1px solid var(--color-3);
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: var(--font-size-default);
-    color: var(--color-1);
-}
-
-.workForm textarea {
-    height: 150px;
-}
-
-.imageUploadContainer {
-    margin-bottom: var(--margin-small);
-    text-align: center;
-}
-
-.imageUploadBox label {
-    background-color: var(--primary-color);
-    color: white;
-    padding: var(--padding-small) var(--padding-small);
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.imagePreview {
-    width: 80px; /* Ukuran gambar 1:1, lebih kecil */
-    height: 80px;
-    margin-top: var(--margin-small);
-    border-radius: 5px;
-    object-fit: cover; /* Mengisi kotak dengan memotong gambar jika perlu */
-}
-
-.actionButton,
-.cancelButton,
-.deleteButton,
-.addButton,
-.removeButton {
-    padding: var(--padding-small) var(--padding-medium);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: var(--margin-small);
-    margin-bottom: var(--margin-small);
-    font-weight: bold;
-}
-
-.actionButton {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.cancelButton {
-    background-color: var(--gray-color);
-    color: white;
-}
-
-.deleteButton {
-    background-color: var(--error-color);
-    color: white;
-}
-
-.addButton,
-.removeButton {
-    background-color: var(--success-color);
-    color: white;
-}
-
-.removeButton {
-    background-color: var(--error-color);
-}
-
-.workList {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--margin-medium);
-}
-
-.workItem {
-    border: 1px solid var(--color-3);
-    padding: var(--padding-medium);
-    border-radius: 5px;
-    margin-bottom: var(--margin-medium);
-    background-color: var(--color-5);
-}
-
-.workContent h3,
-.workContent h4 {
-    margin-bottom: var(--margin-small);
-    color: var(--color-1);
-    font-weight: bold;
-}
-
-.workContent p {
-    margin-bottom: var(--margin-small);
-    color: var(--color-1);
-}
-
-.workImage {
-    width: 100px; /* Ukuran gambar 1:1 */
-    height: 100px;
-    border-radius: 5px;
-    margin-top: var(--margin-small);
-    object-fit: cover; /* Mengisi kotak dengan memotong gambar jika perlu */
-}
-
-.workActions {
-    margin-top: var(--margin-small);
-    text-align: right;
-}
-
-@media (max-width: 768px) {
-    .workList {
-        grid-template-columns: 1fr;
-    }
-
-    .actionButton,
-    .cancelButton,
-    .deleteButton,
-    .addButton,
-    .removeButton {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: var(--margin-small);
-    }
-}
-
-.workForm.editForm {
-    margin-top: var(--margin-medium);
-    border-color: var(--primary-color);
-    background-color: var(--accent-color-3);
-}
-
-.imageCaption {
-    font-weight: bold;
-}
-
-/* Search Bar Styles */
-.searchBar {
-    margin-bottom: var(--margin-medium);
-    display: flex;
-    justify-content: center;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 
 .searchInput {
-    padding: var(--padding-small) var(--padding-small);
-    border: 1px solid var(--color-3);
-    border-radius: 5px;
-    width: 300px;
-    font-size: var(--font-size-default);
-    color: var(--color-1);
-    background-color: var(--color-5);
+    padding: 10px;
+    border: 1px solid #000;
+    margin-bottom: 20px;
+    width: 100%;
+    font-size: 16px;
 }
 
-.searchInput:focus {
-    outline: none;
-    border-color: var(--primary-color);
+.uploadButton {
+    background-color: var(--color-5);
+    color: var(--color-2);
+    padding: 10px 15px;
+    border: 1px solid #000;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 12px;
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.uploadButton:hover {
+    background-color: var(--color-2);
+    color: var(--color-4);
+}
+
+.workForm {
+    background-color: var(--color-4);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #000;
+}
+
+.workForm label {
+    font-weight: bold;
+}
+
+.inputField {
+    padding: 10px;
+    border: 1px solid #000;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.imageUploadContainer {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.imageUploadBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px dashed #000;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    justify-content: center;
+}
+
+.imageUploadLabel {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.imagePreview {
+    max-width: 100px;
+    max-height: 100px;
+    margin-top: 10px;
+    object-fit: contain;
+}
+
+.actionButton,
+.deleteButton,
+.cancelButton,
+.addButton,
+.removeButton {
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.actionButton {
+    background-color: var(--success-color, #999999);
+    color: white;
+}
+
+.actionButton:hover {
+    background-color: #888;
+}
+
+.deleteButton {
+    background-color: var(--error-color, #BDBDBD);
+    color: white;
+}
+
+.deleteButton:hover {
+    background-color: #aaa;
+}
+
+.cancelButton {
+    background-color: #ccc;
+    color: #333;
+}
+
+.cancelButton:hover {
+    background-color: #bbb;
+}
+
+.addButton {
+    background-color: var(--color-4);
+    border: 1px dashed #000;
+    color: var(--color-2);
+}
+
+.addButton:hover {
+    background-color: #218838;
+}
+
+.removeButton {
+    background-color: #dc3545;
+    color: white;
+}
+
+.removeButton:hover {
+    background-color: #c82333;
+}
+
+.workList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.workItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 20px;
+    background-color: var(--color-4);
+    border-left: 1px solid #000;
+}
+
+.workContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: start;
+}
+
+.workContent h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.workContent p {
+    margin: 0;
+}
+
+.workImage {
+    border: 1px solid var(--color-1);
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+.workActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.editForm {
+    margin-top: 10px;
+    border: 1px dashed #000;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.imageListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.imageItemContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px dashed #000;
+    padding: 10px;
+    width: 150px;
+}
+
+.imageItemPreview {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.imageItemLabel {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.workImageContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.workImage {
+    max-width: 150px;
+    height: auto;
+    margin-right: 10px;
 }

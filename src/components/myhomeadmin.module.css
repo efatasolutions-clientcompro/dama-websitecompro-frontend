@@ -1,15 +1,15 @@
 /* myhomeadmin.module.css */
 
 .adminContainer {
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     font-family: var(--font-2);
     color: var(--color-2);
     background-color: var(--color-4);
 }
 
-.adminContainer h2 { /* Menambahkan margin bawah pada judul */
-    margin-bottom: 20px; /* Sesuaikan nilai sesuai kebutuhan Anda */
+.adminContainer h2 {
+    margin-bottom: 20px;
 }
 
 .buttonContainer {
@@ -20,28 +20,58 @@
     justify-content: center;
 }
 
+.goToContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.showContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
 .adminButton {
     padding: 10px 15px;
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--color-4);
+    color: var(--color-2);
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     flex-grow: 1;
     font-family: var(--font-2);
     margin: 5px;
+    border: 1px solid #000;
+    font-size: 12px;
+}
+
+.adminButton.goToButton {
+    background-color: var(--color-4);
+    border: none;
+    font-family: var(--font-1);
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    font-size: 20px;
 }
 
 .adminButton:hover {
     background-color: var(--color-2);
+    color: var(--color-5);
 }
 
 .adminButton.active {
-    background-color: var(--success-color);
+    background-color: var(--color-2);
+    color: var(--color-5);
 }
 
 @media (max-width: 600px) {
-    .buttonContainer {
+    .buttonContainer,
+    .goToContainer,
+    .showContainer {
         flex-direction: column;
     }
 

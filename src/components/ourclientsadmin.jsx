@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./admin.module.css";
+import styles from "./homeadmin.module.css";
 
 const OurClientsAdmin = () => {
     const [clients, setClients] = useState([]);
@@ -228,84 +228,85 @@ const OurClientsAdmin = () => {
                                 id="imageUpload"
                                 style={{ display: "none" }}
                             />
-                            <label htmlFor="imageUpload">Upload Logo</label></div>
-                            {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
+                            <label htmlFor="imageUpload">Upload Logo</label>
                         </div>
+                        {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
+                    </div>
 
-                        <button onClick={selectedClient ? updateClient : addClient} disabled={loading} className={styles.actionButton}>
-                            {loading
-                                ? selectedClient
-                                    ? "Updating..."
-                                    : "Adding..."
-                                : selectedClient
-                                    ? "Update Client"
-                                    : "Add Client"}
-                        </button>
-                        <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
-                    </form>
-                )}
+                    <button onClick={selectedClient ? updateClient : addClient} disabled={loading} className={styles.actionButton}>
+                        {loading
+                            ? selectedClient
+                                ? "Updating..."
+                                : "Adding..."
+                            : selectedClient
+                                ? "Update Client"
+                                : "Add Client"}
+                    </button>
+                    <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
+                </form>
+            )}
 
-                <div className={styles.taglineList}>
-                    {clients.map((client, index) => (
-                        <div key={client.id} className={styles.taglineItem}>
-                            <div className={styles.taglineContent}>
-                                <img src={client.client_logo_img} alt={client.client_name} className={styles.taglineImage} />
-                                <div>
-                                    <span>{client.client_name}</span>
-                                    <a href={client.client_link} target="_blank" rel="noopener noreferrer">
-                                        {client.client_link}
-                                    </a>
-                                </div>
+            <div className={styles.taglineList}>
+                {clients.map((client, index) => (
+                    <div key={client.id} className={styles.taglineItem}>
+                        <div className={styles.taglineContent}>
+                            <img src={client.client_logo_img} alt={client.client_name} className={styles.taglineImage} />
+                            <div>
+                                <span>{client.client_name}</span>
+                                <a href={client.client_link} target="_blank" rel="noopener noreferrer">
+                                    {client.client_link}
+                                </a>
                             </div>
-                            <div className={styles.taglineActions}>
-                                <button onClick={() => handleEdit(client, index)} className={styles.actionButton}>Edit</button>
-                                <button onClick={() => deleteClient(client.id)} disabled={loading} className={styles.deleteButton}>Delete</button>
-                            </div>
-                            {showForm && editIndex === index && (
-                                <form className={`${styles.taglineForm} ${styles.editForm}`}>
-                                    <label htmlFor="editClientName">Client Name:</label>
-                                    <input
-                                        type="text"
-                                        id="editClientName"
-                                        placeholder="Client Name"
-                                        value={newClient.client_name}
-                                        onChange={(e) => setNewClient({ ...newClient, client_name: e.target.value })}
-                                        className={styles.inputField}
-                                    />
-                                    <label htmlFor="editClientLink">Client Link:</label>
-                                    <input
-                                        type="text"
-                                        id="editClientLink"
-                                        placeholder="Client Link"
-                                        value={newClient.client_link}
-                                        onChange={(e) => setNewClient({ ...newClient, client_link: e.target.value })}
-                                        className={styles.inputField}
-                                    />
-                                    <div className={styles.imageUploadContainer}>
-                                        <div className={styles.imageUploadBox}>
-                                            <input
-                                                type="file"
-                                                accept="image/*"
-                                                onChange={handleImageChange}
-                                                id="editImageUpload"
-                                                style={{ display: "none" }}
-                                            />
-                                            <label htmlFor="editImageUpload">Upload Logo</label>
-                                        </div>
-                                        {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
+                        </div>
+                        <div className={styles.taglineActions}>
+                            <button onClick={() => handleEdit(client, index)} className={styles.actionButton}>Edit</button>
+                            <button onClick={() => deleteClient(client.id)} disabled={loading} className={styles.deleteButton}>Delete</button>
+                        </div>
+                        {showForm && editIndex === index && (
+                            <form className={`${styles.taglineForm} ${styles.editForm}`}>
+                                <label htmlFor="editClientName">Client Name:</label>
+                                <input
+                                    type="text"
+                                    id="editClientName"
+                                    placeholder="Client Name"
+                                    value={newClient.client_name}
+                                    onChange={(e) => setNewClient({ ...newClient, client_name: e.target.value })}
+                                    className={styles.inputField}
+                                />
+                                <label htmlFor="editClientLink">Client Link:</label>
+                                <input
+                                    type="text"
+                                    id="editClientLink"
+                                    placeholder="Client Link"
+                                    value={newClient.client_link}
+                                    onChange={(e) => setNewClient({ ...newClient, client_link: e.target.value })}
+                                    className={styles.inputField}
+                                />
+                                <div className={styles.imageUploadContainer}>
+                                    <div className={styles.imageUploadBox}>
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={handleImageChange}
+                                            id="editImageUpload"
+                                            style={{ display: "none" }}
+                                        />
+                                        <label htmlFor="editImageUpload">Upload Logo</label>
                                     </div>
+                                    {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
+                                </div>
 
-                                    <button onClick={updateClient} disabled={loading} className={styles.actionButton}>
-                                        {loading ? "Updating..." : "Update Client"}
-                                    </button>
-                                    <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
-                                </form>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </section>
-        );
-    };
+                                <button onClick={updateClient} disabled={loading} className={styles.actionButton}>
+                                    {loading ? "Updating..." : "Update Client"}
+                                </button>
+                                <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
+                            </form>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+};
 
-    export default OurClientsAdmin;
+export default OurClientsAdmin;

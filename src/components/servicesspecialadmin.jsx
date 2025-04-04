@@ -9,6 +9,7 @@ const ServicesSpecialAdmin = () => {
         services_special_desc: "",
         services_special_include: [],
         services_special_img: null,
+        order: 0,
     });
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -71,7 +72,10 @@ const ServicesSpecialAdmin = () => {
             formData.append("services_special_include", JSON.stringify(newServiceSpecial.services_special_include));
             if (newServiceSpecial.services_special_img) {
                 formData.append("services_special_img", newServiceSpecial.services_special_img);
+            } else {
+                formData.append("services_special_img", ""); // Kirim string kosong jika tidak ada gambar
             }
+            formData.append("order", newServiceSpecial.order);
 
             const response = await fetch("https://dama-backend.vercel.app/services_special", {
                 method: "POST",
@@ -88,6 +92,7 @@ const ServicesSpecialAdmin = () => {
                     services_special_desc: "",
                     services_special_include: [],
                     services_special_img: null,
+                    order: 0,
                 });
                 setImagePreview(null);
                 setShowForm(false);
@@ -104,11 +109,6 @@ const ServicesSpecialAdmin = () => {
     };
 
     const updateServiceSpecial = async () => {
-        if (!newServiceSpecial.services_special_name || !newServiceSpecial.services_special_title || !newServiceSpecial.services_special_desc || newServiceSpecial.services_special_include.length === 0) {
-            setMessage("Name, title, description, and at least one include are required.");
-            return;
-        }
-
         setLoading(true);
         try {
             const formData = new FormData();
@@ -118,7 +118,10 @@ const ServicesSpecialAdmin = () => {
             formData.append("services_special_include", JSON.stringify(newServiceSpecial.services_special_include));
             if (newServiceSpecial.services_special_img) {
                 formData.append("services_special_img", newServiceSpecial.services_special_img);
+            } else {
+                formData.append("services_special_img", ""); // Kirim string kosong jika tidak ada gambar
             }
+            formData.append("order", newServiceSpecial.order);
 
             const response = await fetch(`https://dama-backend.vercel.app/services_special/${selectedServiceSpecial.id}`, {
                 method: "PUT",
@@ -138,6 +141,7 @@ const ServicesSpecialAdmin = () => {
                     services_special_desc: "",
                     services_special_include: [],
                     services_special_img: null,
+                    order: 0,
                 });
                 setSelectedServiceSpecial(null);
                 setImagePreview(null);
@@ -194,6 +198,7 @@ const ServicesSpecialAdmin = () => {
             services_special_desc: "",
             services_special_include: [],
             services_special_img: null,
+            order: 0,
         });
         setSelectedServiceSpecial(null);
         setImagePreview(null);
@@ -204,11 +209,12 @@ const ServicesSpecialAdmin = () => {
     const handleEdit = (serviceSpecial, index) => {
         setSelectedServiceSpecial(serviceSpecial);
         setNewServiceSpecial({
-            services_special_name: serviceSpecial.services_special_name,
-            services_special_title: serviceSpecial.services_special_title,
-            services_special_desc: serviceSpecial.services_special_desc,
-            services_special_include: serviceSpecial.services_special_include,
-            services_special_img: serviceSpecial.services_special_img,
+            services_special_name: serviceSpecial.services_special_name || "",
+            services_special_title: serviceSpecial.services_special_title || "",
+            services_special_desc: serviceSpecial.services_special_desc || "",
+            services_special_include: serviceSpecial.services_special_include || [],
+            services_special_img: serviceSpecial.services_special_img || null,
+            order: serviceSpecial.order || 0,
         });
         setImagePreview(serviceSpecial.services_special_img);
         setEditIndex(index);
@@ -259,7 +265,7 @@ const ServicesSpecialAdmin = () => {
                 className={styles.searchInput}
             />
 
-            {showForm && editIndex === null && (
+            {showForm && (
                 <form className={styles.taglineForm}>
                     <label htmlFor="serviceSpecialName">Name:</label>
                     <input
@@ -319,7 +325,15 @@ const ServicesSpecialAdmin = () => {
                         </div>
                         {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
                     </div>
-
+                    <label htmlFor="serviceSpecialOrder">Order:</label>
+                    <input
+                        type="number"
+                        id="serviceSpecialOrder"
+                        placeholder="Order"
+                        value={newServiceSpecial.order}
+                        onChange={(e) => setNewServiceSpecial({ ...newServiceSpecial, order: parseInt(e.target.value) })}
+                        className={styles.inputField}
+                    />
                     <button onClick={selectedServiceSpecial ? updateServiceSpecial : addServiceSpecial} disabled={loading} className={styles.actionButton}>
                         {loading
                             ? selectedServiceSpecial
@@ -351,6 +365,7 @@ const ServicesSpecialAdmin = () => {
                             <button onClick={() => handleEdit(serviceSpecial, index)} className={styles.actionButton}>Edit</button>
                             <button onClick={() => deleteServiceSpecial(serviceSpecial.id)} disabled={loading} className={styles.deleteButton}>Delete</button>
                         </div>
+                        <p>Order: {serviceSpecial.order}</p>
                         {showForm && editIndex === index && (
                             <form className={`${styles.taglineForm} ${styles.editForm}`}>
                                 <label htmlFor="editServiceSpecialName">Name:</label>
@@ -411,7 +426,15 @@ const ServicesSpecialAdmin = () => {
                                     </div>
                                     {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
                                 </div>
-
+                                <label htmlFor="editServiceSpecialOrder">Order:</label>
+                                <input
+                                    type="number"
+                                    id="editServiceSpecialOrder"
+                                    placeholder="Order"
+                                    value={newServiceSpecial.order}
+                                    onChange={(e) => setNewServiceSpecial({ ...newServiceSpecial, order: parseInt(e.target.value) })}
+                                    className={styles.inputField}
+                                />
                                 <button onClick={updateServiceSpecial} disabled={loading} className={styles.actionButton}>
                                     {loading ? "Updating..." : "Update Services Special"}
                                 </button>

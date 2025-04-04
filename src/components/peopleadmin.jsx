@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./admin.module.css";
+import styles from "./homeadmin.module.css"; // Menggunakan homeadmin.module.css
 
 const PeopleAdmin = () => {
     const [people, setPeople] = useState([]);
@@ -85,7 +85,7 @@ const PeopleAdmin = () => {
             const formData = new FormData();
             formData.append("people_name", newPerson.people_name);
             formData.append("people_role", newPerson.people_role);
-            if(newPerson.people_img){
+            if (newPerson.people_img) {
                 formData.append("people_img", newPerson.people_img);
             }
 
@@ -226,7 +226,7 @@ const PeopleAdmin = () => {
                 {people.map((person, index) => (
                     <div key={person.id} className={styles.taglineItem}>
                         <div className={styles.taglineContent}>
-                            <img src={person.people_img} alt={person.people_name} className={styles.taglineImage} />
+                            <img src={person.people_img} alt={person.people_name} className={styles.peopleImage} />
                             <div>
                                 <span>{person.people_name}</span>
                                 <p>{person.people_role}</p>
