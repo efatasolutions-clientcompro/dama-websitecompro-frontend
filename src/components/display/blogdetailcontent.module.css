@@ -1,6 +1,6 @@
 .blogDetailContainer {
   font-family: var(--font-2), sans-serif;
-  padding: 30px; /* Pengurangan padding untuk layar kecil */
+  padding: 15px; /* Pengurangan padding untuk layar kecil */
   color: var(--color-2);
 }
 
