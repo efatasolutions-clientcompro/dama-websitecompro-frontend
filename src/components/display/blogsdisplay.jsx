@@ -4,7 +4,6 @@ import styles from "./blogsdisplay.module.css";
 const BlogsDisplay = () => {
   const [blogsData, setBlogsData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("newest");
 
@@ -16,13 +15,9 @@ const BlogsDisplay = () => {
         if (response.ok) {
           const data = await response.json();
           setBlogsData(data);
-        } else {
-          console.error("Fetch error:", response.status, response.statusText);
-          setMessage("Failed to fetch blogs data.");
         }
       } catch (error) {
         console.error("Error fetching blogs data:", error);
-        setMessage("Failed to fetch blogs data.");
       } finally {
         setLoading(false);
       }
@@ -61,14 +56,6 @@ const BlogsDisplay = () => {
     );
   }
 
-  if (message) {
-    return (
-      <div className="loading-error-message error">
-        <p>{message}</p>
-      </div>
-    );
-  }
-
   return (
     <div className={styles.blogsDisplayContainer}>
       <div className={styles.contentWrapper}>
@@ -81,8 +68,8 @@ const BlogsDisplay = () => {
             className={styles.searchBar}
           />
           <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className={styles.sortBy}>
-            <option value="newest">Newest First</option>
-            <option value="oldest">Oldest First</option>
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
           </select>
         </div>
 

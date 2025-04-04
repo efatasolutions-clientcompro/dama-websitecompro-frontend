@@ -1,38 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import styles from './contactdisplay.module.css';
+import React, { useState, useEffect } from "react";
+import styles from "./contactdisplay.module.css";
 
 const ContactDisplay = () => {
     const [contactData, setContactData] = useState(null);
     const [whatsappNumber, setWhatsappNumber] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
         const fetchContactData = async () => {
+            setLoading(true);
             try {
-                const response = await fetch('https://dama-backend.vercel.app/contacts');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch contact data');
+                const response = await fetch("https://dama-backend.vercel.app/contacts");
+                if (response.ok) {
+                    const data = await response.json();
+                    setContactData(data[0]);
+                } else {
+                    throw new Error("Failed to fetch contact data");
                 }
-                const data = await response.json();
-                setContactData(data[0]); // Asumsikan hanya satu data kontak yang diambil
-            } catch (err) {
-                setError(err);
-            } finally {
-                setLoading(false);
+            } catch (error) {
+                setHasError(true);
+                console.error("Error fetching contact data:", error); 
             }
         };
 
         const fetchWhatsappNumber = async () => {
             try {
-                const response = await fetch('https://dama-backend.vercel.app/dama');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch whatsapp number');
+                const response = await fetch("https://dama-backend.vercel.app/dama");
+                if (response.ok) {
+                    const data = await response.json();
+                    setWhatsappNumber(data[0].dama_whatsapp);
+                } else {
+                    throw new Error("Failed to fetch whatsapp number");
                 }
-                const data = await response.json();
-                setWhatsappNumber(data[0].dama_whatsapp);
-            } catch (err) {
-                setError(err);
+            } catch (error) {
+                setHasError(true);
+                console.error("Error fetching whatsapp number:", error); 
             } finally {
                 setLoading(false);
             }
@@ -42,9 +45,16 @@ const ContactDisplay = () => {
         fetchWhatsappNumber();
     }, []);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
-    if (!contactData || !whatsappNumber) return <p>Data not available.</p>;
+    if (loading) {
+        return (
+            <div className="loading-error-message loading">
+                <p>Loading page...</p>
+            </div>
+        );
+    }
+
+    if (hasError) return null;
+    if (!contactData || !whatsappNumber) return null;
 
     return (
         <div className={styles.contactContainer} style={{ backgroundImage: `url(${contactData.contact_image})` }}>

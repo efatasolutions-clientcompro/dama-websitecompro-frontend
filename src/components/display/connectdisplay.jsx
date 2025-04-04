@@ -1,44 +1,72 @@
 import React, { useState, useEffect } from "react";
-import styles from "./connectdisplay.module.css";
+import styles from "./contactdisplay.module.css"; // Pastikan file CSS ini ada
 
-const ConnectDisplay = () => {
-    const [connectData, setConnectData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+const ContactDisplay = () => {
+    const [contactData, setContactData] = useState(null);
+    const [whatsappNumber, setWhatsappNumber] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
-        const fetchConnectData = async () => {
+        const fetchContactData = async () => {
             setLoading(true);
             try {
-                const response = await fetch("https://dama-backend.vercel.app/connect");
+                const response = await fetch("https://dama-backend.vercel.app/contacts");
                 if (response.ok) {
                     const data = await response.json();
-                    setConnectData(data[0]); // Mengambil elemen pertama karena hanya ada satu data
+                    setContactData(data[0]);
                 } else {
-                    throw new Error("Failed to fetch connect data.");
+                    throw new Error("Failed to fetch contact data");
                 }
-            } catch (err) {
-                setError(err.message);
+            } catch (error) {
+                setHasError(true);
+                console.error("Error fetching contact data:", error); // Anda bisa hapus ini di produksi
+            }
+        };
+
+        const fetchWhatsappNumber = async () => {
+            try {
+                const response = await fetch("https://dama-backend.vercel.app/dama");
+                if (response.ok) {
+                    const data = await response.json();
+                    setWhatsappNumber(data[0].dama_whatsapp);
+                } else {
+                    throw new Error("Failed to fetch whatsapp number");
+                }
+            } catch (error) {
+                setHasError(true);
+                console.error("Error fetching whatsapp number:", error); // Anda bisa hapus ini di produksi
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchConnectData();
+        fetchContactData();
+        fetchWhatsappNumber();
     }, []);
 
-    if (loading) return <div className={styles.loading}>Loading...</div>;
-    if (error) return <div className={styles.error}>Error: {error}</div>;
-    if (!connectData) return null;
+    if (loading) {
+        return (
+            <div className="loading-error-message loading">
+                <p>Loading contact information...</p> {/* Teks disesuaikan */}
+            </div>
+        );
+    }
+
+    if (hasError) return null;
+    if (!contactData || !whatsappNumber) return null;
 
     return (
-        <div className={styles.connectContainer} style={{ backgroundImage: `url(${connectData.connect_img})` }}>
-            <div className={styles.connectContent}>
-                <h2>{connectData.connect_text}</h2>
-                <a href="/contact" className={styles.contactButton}>Work with us</a>
+        <div className={styles.contactContainer} style={{ backgroundImage: `url(${contactData.contact_image})` }}>
+            <div className={styles.contactContent}>
+                <h2 className={styles.contactTitle}>{contactData.contact_title}</h2>
+                <p className={styles.contactSubtitle}>{contactData.contact_subtitle}</p>
+                <a href={`https://wa.me/${whatsappNumber}`} className={styles.whatsappLink} target="_blank" rel="noopener noreferrer">
+                    WhatsApp
+                </a>
             </div>
         </div>
     );
 };
 
-export default ConnectDisplay;
+export default ContactDisplay;

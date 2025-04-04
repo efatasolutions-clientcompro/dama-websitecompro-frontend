@@ -149,6 +149,7 @@
     justify-content: flex-start; /* Ubah justify-content */
     align-items: stretch; /* Ubah align-items */
     padding: 20px;
+    text-align: left;
     background-color: var(--color-4);
     border-left: 1px solid #000;
 }
@@ -187,4 +188,299 @@
     object-fit: cover;
     border-radius: 50%;
     margin-right: 10px;
+}
+
+/* homeadmin.module.css - Optimized for Mobile View */
+
+/* Gaya default yang sudah ada (untuk desktop) */
+.adminContainer {
+    padding: 30px;
+    background-color: var(--color-5);
+    border: 1px solid #000;
+    font-family: var(--font-2), sans-serif;
+    color: var(--color-2, #333);
+    max-width: 1200px; /* Batasi lebar container */
+    margin: 0 auto; /* Tengah-kan container */
+}
+
+.adminContainer h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.uploadButton {
+    background-color: var(--color-5);
+    color: var(--color-2);
+    padding: 10px 15px;
+    border: 1px solid #000;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 12px;
+    display: block; /* Buat tombol menjadi blok */
+    width: fit-content; /* Sesuaikan lebar dengan konten */
+    margin: 20px auto; /* Tengah-kan tombol */
+}
+
+.uploadButton:hover {
+    background-color: var(--color-2);
+    color: var(--color-4);
+}
+
+.taglineForm {
+    background-color: var(--color-4);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #000;
+}
+
+.taglineForm label {
+    font-weight: bold;
+}
+
+.inputField {
+    padding: 10px; /* Tambah padding */
+    border: 1px solid #000;
+    font-size: 16px; /* Tambah ukuran font */
+}
+
+.imageUploadContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.imageUploadBox {
+    background-color: #f0f0f0;
+    padding: 15px; /* Tambah padding */
+    border: 1px solid #000;
+    cursor: pointer;
+    text-align: center;
+    width: 200px; /* Tetapkan lebar */
+    height: 150px; /* Tetapkan tinggi */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Atur arah flex menjadi kolom */
+}
+
+.imagePreview {
+    max-width: 100px;
+    max-height: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+    object-fit: contain; /* Sesuaikan gambar agar muat di dalam container */
+}
+
+.actionButton,
+.deleteButton,
+.cancelButton {
+    padding: 12px 20px; /* Tambah padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Tambah ukuran font */
+}
+
+.actionButton {
+    background-color: var(--success-color, #28a745);
+    color: white;
+}
+
+.actionButton:hover {
+    background-color: var(--success-color, #218838);
+}
+
+.deleteButton {
+    background-color: var(--error-color, #dc3545);
+    color: white;
+}
+
+.deleteButton:hover {
+    background-color: var(--error-color, #c82333);
+}
+
+.cancelButton {
+    background-color: #ccc;
+    color: #333;
+}
+
+.cancelButton:hover {
+    background-color: #bbb;
+}
+
+.taglineList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Tambah gap antar item */
+}
+
+.taglineItem {
+    display: flex;
+    flex-direction: column; /* Ubah arah flex menjadi kolom */
+    justify-content: flex-start; /* Ubah justify-content */
+    align-items: stretch; /* Ubah align-items */
+    padding: 20px;
+    background-color: var(--color-4);
+    border-left: 1px solid #000;
+}
+
+.taglineContent {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Tambah gap antar elemen */
+}
+
+.taglineImage {
+    border: 1px solid var(--color-1);
+    width: 100px;
+    height: 100px;
+    max-width: 200px; /* Tambah lebar maksimum */
+    max-height: 200px; /* Tambah tinggi maksimum */
+    object-fit: cover; /* Sesuaikan gambar agar muat di dalam container */
+}
+
+.taglineActions {
+    display: flex;
+    justify-content: flex-end; /* Tambahkan justify-content */
+    gap: 10px;
+    margin-top: 10px; /* Tambahkan margin-top */
+}
+
+.editForm {
+    margin-top: 20px; /* Tambahkan margin-top untuk memisahkan form dari konten */
+    border: 1px solid #000;
+    background-color: var(--color-5);
+}
+
+.peopleImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Media query untuk layar dengan lebar maksimum 768px (umumnya perangkat mobile) */
+@media screen and (max-width: 768px) {
+    .adminContainer {
+        padding: 20px; /* Kurangi padding untuk layar kecil */
+        max-width: 100%; /* Lebar maksimum 100% untuk mengisi layar */
+    }
+
+    .adminContainer h2 {
+        margin-bottom: 15px; /* Kurangi margin bawah */
+        font-size: 1.5em; /* Ukuran font lebih kecil */
+    }
+
+    .message {
+        padding: 8px; /* Kurangi padding */
+        margin-bottom: 15px; /* Kurangi margin bawah */
+        font-size: 0.9em; /* Ukuran font lebih kecil */
+    }
+
+    .uploadButton {
+        padding: 8px 12px; /* Kurangi padding */
+        font-size: 1em; /* Sesuaikan ukuran font */
+        width: 90%; /* Lebar tombol hampir penuh */
+        margin: 15px auto; /* Tengah-kan tombol */
+        text-align: center; /* Tengah-kan teks dalam tombol */
+    }
+
+    .taglineForm {
+        gap: 8px; /* Kurangi gap */
+        margin-bottom: 15px; /* Kurangi margin bawah */
+        padding: 12px; /* Kurangi padding */
+    }
+
+    .taglineForm label {
+        font-size: 1em; /* Sesuaikan ukuran font */
+    }
+
+    .inputField {
+        padding: 8px; /* Kurangi padding */
+        font-size: 1em; /* Sesuaikan ukuran font */
+    }
+
+    .imageUploadContainer {
+        margin-bottom: 15px; /* Kurangi margin bawah */
+    }
+
+    .imageUploadBox {
+        padding: 12px; /* Kurangi padding */
+        width: 150px; /* Kurangi lebar */
+        height: 120px; /* Kurangi tinggi */
+        font-size: 0.9em; /* Ukuran font lebih kecil */
+    }
+
+    .imagePreview {
+        max-width: 80px; /* Kurangi lebar maksimum */
+        max-height: 80px; /* Kurangi tinggi maksimum */
+        margin-top: 8px; /* Kurangi margin atas */
+    }
+
+    .actionButton,
+    .deleteButton,
+    .cancelButton {
+        padding: 10px 15px; /* Kurangi padding */
+        font-size: 1em; /* Sesuaikan ukuran font */
+    }
+
+    .taglineList {
+        gap: 15px; /* Kurangi gap antar item */
+    }
+
+    .taglineItem {
+        padding: 15px; /* Kurangi padding */
+    }
+
+    .taglineContent {
+        flex-direction: column; /* Ubah menjadi kolom agar konten tidak terlalu sempit */
+        align-items: flex-start; /* Rata kiri untuk tampilan mobile */
+        gap: 10px; /* Kurangi gap antar elemen */
+    }
+
+    .taglineImage {
+        width: 80px; /* Kurangi lebar gambar */
+        height: 80px; /* Kurangi tinggi gambar */
+        max-width: 100%; /* Lebar maksimum 100% dari container */
+        max-height: none; /* Biarkan tinggi menyesuaikan */
+    }
+
+    .taglineActions {
+        gap: 8px; /* Kurangi gap antar tombol */
+        margin-top: 10px; /* Kurangi margin atas */
+    }
+
+    .editForm {
+        margin-top: 15px; /* Kurangi margin atas */
+        padding: 10px; /* Tambah padding */
+    }
+
+    .peopleImage {
+        width: 80px; /* Kurangi ukuran gambar */
+        height: 80px; /* Kurangi ukuran gambar */
+        margin-right: 8px; /* Kurangi margin kanan */
+    }
 }

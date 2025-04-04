@@ -76,21 +76,13 @@ const BlogsAdmin = () => {
                 }
             });
 
-            console.log("Data yang akan dikirim ke server:");
-            for (let pair of formData.entries()) {
-                console.log(pair[0] + ', ', pair[1]);
-            }
-
             const response = await fetch("https://dama-backend.vercel.app/blogs", {
                 method: "POST",
                 body: formData,
             });
 
-            console.log("Respons dari server:", response);
-
             await handleApiError(response, "Blog added successfully!");
             const data = await response.json();
-            console.log("Data yang diterima dari server:", data);
             setBlogsData([...blogsData, data[0]]);
             resetForm();
         } catch (error) {
@@ -112,9 +104,11 @@ const BlogsAdmin = () => {
             const formData = new FormData();
             Object.keys(newBlog).forEach((key) => {
                 if (key === "image_list") {
-                    newBlog.image_list.forEach((file) => {
-                        if (file) {
-                            formData.append("image_list", file);
+                    newBlog.image_list.forEach((item) => {
+                        if (item instanceof File) {
+                            formData.append("image_list", item);
+                        } else if (typeof item === 'string') {
+                            formData.append("image_list_url", item);
                         }
                     });
                 } else if (newBlog[key] !== null && newBlog[key] !== undefined) {
@@ -204,7 +198,6 @@ const BlogsAdmin = () => {
     const handleUpload = useCallback(() => {
         resetForm();
         setShowForm(true);
-        console.log("showForm after handleUpload:", showForm);
     }, []);
 
     const handleEdit = useCallback((blog, index) => {
