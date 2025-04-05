@@ -6,40 +6,40 @@
     color: var(--color-2);
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.adminContainer h2 {
+  }
+  
+  .adminContainer h2 {
     margin-bottom: 20px;
     text-align: center;
-}
-
-.message {
+  }
+  
+  .message {
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
-}
-
-.message.success {
+  }
+  
+  .message.success {
     background-color: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
-}
-
-.message.error {
+  }
+  
+  .message.error {
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
-}
-
-.searchInput {
+  }
+  
+  .searchInput {
     padding: 10px;
     border: 1px solid #000;
     margin-bottom: 20px;
     width: 100%;
     font-size: 16px;
-}
-
-.uploadButton {
+  }
+  
+  .uploadButton {
     background-color: var(--color-5);
     color: var(--color-2);
     padding: 10px 15px;
@@ -50,14 +50,14 @@
     display: block;
     width: fit-content;
     margin: 20px auto;
-}
-
-.uploadButton:hover {
+  }
+  
+  uploadButton:hover {
     background-color: var(--color-2);
     color: var(--color-4);
-}
-
-.workForm {
+  }
+  
+  .workForm {
     background-color: var(--color-4);
     display: flex;
     flex-direction: column;
@@ -65,27 +65,28 @@
     margin-bottom: 20px;
     padding: 15px;
     border: 1px solid #000;
-}
-
-.workForm label {
+  }
+  
+  workForm label {
     font-weight: bold;
-}
-
-.inputField {
+  }
+  
+  .inputField {
     padding: 10px;
     border: 1px solid #000;
     font-size: 16px;
     resize: vertical;
-}
-
-.imageUploadContainer {
+  }
+  
+  .imageUploadContainer {
     display: flex;
     justify-content: flex-start;
     margin-bottom: 10px;
     gap: 10px;
-}
-
-.imageUploadBox {
+    flex-wrap: wrap; /* Added for mobile responsiveness */
+  }
+  
+  .imageUploadBox {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,85 +97,85 @@
     width: 150px;
     height: 150px;
     justify-content: center;
-}
-
-.imageUploadLabel {
+  }
+  
+  .imageUploadLabel {
     font-size: 0.8em;
     color: #666;
     margin-bottom: 5px;
-}
-
-.imagePreview {
+  }
+  
+  .imagePreview {
     max-width: 100px;
     max-height: 100px;
     margin-top: 10px;
     object-fit: contain;
-}
-
-.actionButton,
-.deleteButton,
-.cancelButton,
-.addButton,
-.removeButton {
+  }
+  
+  .actionButton,
+  .deleteButton,
+  .cancelButton,
+  .addButton,
+  .removeButton {
     padding: 12px 20px;
     border: none;
     cursor: pointer;
     font-size: 16px;
-}
-
-.actionButton {
+  }
+  
+  .actionButton {
     background-color: var(--success-color, #999999);
     color: white;
-}
-
-.actionButton:hover {
+  }
+  
+  .actionButton:hover {
     background-color: #888;
-}
-
-.deleteButton {
+  }
+  
+  .deleteButton {
     background-color: var(--error-color, #BDBDBD);
     color: white;
-}
-
-.deleteButton:hover {
+  }
+  
+  .deleteButton:hover {
     background-color: #aaa;
-}
-
-.cancelButton {
+  }
+  
+  .cancelButton {
     background-color: #ccc;
     color: #333;
-}
-
-.cancelButton:hover {
+  }
+  
+  .cancelButton:hover {
     background-color: #bbb;
-}
-
-.addButton {
+  }
+  
+  .addButton {
     background-color: var(--color-4);
     border: 1px dashed #000;
     color: var(--color-2);
-}
-
-.addButton:hover {
+  }
+  
+  addButton:hover {
     background-color: #218838;
-}
-
-.removeButton {
+  }
+  
+  .removeButton {
     background-color: #dc3545;
     color: white;
-}
-
-.removeButton:hover {
+  }
+  
+  removeButton:hover {
     background-color: #c82333;
-}
-
-.workList {
+  }
+  
+  .workList {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.workItem {
+  }
+  
+  .workItem {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -182,25 +183,25 @@
     padding: 20px;
     background-color: var(--color-4);
     border-left: 1px solid #000;
-}
-
-.workContent {
+  }
+  
+  .workContent {
     display: flex;
     flex-direction: column;
     gap: 10px;
     text-align: start;
-}
-
-.workContent h3 {
+  }
+  
+  workContent h3 {
     margin: 0;
     font-size: 1.5em;
-}
-
-.workContent p {
+  }
+  
+  .workContent p {
     margin: 0;
-}
-
-.workImage {
+  }
+  
+  .workImage {
     border: 1px solid var(--color-1);
     width: 100px;
     height: 100px;
@@ -208,59 +209,59 @@
     max-height: 100px;
     object-fit: cover;
     margin-top: 10px;
-}
-
-.workActions {
+  }
+  
+  .workActions {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
     margin-top: 10px;
-}
-
-.editForm {
+  }
+  
+  .editForm {
     margin-top: 10px;
     border: 1px dashed #000;
     padding: 15px;
     background-color: #f9f9f9;
-}
-
-.imageListContainer {
+  }
+  
+  .imageListContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 10px;
-}
-
-.imageItemContainer {
+  }
+  
+  .imageItemContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px dashed #000;
     padding: 10px;
     width: 150px;
-}
-
-.imageItemPreview {
+  }
+  
+  .imageItemPreview {
     max-width: 100px;
     max-height: 100px;
     object-fit: contain;
     margin-bottom: 5px;
-}
-
-.imageItemLabel {
+  }
+  
+  .imageItemLabel {
     font-size: 0.8em;
     color: #666;
     margin-bottom: 5px;
-}
-
-.workImageContainer {
+  }
+  
+  .workImageContainer {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-}
-
-.workImage {
+  }
+  
+  .workImage {
     max-width: 150px;
     height: auto;
     margin-right: 10px;
-}
+  }
