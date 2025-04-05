@@ -48,7 +48,7 @@ const ContactDisplay = () => {
     if (loading) {
         return (
             <div className="loading-error-message loading">
-                <p>Loading page...</p>
+                <p>Loading contact us...</p>
             </div>
         );
     }

@@ -70,7 +70,7 @@ const WorksDisplay = () => {
     if (loading) {
         return (
             <div className="loading-error-message loading">
-                <p>Loading works...</p>
+                <p>Loading our works...</p>
             </div>
         );
     }

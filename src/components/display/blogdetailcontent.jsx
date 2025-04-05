@@ -43,7 +43,7 @@ const BlogDetailContent = ({ blog }) => {
   if (loading) {
     return (
       <div className="loading-error-message loading">
-        <p>Loading pages...</p>
+        <p>Loading blog details...</p>
       </div>
     );
   }
