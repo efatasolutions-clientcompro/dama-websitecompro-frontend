@@ -49,7 +49,7 @@ html, body {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInSlideUpWorkPage 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
-  
+
 }
 
 @keyframes fadeInSlideUpWorkPage {
@@ -131,7 +131,7 @@ html, body {
 
 .worksGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Mengatur 3 kolom */
   gap: 20px;
   padding: 82px;
   padding-top: 0;
@@ -165,7 +165,7 @@ html, body {
   background-color: var(--color-5);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  min-width: 150px;
+  /* min-width dihapus agar flex-grow bekerja */
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInSlideUp 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s forwards;
@@ -186,7 +186,7 @@ html, body {
 .workItemImageContainer {
   position: relative;
   width: 100%;
-  padding-top: 100%;
+  padding-top: 100%; /* Rasio aspek 1:1 untuk menjaga ukuran kotak */
   overflow: hidden;
   transform: scale(0.9);
   opacity: 0;
@@ -305,6 +305,7 @@ html, body {
   }
 
   .worksGrid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Kembali ke auto-fit untuk responsif di mobile */
     padding: 20px;
     padding-top: 0;
     gap: 10px;

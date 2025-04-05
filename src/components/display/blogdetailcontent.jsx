@@ -5,7 +5,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const BlogDetailContent = ({ blog }) => {
   const [blogData, setBlogData] = useState(null);
-  const [loading, setLoading] = useState(true); // Set loading ke true saat komponen mount
+  const [loading, setLoading] = useState(true); 
   const [selectedImage, setSelectedImage] = useState(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
