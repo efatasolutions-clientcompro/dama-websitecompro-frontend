@@ -129,15 +129,22 @@ const WorksAdmin = () => {
             const formData = new FormData();
             Object.keys(newWork).forEach((key) => {
                 if (key === "work_img") {
-                    newWork.work_img.forEach((file) => {
-                        if (file) {
-                            formData.append("work_img", file);
+                    // Append file gambar baru
+                    newWork.work_img.forEach((item) => {
+                        if (item instanceof File) {
+                            formData.append("work_img", item);
                         }
                     });
-                } else if (key === "work_main_img" || key === "work_logo_img"){
-                    if(newWork[key]){
+                    // Kirim array URL gambar yang sudah ada secara terpisah
+                    const existingWorkImageUrls = newWork.work_img.filter(item => typeof item === 'string');
+                    existingWorkImageUrls.forEach((url, index) => {
+                        formData.append(`work_img_url[${index}]`, url);
+                    });
+                } else if (key === "work_main_img" || key === "work_logo_img") {
+                    if (newWork[key] instanceof File) {
                         formData.append(key, newWork[key]);
                     }
+                    // Jika bukan File, diasumsikan URL yang sudah ada, tidak perlu dikirim lagi di FormData
                 } else if (newWork[key] !== null && newWork[key] !== undefined) {
                     formData.append(key, newWork[key]);
                 } else {
@@ -209,13 +216,20 @@ const WorksAdmin = () => {
     const handleWorkImageChange = useCallback((e, index) => {
         const file = e.target.files[0];
         const updatedImages = [...newWork.work_img];
-        updatedImages[index] = file;
+        if (file) {
+            updatedImages[index] = file;
+        }
         setNewWork({ ...newWork, work_img: updatedImages });
 
         const updatedPreviews = [...workImagesPreview];
-        updatedPreviews[index] = URL.createObjectURL(file);
+        if (file) {
+            updatedPreviews[index] = URL.createObjectURL(file);
+        } else if (selectedWork?.work_img?.[index] && !newWork.work_img[index]) {
+            // Jika tidak ada file baru dan ada URL lama, pertahankan URL lama untuk preview
+            updatedPreviews[index] = selectedWork.work_img[index];
+        }
         setWorkImagesPreview(updatedPreviews);
-    }, [newWork, workImagesPreview]);
+    }, [newWork, workImagesPreview, selectedWork]);
 
     const handleAddWorkImageInput = useCallback(() => {
         setWorkImageInputs([...workImageInputs, workImageInputs.length]);
@@ -250,13 +264,13 @@ const WorksAdmin = () => {
             work_detail: work.work_detail || "",
             work_people: work.work_people || "",
             work_category: work.work_category || "",
-            work_main_img: null,
-            work_logo_img: null,
-            work_img: work.work_img || [],
+            work_main_img: null, // Jangan set ke URL, biarkan null agar onChange terpanggil jika ada perubahan
+            work_logo_img: null, // Sama seperti di atas
+            work_img: work.work_img || [], // Simpan array URL gambar yang sudah ada
         });
         setMainImagePreview(work.work_main_img);
         setLogoImagePreview(work.work_logo_img);
-        setWorkImagesPreview(work.work_img || []);
+        setWorkImagesPreview(work.work_img || []); // Set preview ke URL gambar yang sudah ada
         setEditIndex(index);
         setShowForm(true);
         setWorkImageInputs(work.work_img ? work.work_img.map((_, i) => i) : []);
@@ -290,6 +304,22 @@ const WorksAdmin = () => {
     useEffect(() => {
         fetchWorksData();
     }, [fetchWorksData]);
+
+    useEffect(() => {
+        return () => {
+            workImagesPreview.forEach(preview => {
+                if (preview && typeof preview !== 'string') {
+                    URL.revokeObjectURL(preview);
+                }
+            });
+            if (mainImagePreview && typeof mainImagePreview !== 'string') {
+                URL.revokeObjectURL(mainImagePreview);
+            }
+            if (logoImagePreview && typeof logoImagePreview !== 'string') {
+                URL.revokeObjectURL(logoImagePreview);
+            }
+        };
+    }, [workImagesPreview, mainImagePreview, logoImagePreview]);
 
     const filteredWorksData = useMemo(() => {
         return worksData.filter(work =>
@@ -412,8 +442,11 @@ const WorksAdmin = () => {
                     <div className={styles.imageListContainer}>
                         {workImagesPreview.map((preview, index) => (
                             <div key={index} className={styles.imageItemContainer}>
-                                {preview && (
+                                {preview && typeof preview === 'string' && (
                                     <img src={preview} alt={`Work Preview ${index}`} className={styles.imageItemPreview} />
+                                )}
+                                {preview && typeof preview !== 'string' && (
+                                    <img src={URL.createObjectURL(preview)} alt={`Work Preview ${index}`} className={styles.imageItemPreview} />
                                 )}
                                 <label htmlFor={`editWorkImageUpload${index}`} className={styles.imageItemLabel}>
                                     Work Image {index + 1}
@@ -452,8 +485,8 @@ const WorksAdmin = () => {
                                 {work.work_img && work.work_img.map((img, imgIndex) => (
                                     <img key={imgIndex} src={img} alt={`Work Image ${imgIndex}`} className={styles.workImage} />
                                 ))}
-                                <img src={work.work_main_img} alt="Main" className={styles.workImage} />
-                                <img src={work.work_logo_img} alt="Logo" className={styles.workImage} />
+                                {work.work_main_img && <img src={work.work_main_img} alt="Main" className={styles.workImage} />}
+                                {work.work_logo_img && <img src={work.work_logo_img} alt="Logo" className={styles.workImage} />}
                             </div>
                         </div>
                         <div className={styles.workActions}>
@@ -553,8 +586,11 @@ const WorksAdmin = () => {
                                 <div className={styles.imageListContainer}>
                                     {workImagesPreview.map((preview, index) => (
                                         <div key={index} className={styles.imageItemContainer}>
-                                            {preview && (
+                                            {preview && typeof preview === 'string' && (
                                                 <img src={preview} alt={`Work Preview ${index}`} className={styles.imageItemPreview} />
+                                            )}
+                                            {preview && typeof preview !== 'string' && (
+                                                <img src={URL.createObjectURL(preview)} alt={`Work Preview ${index}`} className={styles.imageItemPreview} />
                                             )}
                                             <label htmlFor={`editWorkImageUpload${index}`} className={styles.imageItemLabel}>
                                                 Work Image {index + 1}
