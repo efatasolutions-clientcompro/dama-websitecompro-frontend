@@ -72,7 +72,7 @@ const TaglineDisplay = () => {
     }, []);
 
     if (loading) {
-        return <div className={styles.loading}>Loading taglines...</div>;
+        return <div className={styles.loading}>Loading home...</div>;
     }
 
     if (error) {

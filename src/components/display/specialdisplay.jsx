@@ -71,24 +71,46 @@ const SpecialDisplay = () => {
         }
     };
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
-    if (contactLoading) return <p>Loading contact data...</p>;
-    if (contactError) return <p>Error loading contact data: {contactError}</p>;
+    if (loading) {
+        return (
+            <div className="loading-error-message loading">
+                <p>Loading special packages...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="loading-error-message error">
+                <p>Error loading special packages: {error}</p>
+            </div>
+        );
+    }
+
+    if (contactLoading) {
+        return (
+            <div className="loading-error-message loading">
+                <p>Loading contact data...</p>
+            </div>
+        );
+    }
+
+    if (contactError) {
+        return (
+            <div className="loading-error-message error">
+                <p>Error loading contact data: {contactError}</p>
+            </div>
+        );
+    }
 
     return (
         <section className={styles.specialDisplayContainer}>
-
             <h2 className={styles.sectionTitle}>Special Packages</h2>
-
             <div className={styles.divider}></div>
-
             <div className={styles.specialDisplayColumn}>
-
                 {servicesSpecialData.map((service, index) => (
                     <div key={service.id} className={styles.specialDisplayItem} ref={el => containerRefs.current[service.id] = el} style={{ height: containerHeights[service.id] || 'auto' }}>
                         <div className={index % 2 === 0 ? styles.row : styles.rowReverse}>
-
                             <div className={styles.imageColumn}>
                                 {service.services_special_img && (
                                     <img
@@ -99,17 +121,13 @@ const SpecialDisplay = () => {
                                     />
                                 )}
                             </div>
-
                             <div className={styles.textColumn}>
-
                                 <div className={styles.combinedText}>
                                     <h3>{service.services_special_name}</h3>
                                     <h4>{service.services_special_title}</h4>
                                     <p>{service.services_special_desc}</p>
                                 </div>
-
                                 <div className={styles.divider}></div>
-
                                 <div className={styles.includesToggle}>
                                     <button onClick={() => toggleIncludes(service)} className={styles.includesButton}>
                                         What's Included?
@@ -119,7 +137,6 @@ const SpecialDisplay = () => {
                                         />
                                     </button>
                                 </div>
-
                                 {selectedService === service && showIncludes && (
                                     <ul className={styles.includesList}>
                                         {service.services_special_include.map((include, index) => (
@@ -127,9 +144,7 @@ const SpecialDisplay = () => {
                                         ))}
                                     </ul>
                                 )}
-
                                 <div className={styles.divider}></div>
-
                                 <div className={styles.contactUsSection}>
                                     {contactData && contactData.dama_whatsapp && (
                                         <a href={`https://wa.me/${contactData.dama_whatsapp}`} target="_blank" rel="noopener noreferrer" className={styles.whatsappButton}>
@@ -137,7 +152,6 @@ const SpecialDisplay = () => {
                                         </a>
                                     )}
                                 </div>
-                                
                             </div>
                         </div>
                     </div>

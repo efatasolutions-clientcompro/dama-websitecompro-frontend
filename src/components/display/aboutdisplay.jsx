@@ -27,8 +27,21 @@ const AboutDisplay = () => {
         fetchAboutData();
     }, []);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+    if (loading) {
+        return (
+            <div className="loading-error-message loading">
+                <p>Loading about us...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="loading-error-message error">
+                <p>Error loading about us data: {error}</p>
+            </div>
+        );
+    }
 
     return (
         <section className={styles.aboutDisplayContainer}>

@@ -73,10 +73,37 @@ const IndividualDisplay = () => {
         }
     };
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
-    if (contactLoading) return <p>Loading contact data...</p>;
-    if (contactError) return <p>Error loading contact data: {contactError}</p>;
+    if (loading) {
+        return (
+            <div className="loading-error-message loading">
+                <p>Loading individual services...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="loading-error-message error">
+                <p>Error loading services data: {error}</p>
+            </div>
+        );
+    }
+
+    if (contactLoading) {
+        return (
+            <div className="loading-error-message loading">
+                <p>Loading contact data...</p>
+            </div>
+        );
+    }
+
+    if (contactError) {
+        return (
+            <div className="loading-error-message error">
+                <p>Error loading contact data: {contactError}</p>
+            </div>
+        );
+    }
 
     return (
         <section className={styles.specialDisplayContainer}>
