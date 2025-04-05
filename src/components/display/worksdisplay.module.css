@@ -277,12 +277,12 @@ html, body {
 
 @media (max-width: 768px) {
   .workPageSection {
-    height: 20vh;
-    padding: 0 20px;
+    height: 150px;
+    padding: 15px;
     margin-bottom: 30px;
   }
   .worksDisplayMain {
-    padding: 0 3rem;
+    padding: 15px;
   }
 
   .workPageSection h2 {

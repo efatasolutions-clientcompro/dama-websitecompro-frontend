@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import styles from "./worksdisplay.module.css";
+import styles from "./worksdisplay.module.css"; // Pastikan path ke CSS benar
 
 const WorksDisplay = () => {
     const [worksData, setWorksData] = useState([]);
     const [filteredWorks, setFilteredWorks] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [workPage, setWorkPage] = useState(null);
+    const [loading, setLoading] = useState(true); // Tambahkan state loading
 
     const VALID_WORK_CATEGORIES = [
         "Start Up Package",
@@ -30,6 +31,8 @@ const WorksDisplay = () => {
                 }
             } catch (error) {
                 console.error("Error fetching Works data:", error);
+            } finally {
+                setLoading(false); // Set loading ke false setelah selesai
             }
         };
 
@@ -64,18 +67,27 @@ const WorksDisplay = () => {
         setSelectedCategory(category);
     };
 
+    if (loading) {
+        return (
+            <div className="loading-error-message loading">
+                <p>Loading works...</p>
+            </div>
+        );
+    }
+
     return (
         <section className={styles.worksDisplayContainer}>
-            
+
+
             <section className={styles.worksDisplayBanner}>
-            {workPage && (
-                <div className={styles.workPageSection} style={{ backgroundImage: `url(${workPage.work_page_img})` }}>
-                    <h1>{workPage.work_page_title}</h1>
-                    <h2>{workPage.work_page_subtitle}</h2>
-                </div>
-            )}
+                {workPage && (
+                    <div className={styles.workPageSection} style={{ backgroundImage: `url(${workPage.work_page_img})` }}>
+                        <h1>{workPage.work_page_title}</h1>
+                        <h2>{workPage.work_page_subtitle}</h2>
+                    </div>
+                )}
             </section>
-            
+
             <section className={styles.worksDisplayMain}>
             <div className={styles.categoryFilter}>
                 <button
