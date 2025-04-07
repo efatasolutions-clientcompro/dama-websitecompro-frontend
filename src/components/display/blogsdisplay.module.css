@@ -106,7 +106,7 @@
 @media (max-width: 768px) {
   .blogsDisplayContainer {
     padding: 15px;
-    font-size: 1rem;
+    font-size: 15px;
     line-height: 1.6;
   }
 
@@ -124,7 +124,7 @@
   }
 
   .sectionTitle {
-    font-size: 1.5rem;
+    font-size: 20px;
     margin-bottom: 20px;
     font-weight: 600;
     padding: 0 16px;
@@ -159,21 +159,21 @@
   }
 
   .blogTitle {
-    font-size: 1.2rem;
+    font-size: 15px;
     margin-bottom: 8px;
     line-height: 1.4;
     font-weight: 600;
   }
 
   .excerpt {
-    font-size: 1rem;
+    font-size: 10px;
     line-height: 1.6;
     margin-bottom: 12px;
     color: #333;
   }
 
   .meta {
-    font-size: 0.9rem;
+    font-size: 8px;
     color: #666;
     margin-top: 10px;
   }
