@@ -67,7 +67,9 @@
     }
 
     .textContainer {
-        padding: 30px; /* Kurangi padding untuk mobile */
+        padding: 15px; /* Kurangi padding untuk mobile */
+        text-align: left;
+        font-size: 10px;
     }
 
     .aboutImage {

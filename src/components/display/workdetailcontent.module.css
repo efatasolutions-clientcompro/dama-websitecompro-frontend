@@ -251,6 +251,7 @@
     flex-direction: row;
     justify-content: center;
     overflow-x: auto;
+    margin: 0;
     padding: 0px;
     transform: translateY(10px); /* Kurangi offset */
   }
@@ -313,6 +314,7 @@
   .section-3-left img {
     aspect-ratio: auto;
     object-fit: contain;
+    margin-right: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Kurangi shadow */
   }
 

@@ -110,7 +110,7 @@
       padding: 0 20px; /* Padding horizontal dalam piksel, sesuaikan jika perlu */
   }
   .taglineContainer {
-      max-height: 300px; /* 70vh = 70% dari viewport height. Sesuaikan jika perlu. */
+      max-height: 800px; /* 70vh = 70% dari viewport height. Sesuaikan jika perlu. */
       padding: 0;
   }
 
