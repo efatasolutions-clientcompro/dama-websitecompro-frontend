@@ -97,12 +97,12 @@
   }
 
   .testimonialContent h2 {
-      font-size: 12px; /* Ukuran font lebih kecil untuk mobile */
+      font-size: 8px; /* Ukuran font lebih kecil untuk mobile */
       margin-bottom: 8px;
   }
 
   .testimonialContent p {
-      font-size: 10px; /* Ukuran font lebih kecil untuk mobile */
+      font-size: 8spx; /* Ukuran font lebih kecil untuk mobile */
       line-height: 1.6; /* Line height lebih besar untuk keterbacaan */
   }
 

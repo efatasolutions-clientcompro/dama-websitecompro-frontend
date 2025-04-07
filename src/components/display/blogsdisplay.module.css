@@ -80,8 +80,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
 
@@ -135,7 +135,7 @@
     grid-template-columns: 70% 30%; 
     gap: 16px;
     margin-bottom: 30px;
-    padding: 20px;
+    padding: 0 16px;
     height: auto;
   }
 
@@ -159,14 +159,14 @@
   }
 
   .blogTitle {
-    font-size: 15px;
+    font-size: 20px;
     margin-bottom: 8px;
     line-height: 1.4;
     font-weight: 600;
   }
 
   .excerpt {
-    font-size: 10px;
+    font-size: 15px;
     line-height: 1.6;
     margin-bottom: 12px;
     color: #333;
