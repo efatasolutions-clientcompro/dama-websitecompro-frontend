@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import styles from "./worksadmin.module.css";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const BlogsAdmin = () => {
     const [blogsData, setBlogsData] = useState([]);
@@ -273,7 +275,23 @@ const BlogsAdmin = () => {
                     <label htmlFor="slug">Slug:</label>
                     <input type="text" id="slug" placeholder="Slug" value={newBlog.slug} onChange={(e) => setNewBlog({ ...newBlog, slug: e.target.value })} className={styles.inputField} />
                     <label htmlFor="content">Content:</label>
-                    <textarea id="content" placeholder="Content" value={newBlog.content} onChange={(e) => setNewBlog({ ...newBlog, content: e.target.value })} className={styles.inputField} rows={10} />
+                    <ReactQuill
+                        id="content"
+                        value={newBlog.content}
+                        onChange={(content) => setNewBlog({ ...newBlog, content: content })}
+                        modules={{
+                            toolbar: [
+                                ['bold', 'italic', 'underline', 'strike'],
+                                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                ['clean']
+                            ],
+                        }}
+                        formats={[
+                            'bold', 'italic', 'underline', 'strike',
+                            'list', 'bullet'
+                        ]}
+                        className={styles.inputField}
+                    />
                     <label htmlFor="excerpt">Excerpt:</label>
                     <textarea id="excerpt" placeholder="Excerpt" value={newBlog.excerpt} onChange={(e) => setNewBlog({ ...newBlog, excerpt: e.target.value })} className={styles.inputField} />
                     <label htmlFor="author_name">Author Name:</label>
@@ -334,7 +352,23 @@ const BlogsAdmin = () => {
                                 <label htmlFor="slug">Slug:</label>
                                 <input type="text" id="slug" placeholder="Slug" value={newBlog.slug} onChange={(e) => setNewBlog({ ...newBlog, slug: e.target.value })} className={styles.inputField} />
                                 <label htmlFor="content">Content:</label>
-                                <textarea id="content" placeholder="Content" value={newBlog.content} onChange={(e) => setNewBlog({ ...newBlog, content: e.target.value })} className={styles.inputField} rows={10} />
+                                <ReactQuill
+                                    id="content"
+                                    value={newBlog.content}
+                                    onChange={(content) => setNewBlog({ ...newBlog, content: content })}
+                                    modules={{
+                                        toolbar: [
+                                            ['bold', 'italic', 'underline', 'strike'],
+                                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                            ['clean']
+                                        ],
+                                    }}
+                                    formats={[
+                                        'bold', 'italic', 'underline', 'strike',
+                                        'list', 'bullet'
+                                    ]}
+                                    className={styles.inputField}
+                                />
                                 <label htmlFor="excerpt">Excerpt:</label>
                                 <textarea id="excerpt" placeholder="Excerpt" value={newBlog.excerpt} onChange={(e) => setNewBlog({ ...newBlog, excerpt: e.target.value })} className={styles.inputField} />
                                 <label htmlFor="author_name">Author Name:</label>

@@ -246,13 +246,13 @@ const OurClientsAdmin = () => {
                 </form>
             )}
 
-            <div className={styles.taglineList}>
+<div className={styles.taglineList}>
                 {clients.map((client, index) => (
                     <div key={client.id} className={styles.taglineItem}>
                         <div className={styles.taglineContent}>
                             <img src={client.client_logo_img} alt={client.client_name} className={styles.taglineImage} />
                             <div>
-                                <span>{client.client_name}</span>
+                                <span style={{ display: 'block', marginBottom: '5px' }}>{client.client_name}</span>
                                 <a href={client.client_link} target="_blank" rel="noopener noreferrer">
                                     {client.client_link}
                                 </a>
