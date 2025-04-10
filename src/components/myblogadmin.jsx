@@ -13,13 +13,13 @@ const MyBlogsAdmin = () => {
         <div className={styles.adminContainer}>
             <h2>Blogs Admin Panel</h2>
 
-            <div style={{ fontSize: '0.8em', color: 'gray', marginBottom: '5px' }}>
+            <div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '5px' }}>
     Note: Uploads are limited to 5GB due to database constraints.
 </div>
-<div style={{ fontSize: '0.8em', color: 'gray', marginBottom: '10px' }}>
+<div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '10px' }}>
     Note: For optimal display in the image list, limit uploads to 5-7 images.
 </div>
-<div style={{ fontSize: '0.8em', color: 'gray', marginBottom: '10px' }}>
+<div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '10px' }}>
     Note: Please upload images one by one.
 </div>
 
