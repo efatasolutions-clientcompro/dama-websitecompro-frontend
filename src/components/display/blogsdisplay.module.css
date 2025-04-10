@@ -2,6 +2,7 @@
   font-family: var(--font-2), sans-serif;
   padding: 20px;
   color: var(--color-2);
+  padding-top: 100px;
 }
 
 .contentWrapper {

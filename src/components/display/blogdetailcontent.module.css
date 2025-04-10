@@ -1,6 +1,7 @@
 .blogDetailContainer {
   font-family: var(--font-2), sans-serif;
   padding: 15px;
+  padding-top: 100px;
   color: var(--color-2);
   opacity: 0;
   transform: translateY(20px);

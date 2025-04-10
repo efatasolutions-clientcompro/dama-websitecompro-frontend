@@ -66,7 +66,7 @@ const WorkDetailContent = ({ work }) => {
               {/* Menggunakan dangerouslySetInnerHTML */}
               <p dangerouslySetInnerHTML={{ __html: workData.work_desc }}></p>
               <p> {workData.work_detail}</p>
-              <p> {workData.work_people}</p>
+        
               <p><strong>Category:</strong> {workData.work_category}</p>
               {workData.work_logo_img && (
                 <img src={workData.work_logo_img} alt="Work Logo" className={styles['work-logo']} />
