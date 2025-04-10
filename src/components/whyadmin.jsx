@@ -143,7 +143,7 @@ const WhyAdmin = () => {
                 </p>
             )}
 
-            <button onClick={handleUpload} className={styles.uploadButton}>Upload Why</button>
+            <button onClick={handleUpload} className={styles.uploadButton}>Add Why</button>
 
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>

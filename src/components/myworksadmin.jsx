@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import WorksAdmin from '../components/worksadmin.jsx';
 import WorkPage from '../components/workpageadmin.jsx';
-import styles from './myhomeadmin.module.css'; // Menggunakan gaya yang sama
+import styles from './myhomeadmin.module.css';
 
 const MyWorksAdmin = () => {
     const [showWorksAdmin, setShowWorksAdmin] = useState(false);
@@ -14,8 +14,16 @@ const MyWorksAdmin = () => {
     return (
         <div className={styles.adminContainer}>
             <h2>Works Admin Panel</h2>
+            <div style={{ fontSize: '0.8em', color: 'gray', marginBottom: '5px' }}>
+    Note: Uploads are limited to 5GB due to database constraints.
+</div>
+<div style={{ fontSize: '0.8em', color: 'gray', marginBottom: '10px' }}>
+    Note: For optimal display in the image list, limit uploads to 5-7 images.
+</div>
+<div style={{ fontSize: '0.8em', color: 'gray', marginBottom: '10px' }}>
+    Note: Please upload images one by one.
+</div>
 
-            {/* Container untuk tombol "Go to" */}
             <div className={styles.goToContainer}>
                 <button onClick={() => navigateTo('/adminonlydama/servicesdama')} className={`${styles.adminButton} ${styles.goToButton}`}>Go to Services Page</button>
                 <button onClick={() => navigateTo('/adminonlydama/homedama')} className={`${styles.adminButton} ${styles.goToButton}`}>Go to Home Page</button>
@@ -24,7 +32,6 @@ const MyWorksAdmin = () => {
                 <button onClick={() => navigateTo('/adminonlydama/blogsdama')} className={`${styles.adminButton} ${styles.goToButton}`}>Go to Blogs Page</button>
             </div>
 
-            {/* Container untuk tombol "Show" */}
             <div className={styles.showContainer}>
                 <button
                     onClick={() => setShowWorksAdmin(!showWorksAdmin)}

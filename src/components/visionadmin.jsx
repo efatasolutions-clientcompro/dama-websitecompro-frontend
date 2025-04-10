@@ -143,7 +143,7 @@ const VisionAdmin = () => {
                 </p>
             )}
 
-            <button onClick={handleUpload} className={styles.uploadButton}>Upload Vision</button>
+            <button onClick={handleUpload} className={styles.uploadButton}>Add Vision</button>
 
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>

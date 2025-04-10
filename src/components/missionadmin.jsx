@@ -143,7 +143,7 @@ const MissionAdmin = () => {
                 </p>
             )}
 
-            <button onClick={handleUpload} className={styles.uploadButton}>Upload Mission</button>
+            <button onClick={handleUpload} className={styles.uploadButton}>Add Mission</button>
 
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>

@@ -1,6 +1,7 @@
 /* myhomeadmin.module.css */
 
 .adminContainer {
+    margin-top: 100px;
     padding: 30px;
     text-align: center;
     font-family: var(--font-2);

@@ -25,6 +25,9 @@ const MyHomeAdmin = () => {
     return (
         <div className={styles.adminContainer}>
             <h2>Home Admin Panel</h2>
+            <div style={{ fontSize: '0.8em', color: 'gray', marginBottom: '5px' }}>
+    Note: Uploads are limited to 5GB due to database constraints.
+</div>
 
             {/* Container untuk tombol "Go to" */}
             <div className={styles.goToContainer}>

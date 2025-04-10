@@ -197,7 +197,7 @@ const TestimonialsAdmin = () => {
                 </p>
             )}
 
-            <button onClick={handleUpload} className={styles.uploadButton}>Upload Testimonial</button>
+            <button onClick={handleUpload} className={styles.uploadButton}>Add Testimonial</button>
 
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>

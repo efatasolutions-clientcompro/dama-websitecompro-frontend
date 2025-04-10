@@ -197,7 +197,7 @@ const TaglinesAdmin = () => {
                 </p>
             )}
 
-            <button onClick={handleUpload} className={styles.uploadButton}>Upload Tagline</button>
+            <button onClick={handleUpload} className={styles.uploadButton}>Add Tagline</button>
 
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>

@@ -179,7 +179,7 @@ const PeopleAdmin = () => {
                 </p>
             )}
 
-            <button onClick={handleUpload} className={styles.uploadButton}>Upload Person</button>
+            <button onClick={handleUpload} className={styles.uploadButton}>Add People</button>
 
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>

@@ -197,7 +197,7 @@ const OurClientsAdmin = () => {
                 </p>
             )}
 
-            <button onClick={handleUpload} className={styles.uploadButton}>Upload Client</button>
+            <button onClick={handleUpload} className={styles.uploadButton}>Add Client</button>
 
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>

@@ -197,7 +197,7 @@ const InstagramsAdmin = () => {
                 </p>
             )}
 
-            <button onClick={handleUpload} className={styles.uploadButton}>Upload Instagram Data</button>
+            <button onClick={handleUpload} className={styles.uploadButton}>Add Instagram Data</button>
 
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>
