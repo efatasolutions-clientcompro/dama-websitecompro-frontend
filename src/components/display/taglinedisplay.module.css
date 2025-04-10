@@ -108,10 +108,12 @@
 @media (max-width: 768px) {
   .taglineContent {
       padding: 0 20px; /* Padding horizontal dalam piksel, sesuaikan jika perlu */
+      
   }
   .taglineContainer {
-      max-height: 800px; /* 70vh = 70% dari viewport height. Sesuaikan jika perlu. */
+      max-height: 500px; /* 70vh = 70% dari viewport height. Sesuaikan jika perlu. */
       padding: 0;
+      margin-top: 60px;
   }
 
   .taglineContent h2 {

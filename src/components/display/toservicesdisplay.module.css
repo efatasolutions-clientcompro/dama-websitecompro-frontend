@@ -1,10 +1,11 @@
+/* Gaya default untuk desktop (tidak ada perubahan dari kode Anda) */
 .toServicesContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   max-width: 100vw;
-  height: 500px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
-  max-height: 500px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
+  height: 500px; /* Sesuaikan jika perlu */
+  max-height: 500px; /* Sesuaikan jika perlu */
   overflow: hidden;
   border-bottom: 1.5px solid #000;
 }
@@ -18,7 +19,7 @@
 }
 
 .textColumn h2 {
-  font-size: 24px; /* 1.5em = 24px */
+  font-size: 24px; /* 1.5em */
   padding: 20px;
 }
 
@@ -69,7 +70,7 @@
     margin-top: 10px;
     padding: 10px 20px;
     color: var(--color-1);
-    font-size: 14px; /* 0.9rem = 14.4px */
+    font-size: 14px; /* 0.9rem */
     text-decoration: none;
     border: 1px solid var(--color-1);
     background-color: var(--color-4) ;
@@ -82,27 +83,54 @@
   background-color: var(--color-2);
 }
 
-/* Media query untuk mobile */
+/* Media query untuk layar dengan lebar maksimum 768px (ukuran layar mobile umum) */
 @media (max-width: 768px) {
   .toServicesContainer {
-      flex-direction: column;
-      height: 100%;
-      max-height: 900px;
-      font-size: 20px;
+    flex-direction: column; /* Mengubah tata letak menjadi satu kolom */
+    height: auto; /* Biarkan tinggi menyesuaikan konten */
+    max-height: none; /* Hapus batasan tinggi maksimum */
   }
 
-  .textColumn,
-  .imageColumn {
-      width: 100%;
-      padding: 30px;
+  .textColumn {
+    width: 100%; /* Mengisi seluruh lebar */
+    padding: 20px; /* Kurangi padding untuk ruang yang lebih kecil */
+  }
+
+  .textColumn h2 {
+    font-size: 20px; /* Ukuran font yang lebih kecil */
+    padding: 10px;
   }
 
   .imageColumn {
-      border-left: none;
+    width: 100%; /* Mengisi seluruh lebar */
+    border-left: none; /* Hapus border kiri */
+    border-top: 1.5px solid #000; /* Tambahkan border atas sebagai pemisah */
   }
 
   .buttonContainer {
-      flex-direction: column;
-      max-width: 100%;
+    flex-direction: column; /* Tombol menjadi satu kolom */
+    align-items: center; /* Tengahkan tombol */
+  }
+
+  .specialPackagesButton,
+  .individualServicesButton {
+    width: 80%; /* Lebar tombol lebih kecil */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center; /* Tengahkan teks dalam tombol */
+  }
+}
+
+/* Anda bisa menambahkan media query lain untuk ukuran layar yang berbeda jika diperlukan */
+/* Contoh untuk layar yang lebih kecil (misalnya, lebar maksimum 480px) */
+@media (max-width: 480px) {
+  .textColumn h2 {
+    font-size: 18px;
+  }
+
+  .specialPackagesButton,
+  .individualServicesButton {
+    font-size: 12px;
+    padding: 8px 16px;
   }
 }

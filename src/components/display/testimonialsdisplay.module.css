@@ -1,8 +1,9 @@
+/* Gaya default untuk desktop */
 .testimonialContainer {
   position: relative;
   width: 100%;
-  height: 640px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
-  max-height: 640px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
+  height: 640px; /* Sesuaikan jika perlu */
+  max-height: 640px; /* Sesuaikan jika perlu */
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -41,13 +42,13 @@
 }
 
 .testimonialContent h2 {
-  font-size: 24px; /* 1.5em = 24px */
+  font-size: 24px; /* 1.5em */
   margin-bottom: 5px;
   color: var(--color-4);
 }
 
 .testimonialContent p {
-  font-size: 14px; /* 0.9em = 14.4px */
+  font-size: 14px; /* 0.9em */
   margin-bottom: 10px;
   line-height: 1.4;
 }
@@ -85,35 +86,34 @@
   background-color: #ccc;
 }
 
-/* Optimasi untuk tampilan mobile */
+/* Media query untuk layar dengan lebar maksimum 768px (ukuran layar mobile umum) */
 @media (max-width: 768px) {
   .testimonialContainer {
-      height: 300px; /* Biarkan tinggi menyesuaikan konten */
-      max-height: 300px; /* Hapus max-height untuk mobile */
+    height: 500px; /* Biarkan tinggi menyesuaikan konten */
+    max-height: 500px;
+    padding: 20px 0; /* Tambahkan sedikit padding atas dan bawah */
+
   }
 
   .testimonialContent {
-      padding: 0 15px; /* Tambah padding horizontal untuk mobile */
+    width: 90%; /* Membuat konten lebih kecil dari lebar layar */
+    height: 100%;
+    padding: 20px; /* Tambahkan padding agar teks tidak terlalu mepet tepi */
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+    align-content: center;
   }
 
   .testimonialContent h2 {
-      font-size: 8px; /* Ukuran font lebih kecil untuk mobile */
-      margin-bottom: 8px;
+    font-size: 20px; /* Ukuran font yang lebih kecil */
   }
 
   .testimonialContent p {
-      font-size: 8spx; /* Ukuran font lebih kecil untuk mobile */
-      line-height: 1.6; /* Line height lebih besar untuk keterbacaan */
+    font-size: 12px; /* Ukuran font yang lebih kecil */
+    line-height: 1.6; /* Tingkatkan line-height untuk keterbacaan */
   }
 
   .testimonialIndicators {
-      margin-top: 8px;
-      bottom: 8px;
-  }
-
-  .testimonialIndicator {
-      width: 6px; /* Ukuran indikator lebih kecil untuk mobile */
-      height: 6px;
-      margin: 0 2px;
+    bottom: 20px; /* Berikan sedikit ruang dari bawah */
   }
 }
+
