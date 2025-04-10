@@ -13,17 +13,16 @@ const WorkDetailContent = ({ work }) => {
         if (response.ok) {
           const data = await response.json();
           setWorkData(data);
-          // Set initial selected image after data is loaded
           if (data && data.work_img && data.work_img.length > 0) {
             setSelectedImage(data.work_img[0]);
           }
         } else {
           console.error('Failed to fetch work data:', response.status);
-          setWorkData(null); // Set data to null to indicate an error state if needed
+          setWorkData(null);
         }
       } catch (error) {
         console.error('Error fetching work data:', error);
-        setWorkData(null); // Set data to null to indicate an error state
+        setWorkData(null);
       } finally {
         setLoading(false);
       }
@@ -32,7 +31,7 @@ const WorkDetailContent = ({ work }) => {
     if (work && work.id) {
       fetchWorkData();
     }
-  }, [work ? work.id : null]); // Re-fetch if work.id changes
+  }, [work ? work.id : null]);
 
   if (loading) {
     return (
@@ -64,7 +63,8 @@ const WorkDetailContent = ({ work }) => {
           <section className={styles['section-3']}>
 
             <div className={styles['section-3-right']}>
-              <p> {workData.work_desc}</p>
+              {/* Menggunakan dangerouslySetInnerHTML */}
+              <p dangerouslySetInnerHTML={{ __html: workData.work_desc }}></p>
               <p> {workData.work_detail}</p>
               <p> {workData.work_people}</p>
               <p><strong>Category:</strong> {workData.work_category}</p>

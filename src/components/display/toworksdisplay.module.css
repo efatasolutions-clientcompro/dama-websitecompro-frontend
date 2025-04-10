@@ -29,10 +29,13 @@
 }
 
 .imageContainer {
-  position: relative;
+  position: relative; /* Tetap position relative */
   overflow: hidden;
-  border: 1px solid #000;
-  max-height: 500px;
+  max-height: 530px; /* Sesuaikan dengan tinggi gambar + judul */
+  display: flex; /* Tambahkan flex container */
+  flex-direction: column; /* Atur item di dalam container menjadi kolom */
+  align-items: center; /* Atur item agar berada di tengah horizontal */
+  cursor: pointer; /* Tambahkan cursor pointer karena bisa diklik */
 }
 
 .workImage {
@@ -41,27 +44,25 @@
   object-fit: cover;
   filter: grayscale(100%);
   transition: filter 0.3s ease-in-out;
+  margin-bottom: 10px; /* Beri sedikit jarak antara gambar dan teks */
 }
 
 .imageContainer:hover .workImage {
   filter: grayscale(0%);
 }
 
-.imageOverlay {
-  position: absolute;
-  bottom: 0;
-  padding: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
+.imageTitle { /* Gaya untuk judul yang berada di bawah gambar */
   text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  color: black; /* Atau warna lain yang Anda inginkan */
+  font-size: 1rem; /* Sesuaikan ukuran font jika perlu */
+  padding: 5px; /* Beri sedikit padding di sekitar teks */
+  width: 100%; /* Lebar teks menyesuaikan container */
+  box-sizing: border-box; /* Pastikan padding tidak menambah lebar elemen */
 }
 
-.imageContainer:hover .imageOverlay {
-  opacity: 1;
+.imageOverlay {
+  /* Hapus atau komentari seluruh blok .imageOverlay */
+  display: none; /* Pastikan overlay tidak terlihat */
 }
 
 .buttonContainer {
@@ -70,13 +71,13 @@
 
 .portfolioButton {
   display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    color: var(--color-1);
-    font-size: 14px; /* 0.9rem = 14.4px */
-    text-decoration: none;
-    border: 1px solid var(--color-1);
-    background-color: var(--color-4) ;
+  margin-top: 10px;
+  padding: 10px 20px;
+  color: var(--color-1);
+  font-size: 14px; /* 0.9rem = 14.4px */
+  text-decoration: none;
+  border: 1px solid var(--color-1);
+  background-color: var(--color-4) ;
 
 }
 
@@ -98,21 +99,22 @@
       flex-direction: column;
       gap: 16px; /* 1em = 16px */
       align-items: center;
+      width: 100%;
   }
 
-  .workImage,
   .imageContainer {
+      max-height: 230px; /* Sesuaikan tinggi gambar + judul pada mobile */
+  }
+
+  .workImage {
       width: 100%;
       height: 200px;
-      max-height: none;
+      margin-bottom: 5px; /* Sesuaikan jarak pada mobile */
   }
 
-  .toworksText {
-      font-size: 19px; /* 1.2rem = 19.2px */
-  }
-
-  .toworksSubText {
-      font-size: 11px; /* 0.7rem = 11.2px */
+  .imageTitle {
+      font-size: 0.8rem; /* Sesuaikan ukuran font mobile jika perlu */
+      padding: 3px;
   }
 
   .portfolioButton {

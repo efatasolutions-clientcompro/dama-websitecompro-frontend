@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import styles from "./worksadmin.module.css";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // Import tema snow
 
 const WorksAdmin = () => {
     const [worksData, setWorksData] = useState([]);
@@ -57,11 +59,23 @@ const WorksAdmin = () => {
     }, []);
 
     const handleApiError = useCallback(async (response, successMessage) => {
+        let responseData;
+        try {
+            responseData = await response.json();
+        } catch (error) {
+            console.warn("Failed to parse JSON in handleApiError:", error);
+            if (!response.ok) {
+                throw new Error(`Failed: ${response.statusText}`);
+            }
+            setMessage(successMessage);
+            return null; // Or handle cases where JSON is not expected on success
+        }
+
         if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(`Failed: ${errorData.error || response.statusText}`);
+            throw new Error(`Failed: ${responseData.error || response.statusText}`);
         }
         setMessage(successMessage);
+        return responseData;
     }, []);
 
     const addWork = useCallback(async () => {
@@ -101,10 +115,11 @@ const WorksAdmin = () => {
                 body: formData,
             });
 
-            await handleApiError(response, "Work added successfully!");
-            const data = await response.json();
-            setWorksData([...worksData, data[0]]);
-            resetForm();
+            const responseData = await handleApiError(response, `Work "${newWork.work_title}" added successfully!`);
+            if (responseData && responseData.length > 0) {
+                setWorksData([...worksData, responseData[0]]);
+                resetForm();
+            }
         } catch (error) {
             console.error("Error adding Work:", error);
             setMessage(`Failed to add Work: ${error.message}`);
@@ -129,13 +144,11 @@ const WorksAdmin = () => {
             const formData = new FormData();
             Object.keys(newWork).forEach((key) => {
                 if (key === "work_img") {
-                    // Append file gambar baru
                     newWork.work_img.forEach((item) => {
                         if (item instanceof File) {
                             formData.append("work_img", item);
                         }
                     });
-                    // Kirim array URL gambar yang sudah ada secara terpisah
                     const existingWorkImageUrls = newWork.work_img.filter(item => typeof item === 'string');
                     existingWorkImageUrls.forEach((url, index) => {
                         formData.append(`work_img_url[${index}]`, url);
@@ -144,7 +157,6 @@ const WorksAdmin = () => {
                     if (newWork[key] instanceof File) {
                         formData.append(key, newWork[key]);
                     }
-                    // Jika bukan File, diasumsikan URL yang sudah ada, tidak perlu dikirim lagi di FormData
                 } else if (newWork[key] !== null && newWork[key] !== undefined) {
                     formData.append(key, newWork[key]);
                 } else {
@@ -157,13 +169,14 @@ const WorksAdmin = () => {
                 body: formData,
             });
 
-            await handleApiError(response, "Work updated successfully!");
-            const updatedData = await response.json();
-            const updatedWorksData = worksData.map((work) =>
-                work.id === updatedData[0].id ? updatedData[0] : work
-            );
-            setWorksData(updatedWorksData);
-            resetForm();
+            const responseData = await handleApiError(response, `Work "${newWork.work_title}" updated successfully!`);
+            if (responseData && responseData.length > 0) {
+                const updatedWorksData = worksData.map((work) =>
+                    work.id === responseData[0].id ? responseData[0] : work
+                );
+                setWorksData(updatedWorksData);
+                resetForm();
+            }
         } catch (error) {
             console.error("Error updating Work:", error);
             setMessage(`Failed to update Work: ${error.message}`);
@@ -179,7 +192,7 @@ const WorksAdmin = () => {
         setLoading(true);
         try {
             const response = await fetch(`https://dama-backend.vercel.app/works/${id}`, { method: "DELETE" });
-            await handleApiError(response, "Work deleted successfully!");
+            await handleApiError(response, `Work with ID ${id} deleted successfully!`);
             setWorksData(worksData.filter((work) => work.id !== id));
         } catch (error) {
             console.error("Error deleting Work:", error);
@@ -225,7 +238,6 @@ const WorksAdmin = () => {
         if (file) {
             updatedPreviews[index] = URL.createObjectURL(file);
         } else if (selectedWork?.work_img?.[index] && !newWork.work_img[index]) {
-            // Jika tidak ada file baru dan ada URL lama, pertahankan URL lama untuk preview
             updatedPreviews[index] = selectedWork.work_img[index];
         }
         setWorkImagesPreview(updatedPreviews);
@@ -264,13 +276,13 @@ const WorksAdmin = () => {
             work_detail: work.work_detail || "",
             work_people: work.work_people || "",
             work_category: work.work_category || "",
-            work_main_img: null, // Jangan set ke URL, biarkan null agar onChange terpanggil jika ada perubahan
-            work_logo_img: null, // Sama seperti di atas
-            work_img: work.work_img || [], // Simpan array URL gambar yang sudah ada
+            work_main_img: null,
+            work_logo_img: null,
+            work_img: work.work_img || [],
         });
         setMainImagePreview(work.work_main_img);
         setLogoImagePreview(work.work_logo_img);
-        setWorkImagesPreview(work.work_img || []); // Set preview ke URL gambar yang sudah ada
+        setWorkImagesPreview(work.work_img || []);
         setEditIndex(index);
         setShowForm(true);
         setWorkImageInputs(work.work_img ? work.work_img.map((_, i) => i) : []);
@@ -370,11 +382,20 @@ const WorksAdmin = () => {
                         className={styles.inputField}
                     />
                     <label htmlFor="workDesc">Description:</label>
-                    <textarea
-                        id="workDesc"
-                        placeholder="Description"
+                    <ReactQuill
                         value={newWork.work_desc}
-                        onChange={(e) => setNewWork({ ...newWork, work_desc: e.target.value })}
+                        onChange={(content) => setNewWork({ ...newWork, work_desc: content })}
+                        modules={{
+                            toolbar: [
+                                ['bold', 'italic', 'underline', 'strike'],
+                                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                ['clean']
+                            ],
+                        }}
+                        formats={[
+                            'bold', 'italic', 'underline', 'strike',
+                            'list', 'bullet'
+                        ]}
                         className={styles.inputField}
                     />
                     <label htmlFor="workDetail">Detail:</label>
@@ -411,7 +432,7 @@ const WorksAdmin = () => {
 
                     <div className={styles.imageUploadContainer}>
                         <div className={styles.imageUploadBox}>
-                            <input
+                        <input
                                 type="file"
                                 accept="image/*"
                                 onChange={handleMainImageChange}
@@ -478,7 +499,8 @@ const WorksAdmin = () => {
                             <h3>{work.work_title}</h3>
                             <p>{work.work_category}</p>
                             <p>{work.work_subtitle}</p>
-                            <p>{work.work_desc}</p>
+                            {/* Menggunakan dangerouslySetInnerHTML untuk menampilkan format HTML dari Quill */}
+                            <p dangerouslySetInnerHTML={{ __html: work.work_desc }}></p>
                             <p>{work.work_detail}</p>
                             <p>{work.work_people}</p>
                             <div className={styles.workImageContainer}>
@@ -514,11 +536,20 @@ const WorksAdmin = () => {
                                     className={styles.inputField}
                                 />
                                 <label htmlFor="workDesc">Description:</label>
-                                <textarea
-                                    id="workDesc"
-                                    placeholder="Description"
+                                <ReactQuill
                                     value={newWork.work_desc}
-                                    onChange={(e) => setNewWork({ ...newWork, work_desc: e.target.value })}
+                                    onChange={(content) => setNewWork({ ...newWork, work_desc: content })}
+                                    modules={{
+                                        toolbar: [
+                                            ['bold', 'italic', 'underline', 'strike'],
+                                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                            ['clean']
+                                        ],
+                                    }}
+                                    formats={[
+                                        'bold', 'italic', 'underline', 'strike',
+                                        'list', 'bullet'
+                                    ]}
                                     className={styles.inputField}
                                 />
                                 <label htmlFor="workDetail">Detail:</label>

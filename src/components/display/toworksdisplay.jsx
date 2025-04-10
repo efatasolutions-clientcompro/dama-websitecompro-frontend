@@ -2,52 +2,38 @@ import React, { useEffect, useState } from "react";
 import styles from "./toworksdisplay.module.css";
 
 const ToWorksDisplay = () => {
-    const [toWork, setToWork] = useState(null);
-    const [workImages, setWorkImages] = useState([]);
+    const [toWorkData, setToWorkData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
     useEffect(() => {
-        const fetchToWorks = async () => {
+        const fetchToWorksData = async () => {
             setLoading(true);
             try {
                 const response = await fetch("https://dama-backend.vercel.app/toworks");
                 if (response.ok) {
                     const data = await response.json();
                     if (data.length > 0) {
-                        setToWork(data[0]);
+                        setToWorkData(data[0]); // Assuming the first entry has the image data
                     }
                 } else {
-                    setMessage("Failed to fetch to works.");
+                    setMessage("Failed to fetch to works data.");
                 }
             } catch (error) {
-                console.error("Error fetching to works:", error);
-                setMessage("Failed to fetch to works.");
-            }
-        };
-
-        const fetchWorkImages = async () => {
-            try {
-                const response = await fetch("https://dama-backend.vercel.app/works");
-                if (response.ok) {
-                    const data = await response.json();
-                    const sortedData = data.sort((a, b) => b.id - a.id);
-                    setWorkImages(sortedData.slice(0, 3));
-                }
-            } catch (error) {
-                console.error("Error fetching work images:", error);
+                console.error("Error fetching to works data:", error);
+                setMessage("Failed to fetch to works data.");
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchToWorks();
-        fetchWorkImages();
+        fetchToWorksData();
     }, []);
 
-    const goToDetailPage = (workTitle) => {
-        const formattedTitle = workTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        window.location.href = `/works/${formattedTitle}`;
+    const handleImageClick = (link) => {
+        if (link) {
+            window.open(link, "_blank"); // Open link in a new tab
+        }
     };
 
     return (
@@ -55,24 +41,36 @@ const ToWorksDisplay = () => {
             {loading && <p className={styles.loading}>Loading...</p>}
             {message && <p className={styles.message}>{message}</p>}
 
-            {toWork && (
+            {toWorkData && (
                 <div className={styles.toworkContent}>
-                    <h1 className={styles.toworksText}>{toWork.toworks_text}</h1>
-                    <p className={styles.toworksSubText}>{toWork.toworks_sub_text}</p>
+                    <h1 className={styles.toworksText}>{toWorkData.toworks_text}</h1>
+                    <p className={styles.toworksSubText}>{toWorkData.toworks_sub_text}</p>
                 </div>
             )}
 
             <div className={styles.imageGallery}>
-                {workImages.map((work) => (
-                    <div
-                        key={work.id}
-                        className={styles.imageContainer}
-                        onClick={() => goToDetailPage(work.work_title)}
-                    >
-                        <img src={work.work_main_img} alt={work.work_title} className={styles.workImage} />
-                        <div className={styles.imageOverlay}>{work.work_title}</div>
-                    </div>
-                ))}
+                {toWorkData && (
+                    <>
+                        {toWorkData.one_img && (
+                            <div className={styles.imageContainer} onClick={() => handleImageClick(toWorkData.one_link)}>
+                                <img src={toWorkData.one_img} alt={toWorkData.one_name} className={styles.workImage} />
+                                <div className={styles.imageTitle}>{toWorkData.one_name}</div>
+                            </div>
+                        )}
+                        {toWorkData.two_img && (
+                            <div className={styles.imageContainer} onClick={() => handleImageClick(toWorkData.two_link)}>
+                                <img src={toWorkData.two_img} alt={toWorkData.two_name} className={styles.workImage} />
+                                <div className={styles.imageTitle}>{toWorkData.two_name}</div>
+                            </div>
+                        )}
+                        {toWorkData.three_img && (
+                            <div className={styles.imageContainer} onClick={() => handleImageClick(toWorkData.three_link)}>
+                                <img src={toWorkData.three_img} alt={toWorkData.three_name} className={styles.workImage} />
+                                <div className={styles.imageTitle}>{toWorkData.three_name}</div>
+                            </div>
+                        )}
+                    </>
+                )}
             </div>
 
             <div className={styles.buttonContainer}>

@@ -3,6 +3,12 @@
     background-color: var(--color-5);
     font-family: var(--font-2);
     color: var(--color-1);
+    position: fixed; /* Tambahkan ini untuk membuat header tetap */
+    top: 0; /* Posisikan header di bagian atas layar */
+    left: 0; /* Posisikan header di sisi kiri layar */
+    width: 100%; /* Lebar header 100% dari viewport */
+    z-index: 100; /* Pastikan header berada di atas konten lain */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tambahkan sedikit bayangan untuk efek visual */
 }
 
 .headerContainer {
@@ -11,7 +17,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
+    height: 80px; /* Sesuaikan tinggi header sesuai kebutuhan */
     border-bottom: 1.5px solid #000;
 }
 
@@ -35,9 +41,9 @@
 
 .logo img {
     display: flex;
-    max-height: 80px;
+    max-height: 40px; /* Sesuaikan ukuran logo jika perlu */
     opacity: 0.8;
-    padding: 30px;
+    padding: 10px 30px; /* Sesuaikan padding logo jika perlu */
     cursor: pointer;
     justify-content: center;
     align-items: center;
@@ -131,7 +137,7 @@
         display: flex;
         justify-content: space-between;
         padding: 0 20px !important;
-        height: 100px;
+        height: 60px; /* Sesuaikan tinggi header mobile jika perlu */
         max-height: 200px;
     }
 
@@ -152,5 +158,9 @@
         align-content: center;
         align-items: center;
         align-self: center;
+    }
+
+    .navMobile {
+        top: 60px; /* Sesuaikan top agar tidak tertutup header mobile */
     }
 }
