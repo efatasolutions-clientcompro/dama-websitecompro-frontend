@@ -1,3 +1,4 @@
+/* Gaya default untuk desktop (yang sekarang juga berlaku untuk mobile) */
 .contactContainer {
     position: relative;
     width: 100%;
@@ -12,72 +13,53 @@
     text-align: center;
     color: var(--color-5);
     font-family: var(--font-2);
-}
-
-.contactContainer::before {
+  }
+  
+  .contactContainer::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: inherit; /* Mewarisi background-image dari .contactContainer */
+    background-image: inherit; /* Mewarisi background-image */
     background-size: cover;
     background-position: center;
-    opacity: 0.5; /* Memberikan opacity pada background image */
-    z-index: -1; /* Menempatkan background image di belakang konten */
-}
-
-.contactContent {
+    opacity: 0.5;
+    z-index: -1;
+  }
+  
+  .contactContent {
     position: relative;
     z-index: 2;
     width: 100%;
     height: 800px;
+    display: flex; /* Tambahkan flex untuk mengatur item di dalamnya */
+    flex-direction: column; /* Atur item menjadi kolom */
     justify-content: center;
     align-items: center;
     align-content: center;
-    
     margin: auto;
     padding: var(--padding-large);
     opacity: none;
     background-color: rgba(0, 0, 0, 0.5);
-}
-
-.contactTitle {
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+  }
+  
+  .contactTitle {
     color: var(--color-5);
     font-size: 5em;
     margin-bottom: var(--margin-medium);
     font-weight: bold;
-}
-
-.contactSubtitle {
+  }
+  
+  .contactSubtitle {
     font-size: 1.2em;
     margin-bottom: var(--margin-large);
-}
-
-.whatsappLink {
+  }
+  
+  .whatsappLink {
     color: var(--color-5);
     text-decoration: underline;
     font-size: 1.2em;
-}
-
-@media screen and (max-width: 768px) {
-    .contactContainer {
-        height: 800px;
-        padding: 40px 20px;
-    }
-
-    .contactTitle {
-        font-size: 3em;
-        margin-bottom: 20px;
-    }
-
-    .contactSubtitle {
-        font-size: 1em;
-        margin-bottom: 30px;
-    }
-
-    .whatsappLink {
-        font-size: 1em;
-    }
-}
+  }

@@ -279,9 +279,10 @@ html, body {
     height: 150px;
     padding: 15px;
     margin-bottom: 30px;
+    margin-top: 50px;
   }
   .worksDisplayMain {
-    padding: 15px;
+    padding: 0px;
   }
 
   .workPageSection h2 {
@@ -305,7 +306,7 @@ html, body {
 
   .worksGrid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Kembali ke auto-fit untuk responsif di mobile */
-    padding: 20px;
+    padding: 15px;
     padding-top: 0;
     gap: 10px;
   }

@@ -139,6 +139,7 @@
         padding: 0 20px !important;
         height: 60px; /* Sesuaikan tinggi header mobile jika perlu */
         max-height: 200px;
+        text-align: center;
     }
 
     .navLeft,

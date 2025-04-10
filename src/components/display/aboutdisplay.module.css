@@ -53,6 +53,7 @@
 @media (max-width: 768px) {
     
     .aboutDisplayContainer{
+        margin-top: 60px;
         height: 100%;
         
     }

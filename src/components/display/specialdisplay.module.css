@@ -231,8 +231,9 @@
 /* MOBILE STYLES */
 @media (max-width: 768px) {
   .specialDisplayItem {
-      padding: 30px;
+      padding: 15px;
       min-height: auto;
+      
   }
 
   .row,
@@ -283,6 +284,7 @@
   .sectionTitle {
       font-size: 24px; /* 1.5em diubah menjadi 24px */
       animation: none;
+      margin-top: 50px;
       opacity: 1;
       transform: translateY(0);
   }
