@@ -193,97 +193,106 @@
 /* Media query untuk tampilan mobile */
 @media (max-width: 768px) {
     .adminContainer {
-        padding: 20px; /* Kurangi padding container */
-        border: 1px solid #000; /* Pertahankan border */
+        padding: 20px;
+        border: 1px solid #000;
     }
 
     .adminContainer h2 {
-        margin-bottom: 15px; /* Kurangi margin bawah judul */
-        font-size: 1.5em; /* Sesuaikan ukuran font judul jika perlu */
+        margin-bottom: 15px;
+        font-size: 1.3em; /* Lebih kecil dari sebelumnya */
+        word-break: break-word; /* Tambahkan word-break */
     }
 
     .message {
-        padding: 8px; /* Kurangi padding pesan */
-        margin-bottom: 15px; /* Kurangi margin bawah pesan */
-        font-size: 0.9em; /* Sesuaikan ukuran font pesan jika perlu */
+        padding: 8px;
+        margin-bottom: 15px;
+        font-size: 0.85em; /* Lebih kecil dari sebelumnya */
+        word-break: break-word; /* Tambahkan word-break */
     }
 
     .uploadButton {
-        padding: 8px 12px; /* Kurangi padding tombol upload */
-        font-size: 10px; /* Kurangi ukuran font tombol upload */
-        margin-bottom: 15px; /* Kurangi margin bawah tombol upload */
-        margin: 15px auto; /* Tetap tengah-kan tombol */
+        padding: 8px 12px;
+        font-size: 10px;
+        margin-bottom: 15px;
+        margin: 15px auto;
+        word-break: break-word; /* Tambahkan word-break */
     }
 
     .taglineForm {
-        padding: 10px; /* Kurangi padding form tagline */
-        gap: 8px; /* Kurangi gap antar elemen form */
-        margin-bottom: 15px; /* Kurangi margin bawah form */
+        padding: 10px;
+        gap: 8px;
+        margin-bottom: 15px;
     }
 
     .taglineForm label {
-        font-size: 0.9em; /* Sesuaikan ukuran font label form */
+        font-size: 0.9em;
+        word-break: break-word; /* Tambahkan word-break */
     }
 
     .inputField {
-        padding: 8px; /* Kurangi padding input */
-        font-size: 14px; /* Sesuaikan ukuran font input */
+        padding: 8px;
+        font-size: 14px;
+        word-break: break-word; /* Tambahkan word-break */
     }
 
     .imageUploadContainer {
-        margin-bottom: 8px; /* Kurangi margin bawah container upload gambar */
+        margin-bottom: 8px;
     }
 
     .imageUploadBox {
-        padding: 10px; /* Kurangi padding box upload gambar */
-        width: 150px; /* Kurangi lebar box upload gambar */
-        height: 100px; /* Kurangi tinggi box upload gambar */
+        padding: 10px;
+        width: 150px;
+        height: 100px;
     }
 
     .imagePreview {
-        max-width: 70px; /* Kurangi lebar maksimum preview gambar */
-        max-height: 70px; /* Kurangi tinggi maksimum preview gambar */
-        margin-top: 5px; /* Kurangi margin atas preview gambar */
+        max-width: 70px;
+        max-height: 70px;
+        margin-top: 5px;
     }
 
     .actionButton,
     .deleteButton,
     .cancelButton {
-        padding: 8px 12px; /* Kurangi padding tombol aksi */
-        font-size: 14px; /* Kurangi ukuran font tombol aksi */
+        padding: 8px 12px;
+        font-size: 14px;
+        word-break: break-word; /* Tambahkan word-break */
     }
 
     .taglineList {
-        gap: 15px; /* Kurangi gap antar item daftar tagline */
+        gap: 15px;
     }
 
     .taglineItem {
-        padding: 15px; /* Kurangi padding item tagline */
+        padding: 15px;
+        word-break: break-word; /* Tambahkan word-break */
     }
 
     .taglineContent {
-        gap: 10px; /* Kurangi gap antar elemen konten tagline */
+        gap: 5px; /* Kurangi gap */
+        word-break: break-word; /* Tambahkan word-break */
     }
 
     .taglineImage {
-        width: 70px; /* Kurangi lebar gambar tagline */
-        height: 70px; /* Kurangi tinggi gambar tagline */
-        max-width: 150px; /* Kurangi lebar maksimum gambar tagline */
-        max-height: 150px; /* Kurangi tinggi maksimum gambar tagline */
+        width: 70px;
+        height: 70px;
+        max-width: 150px;
+        max-height: 150px;
     }
 
     .taglineActions {
-        gap: 5px; /* Kurangi gap antar tombol aksi tagline */
-        margin-top: 5px; /* Kurangi margin atas tombol aksi tagline */
+        gap: 5px;
+        margin-top: 5px;
     }
 
     .editForm {
-        margin-top: 15px; /* Kurangi margin atas form edit */
+        margin-top: 15px;
     }
 
     .peopleImage {
-        width: 70px; /* Kurangi lebar gambar orang */
-        height: 70px; /* Kurangi tinggi gambar orang */
-        margin-right: 5px; /* Kurangi margin kanan gambar orang */
+        width: 70px;
+        height: 70px;
+        margin-right: 5px;
+        display: none; /* Contoh menyembunyikan elemen jika perlu */
     }
 }
