@@ -191,6 +191,11 @@ const InstagramsAdmin = () => {
     return (
         <section className={styles.adminContainer}>
             <h2>Instagrams Admin</h2>
+
+            <div style={{ fontSize: '0.8em', color: 'gray', marginBottom: '5px' }}>
+    Note: instagram name for SEO.
+</div>
+
             {message && (
                 <p className={`${styles.message} ${message.startsWith("Failed") ? styles.error : styles.success}`}>
                     {message}
