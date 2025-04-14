@@ -48,7 +48,7 @@ html, body {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInSlideUpWorkPage 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
-
+  margin-top: 80px;
 }
 
 @keyframes fadeInSlideUpWorkPage {
@@ -279,7 +279,7 @@ html, body {
     height: 150px;
     padding: 15px;
     margin-bottom: 30px;
-    margin-top: 50px;
+    margin-top: 60px;
   }
   .worksDisplayMain {
     padding: 0px;

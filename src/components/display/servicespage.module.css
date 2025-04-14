@@ -7,6 +7,7 @@
     flex-wrap: wrap;
     opacity: 0;
     animation: fadeIn 1s ease-out forwards;
+    margin-top: 80px;
 }
 
 .serviceItem {
@@ -61,7 +62,7 @@
     transform: translate(-50%, -50%);
     font-size: 32px; /* 2em diubah menjadi 32px (1em = 16px) */
     color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    
     z-index: 1;
 }
 
@@ -72,6 +73,9 @@
     }
     .serviceTitle{
         font-size: 24px; /* 1.5em diubah menjadi 24px (1em = 16px) */
+    }
+    .servicesContainer{
+        margin-top: 60px;
     }
 }
 

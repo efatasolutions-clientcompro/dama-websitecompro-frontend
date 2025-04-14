@@ -38,7 +38,7 @@ const DamaDisplay = () => {
                     <div className={styles.cvDama}>CV DAMA ADICIPTA KREASI MODE</div>
                     <div className={styles.socialIcons}>
                         {damaData.dama_linkedin && (
-                            <a href={`https://www.linkedin.com/company/${damaData.dama_linkedin}`} target="_blank" rel="noopener noreferrer">
+                            <a href={`https://id.linkedin.com/company/${damaData.dama_linkedin}`} target="_blank" rel="noopener noreferrer">
                                 <FontAwesomeIcon icon={faLinkedin} />
                             </a>
                         )}

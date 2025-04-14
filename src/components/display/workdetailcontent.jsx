@@ -68,9 +68,6 @@ const WorkDetailContent = ({ work }) => {
               <p> {workData.work_detail}</p>
         
               <p><strong>Category:</strong> {workData.work_category}</p>
-              {workData.work_logo_img && (
-                <img src={workData.work_logo_img} alt="Work Logo" className={styles['work-logo']} />
-              )}
             </div>
 
             <div className={styles['section-3-left']}>

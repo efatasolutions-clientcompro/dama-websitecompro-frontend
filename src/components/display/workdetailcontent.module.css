@@ -12,6 +12,7 @@
 .section-1 {
   position: relative;
   width: 100%;
+  margin-top: 80px;
   height: 52vh;
   background-size: cover;
   background-position: center;
@@ -212,6 +213,7 @@
     height: auto; /* Biarkan tinggi menyesuaikan konten */
     min-height: 300px; /* Berikan tinggi minimum */
     transform: translateY(-10px); /* Kurangi offset */
+    margin-top: 60px;
   }
 
   @keyframes fadeInSlideDown {

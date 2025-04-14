@@ -20,10 +20,10 @@ const Header = () => {
                         <li><a href="/">Home</a></li>
                         <li><a href="/about">About Us</a></li>
                         <li className={styles.dropdown}>
-                            <a href="/services">Service</a>
+                            <a href="/services">Services</a>
                             <div className={styles.dropdownContent}>
-                                <a href="/services/individual">Individual</a>
-                                <a href="/services/special">Special</a>
+                                <a href="/services/individual">Individual Services</a>
+                                <a href="/services/special">Special Packages</a>
                             </div>
                         </li>
                     </ul>

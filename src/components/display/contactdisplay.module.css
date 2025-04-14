@@ -63,3 +63,9 @@
     text-decoration: underline;
     font-size: 1.2em;
   }
+
+  @media (max-width: 768px) {
+    .contactContainer{
+      margin-top: 60px;
+    }
+  }

@@ -199,6 +199,10 @@ const ToWorksAdmin = () => {
   return (
     <section className={styles.adminContainer}>
       <h2><a href="/adminonlydama/homedama">To Works Admin</a></h2>
+
+      <div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '5px' }}>
+    Note: image size 300x500
+</div>
       {message && (
         <p className={`${styles.message} ${message.startsWith("Failed") ? styles.error : styles.success}`}>
           {message}

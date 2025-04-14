@@ -2,8 +2,8 @@
 .testimonialContainer {
   position: relative;
   width: 100%;
-  height: 640px; /* Sesuaikan jika perlu */
-  max-height: 640px; /* Sesuaikan jika perlu */
+  height: 700px; /* Sesuaikan jika perlu */
+  max-height: 700px; /* Sesuaikan jika perlu */
   overflow: hidden;
   display: flex;
   flex-direction: column;

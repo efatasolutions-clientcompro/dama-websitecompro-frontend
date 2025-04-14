@@ -37,7 +37,10 @@ const VisionMissionDisplay = () => {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <section className={styles.visionMissionContainer}>
+        <section
+            className={`${styles.visionMissionContainer} ${visionData.length > 0 && visionData[0].vision_img ? styles.hasBackgroundImage : ""}`}
+            style={visionData.length > 0 && visionData[0].vision_img ? { backgroundImage: `url(${visionData[0].vision_img})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' } : {}}
+        >
             {visionData.length > 0 && (
                 <div className={styles.visionSection}>
                     <h2>Vision</h2>

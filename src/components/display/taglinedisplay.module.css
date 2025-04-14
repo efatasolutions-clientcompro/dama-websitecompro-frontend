@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   border-bottom: 1.5px solid #000;
+  margin-top: 80px;
 }
 
 .backgroundImage {
@@ -46,7 +47,6 @@
   margin-bottom: 12px; /* 0.8em = 12.8px, sesuaikan jika perlu */
   color: var(--color-4);
   line-height: 32px; /* 1.2em = 19.2px, sesuaikan jika perlu */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .taglineContent p {

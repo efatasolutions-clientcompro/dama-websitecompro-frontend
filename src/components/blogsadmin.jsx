@@ -265,6 +265,10 @@ const BlogsAdmin = () => {
     return (
         <section className={styles.adminContainer}>
             <h2><a href="/adminonlydama/homedama">Blogs Admin</a></h2>
+
+            <div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '5px' }}>
+    Note: blogs banner 1200x600, blogs image 500x500
+</div>
             {message && <p className={`${styles.message} ${message.startsWith("Failed") ? styles.error : styles.success}`}>{message}</p>}
             <input type="text" placeholder="Search Blogs" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className={styles.searchInput} />
             <button onClick={handleUpload} className={styles.uploadButton}>Add Blog</button>
@@ -300,11 +304,6 @@ const BlogsAdmin = () => {
                     <input type="text" id="author_contact" placeholder="Author Contact" value={newBlog.author_contact} onChange={(e) => setNewBlog({ ...newBlog, author_contact: e.target.value })} className={styles.inputField} />
                     <label htmlFor="published_at">Published At:</label>
                     <input type="datetime-local" id="published_at" value={newBlog.published_at} onChange={(e) => setNewBlog({ ...newBlog, published_at: e.target.value })} className={styles.inputField} />
-                    <label htmlFor="is_published">Is Published:</label>
-                    <select id="is_published" value={newBlog.is_published} onChange={(e) => setNewBlog({ ...newBlog, is_published: e.target.value === "true" })} className={styles.inputField}>
-                        <option value="true">True</option>
-                        <option value="false">False</option>
-                    </select>
                     <label htmlFor="is_pinned">Is Pinned:</label>
                     <select id="is_pinned" value={newBlog.is_pinned} onChange={(e) => setNewBlog({ ...newBlog, is_pinned: e.target.value === "true" })} className={styles.inputField}>
                         <option value="true">True</option>
@@ -377,11 +376,6 @@ const BlogsAdmin = () => {
                                 <input type="text" id="author_contact" placeholder="Author Contact" value={newBlog.author_contact} onChange={(e) => setNewBlog({ ...newBlog, author_contact: e.target.value })} className={styles.inputField} />
                                 <label htmlFor="published_at">Published At:</label>
                                 <input type="datetime-local" id="published_at" value={newBlog.published_at} onChange={(e) => setNewBlog({ ...newBlog, published_at: e.target.value })} className={styles.inputField} />
-                                <label htmlFor="is_published">Is Published:</label>
-                                <select id="is_published" value={newBlog.is_published} onChange={(e) => setNewBlog({ ...newBlog, is_published: e.target.value === "true" })} className={styles.inputField}>
-                                    <option value="true">True</option>
-                                    <option value="false">False</option>
-                                </select>
                                 <label htmlFor="is_pinned">Is Pinned:</label>
                                 <select id="is_pinned" value={newBlog.is_pinned} onChange={(e) => setNewBlog({ ...newBlog, is_pinned: e.target.value === "true" })} className={styles.inputField}>
                                     <option value="true">True</option>

@@ -5,7 +5,7 @@
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-    padding-top: 100px;
+    margin-top: 80px;
     box-sizing: border-box;
 }
 
@@ -58,3 +58,9 @@
     font-weight: bold;
     
 }
+
+@media (max-width: 768px) {
+    .contactContainer{
+      margin-top: 60px;
+    }
+  }

@@ -2,8 +2,8 @@
     position: relative;
     width: 100%;
     max-width: 100vw;
-    max-height: 640px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
-    height: 640px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
+    max-height: 700px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
+    height: 700px; /* 80vh = 80% dari viewport height. Sesuaikan jika perlu. */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

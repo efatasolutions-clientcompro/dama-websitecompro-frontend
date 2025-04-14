@@ -195,6 +195,9 @@ const InstagramsAdmin = () => {
             <div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '5px' }}>
     Note: instagram name for SEO.
 </div>
+<div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '5px' }}>
+    Note: image size 500x500
+</div>
 
             {message && (
                 <p className={`${styles.message} ${message.startsWith("Failed") ? styles.error : styles.success}`}>

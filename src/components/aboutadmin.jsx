@@ -102,6 +102,10 @@ const AboutAdmin = () => {
     return (
         <section className={styles.adminContainer}>
             <h2>About Admin</h2>
+
+            <div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '5px' }}>
+    Note: image size 600x600
+</div>
             {message && (
                 <p className={`${styles.message} ${message.startsWith("Failed") ? styles.error : styles.success}`}>
                     {message}

@@ -1,7 +1,7 @@
 .blogDetailContainer {
   font-family: var(--font-2), sans-serif;
   padding: 15px;
-  padding-top: 100px;
+  margin-top: 80px;
   color: var(--color-2);
   opacity: 0;
   transform: translateY(20px);
@@ -134,4 +134,10 @@
   color: white;
   font-size: 24px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .blogDetailContainer{
+    margin-top: 60px;
+  }
 }

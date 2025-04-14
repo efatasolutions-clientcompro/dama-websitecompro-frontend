@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
-import styles from "./homeadmin.module.css"; // Menggunakan homeadmin.module.css
+import styles from "./homeadmin.module.css";
 
 const VisionAdmin = () => {
     const [visions, setVisions] = useState([]);
-    const [newVision, setNewVision] = useState({ vision_content: "" });
+    const [newVision, setNewVision] = useState({
+        vision_content: "",
+        vision_img: null,
+    });
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
     const [selectedVision, setSelectedVision] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
     const [showForm, setShowForm] = useState(false);
     const [editIndex, setEditIndex] = useState(null);
 
@@ -28,28 +32,43 @@ const VisionAdmin = () => {
                 setLoading(false);
             }
         };
+
         fetchVisions();
     }, []);
 
     const addVision = async () => {
-        if (!newVision.vision_content) {
-            setMessage("Vision content is required.");
+        if (!newVision.vision_content || !newVision.vision_img) {
+            setMessage("Vision content and image are required.");
+            return;
+        }
+
+        if (newVision.vision_img.size > 5 * 1024 * 1024) {
+            setMessage("Image size must be less than 5MB.");
+            return;
+        }
+
+        if (!newVision.vision_img.type.startsWith("image/")) {
+            setMessage("File type must be an image.");
             return;
         }
 
         setLoading(true);
         try {
+            const formData = new FormData();
+            formData.append("vision_content", newVision.vision_content);
+            formData.append("vision_img", newVision.vision_img);
+
             const response = await fetch("https://dama-backend.vercel.app/visions", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(newVision),
+                body: formData,
             });
 
             if (response.ok) {
                 setMessage("Vision added successfully!");
                 const data = await response.json();
                 setVisions([...visions, data]);
-                setNewVision({ vision_content: "" });
+                setNewVision({ vision_content: "", vision_img: null });
+                setImagePreview(null);
                 setShowForm(false);
                 setEditIndex(null);
             } else {
@@ -71,10 +90,15 @@ const VisionAdmin = () => {
 
         setLoading(true);
         try {
+            const formData = new FormData();
+            formData.append("vision_content", newVision.vision_content);
+            if(newVision.vision_img){
+                formData.append("vision_img", newVision.vision_img);
+            }
+
             const response = await fetch(`https://dama-backend.vercel.app/visions/${selectedVision.id}`, {
                 method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(newVision),
+                body: formData,
             });
 
             if (response.ok) {
@@ -84,8 +108,9 @@ const VisionAdmin = () => {
                     vision.id === updatedData.id ? updatedData : vision
                 );
                 setVisions(updatedVisions);
-                setNewVision({ vision_content: "" });
+                setNewVision({ vision_content: "", vision_img: null });
                 setSelectedVision(null);
+                setImagePreview(null);
                 setShowForm(false);
                 setEditIndex(null);
             } else {
@@ -120,16 +145,30 @@ const VisionAdmin = () => {
         setLoading(false);
     };
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setNewVision({ ...newVision, vision_img: file });
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => setImagePreview(reader.result);
+            reader.readAsDataURL(file);
+        } else {
+            setImagePreview(null);
+        }
+    };
+
     const handleUpload = () => {
-        setNewVision({ vision_content: "" });
+        setNewVision({ vision_content: "", vision_img: null });
         setSelectedVision(null);
+        setImagePreview(null);
         setShowForm(true);
         setEditIndex(null);
     };
 
     const handleEdit = (vision, index) => {
         setSelectedVision(vision);
-        setNewVision({ vision_content: vision.vision_content });
+        setNewVision({ vision_content: vision.vision_content, vision_img: null });
+        setImagePreview(vision.vision_img);
         setEditIndex(index);
         setShowForm(true);
     };
@@ -137,24 +176,42 @@ const VisionAdmin = () => {
     return (
         <section className={styles.adminContainer}>
             <h2>Vision Admin</h2>
+
+            <div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '5px' }}>
+    Note: image size 1200x300
+</div>
             {message && (
                 <p className={`${styles.message} ${message.startsWith("Failed") ? styles.error : styles.success}`}>
                     {message}
                 </p>
             )}
 
-            <button onClick={handleUpload} className={styles.uploadButton}>Add Vision</button>
+            
 
             {showForm && editIndex === null && (
                 <form className={styles.taglineForm}>
                     <label htmlFor="visionContent">Vision Content:</label>
-                    <textarea // Atau input, tergantung kebutuhan
+                    <textarea
                         id="visionContent"
                         placeholder="Vision Content"
                         value={newVision.vision_content}
-                        onChange={(e) => setNewVision({ vision_content: e.target.value })}
+                        onChange={(e) => setNewVision({ ...newVision, vision_content: e.target.value })}
                         className={styles.inputField}
                     />
+
+                    <div className={styles.imageUploadContainer}>
+                        <div className={styles.imageUploadBox}>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                                id="imageUpload"
+                                style={{ display: "none" }}
+                            />
+                            <label htmlFor="imageUpload">Upload Image</label>
+                        </div>
+                        {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
+                    </div>
 
                     <button onClick={selectedVision ? updateVision : addVision} disabled={loading} className={styles.actionButton}>
                         {loading ? (selectedVision ? "Updating..." : "Adding...") : (selectedVision ? "Update Vision" : "Add Vision")}
@@ -167,23 +224,35 @@ const VisionAdmin = () => {
                 {visions.map((vision, index) => (
                     <div key={vision.id} className={styles.taglineItem}>
                         <div className={styles.taglineContent}>
+                            <img src={vision.vision_img} alt={vision.vision_content} className={styles.taglineImage} />
                             <p>{vision.vision_content}</p>
                         </div>
                         <div className={styles.taglineActions}>
                             <button onClick={() => handleEdit(vision, index)} className={styles.actionButton}>Edit</button>
-                            <button onClick={() => deleteVision(vision.id)} disabled={loading} className={styles.deleteButton}>Delete</button>
                         </div>
                         {showForm && editIndex === index && (
                             <form className={`${styles.taglineForm} ${styles.editForm}`}>
                                 <label htmlFor="editVisionContent">Vision Content:</label>
-                                <textarea // Atau input, tergantung kebutuhan
+                                <textarea
                                     id="editVisionContent"
                                     placeholder="Vision Content"
                                     value={newVision.vision_content}
-                                    onChange={(e) => setNewVision({ vision_content: e.target.value })}
+                                    onChange={(e) => setNewVision({ ...newVision, vision_content: e.target.value })}
                                     className={styles.inputField}
                                 />
-
+                                <div className={styles.imageUploadContainer}>
+                                    <div className={styles.imageUploadBox}>
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={handleImageChange}
+                                            id="editImageUpload"
+                                            style={{ display: "none" }}
+                                        />
+                                        <label htmlFor="editImageUpload">Upload Image</label>
+                                    </div>
+                                    {imagePreview && <img src={imagePreview} alt="Preview" className={styles.imagePreview} />}
+                                </div>
                                 <button onClick={updateVision} disabled={loading} className={styles.actionButton}>
                                     {loading ? "Updating..." : "Update Vision"}
                                 </button>
