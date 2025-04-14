@@ -43,6 +43,6 @@
 
     .whyItem p {
         font-size: 14px; /* Ukuran font paragraf lebih kecil */
-        line-height: 1.4; /* Line height lebih kecil */
+         /* Line height lebih kecil */
     }
 }

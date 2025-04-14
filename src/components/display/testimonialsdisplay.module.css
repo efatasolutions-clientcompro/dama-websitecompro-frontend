@@ -109,7 +109,7 @@
 
   .testimonialContent p {
     font-size: 12px; /* Ukuran font yang lebih kecil */
-    line-height: 1.6; /* Tingkatkan line-height untuk keterbacaan */
+     /* Tingkatkan line-height untuk keterbacaan */
   }
 
   .testimonialIndicators {
