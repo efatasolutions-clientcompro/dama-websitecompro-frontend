@@ -193,7 +193,7 @@ const TestimonialsAdmin = () => {
             <h2>Testimonials Admin</h2>
 
             <div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '5px' }}>
-    Note: image size 600x700
+    Note: image size 1200x700
 </div>
             {message && (
                 <p className={`${styles.message} ${message.startsWith("Failed") ? styles.error : styles.success}`}>
