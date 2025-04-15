@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import styles from "./homeadmin.module.css"; // Menggunakan homeadmin.module.css
+import styles from "./homeadmin.module.css";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const FaqAdmin = () => {
     const [faqData, setFaqData] = useState([]);
@@ -163,7 +165,7 @@ const FaqAdmin = () => {
             <button onClick={handleUpload} className={styles.uploadButton}>Add FAQ</button>
 
             {showForm && editIndex === null && (
-                <form className={styles.taglineForm}>
+                <form className={styles.taglineForm} onSubmit={(e) => e.preventDefault()}>
                     <label htmlFor="faqQuestion">Question:</label>
                     <input
                         type="text"
@@ -172,24 +174,33 @@ const FaqAdmin = () => {
                         value={newFaq.faq_question}
                         onChange={(e) => setNewFaq({ ...newFaq, faq_question: e.target.value })}
                         className={styles.inputField}
+                        required
                     />
                     <label htmlFor="faqAnswer">Answer:</label>
-                    <textarea
+                    <ReactQuill
                         id="faqAnswer"
-                        placeholder="Answer"
                         value={newFaq.faq_answer}
-                        onChange={(e) => setNewFaq({ ...newFaq, faq_answer: e.target.value })}
+                        onChange={(content) => setNewFaq({ ...newFaq, faq_answer: content })}
+                        modules={{
+                            toolbar: [
+                                ['bold', 'italic', 'underline', 'strike'],
+                                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                                ['link'],
+                                ['clean']
+                            ],
+                        }}
+                        formats={[
+                            'bold', 'italic', 'underline', 'strike',
+                            'list', 'bullet',
+                            'link'
+                        ]}
                         className={styles.inputField}
+                        placeholder="Answer"
+                        required
                     />
 
-                    <button onClick={selectedFaq ? updateFaq : addFaq} disabled={loading} className={styles.actionButton}>
-                        {loading
-                            ? selectedFaq
-                                ? "Updating..."
-                                : "Adding..."
-                            : selectedFaq
-                                ? "Update FAQ"
-                                : "Add FAQ"}
+                    <button onClick={addFaq} disabled={loading} className={styles.actionButton}>
+                        {loading ? "Adding..." : "Add FAQ"}
                     </button>
                     <button onClick={() => { setShowForm(false); setEditIndex(null); }} className={styles.cancelButton}>Cancel</button>
                 </form>
@@ -200,14 +211,14 @@ const FaqAdmin = () => {
                     <div key={faq.id} className={styles.taglineItem}>
                         <div className={styles.taglineContent}>
                             <p><strong>{faq.faq_question}</strong></p>
-                            <p>{faq.faq_answer}</p>
+                            <div dangerouslySetInnerHTML={{ __html: faq.faq_answer }} />
                         </div>
                         <div className={styles.taglineActions}>
                             <button onClick={() => handleEdit(faq, index)} className={styles.actionButton}>Edit</button>
                             <button onClick={() => deleteFaq(faq.id)} disabled={loading} className={styles.deleteButton}>Delete</button>
                         </div>
                         {showForm && editIndex === index && (
-                            <form className={`${styles.taglineForm} ${styles.editForm}`}>
+                            <form className={`${styles.taglineForm} ${styles.editForm}`} onSubmit={(e) => e.preventDefault()}>
                                 <label htmlFor="editFaqQuestion">Question:</label>
                                 <input
                                     type="text"
@@ -216,14 +227,29 @@ const FaqAdmin = () => {
                                     value={newFaq.faq_question}
                                     onChange={(e) => setNewFaq({ ...newFaq, faq_question: e.target.value })}
                                     className={styles.inputField}
+                                    required
                                 />
                                 <label htmlFor="editFaqAnswer">Answer:</label>
-                                <textarea
+                                <ReactQuill
                                     id="editFaqAnswer"
-                                    placeholder="Answer"
                                     value={newFaq.faq_answer}
-                                    onChange={(e) => setNewFaq({ ...newFaq, faq_answer: e.target.value })}
+                                    onChange={(content) => setNewFaq({ ...newFaq, faq_answer: content })}
+                                    modules={{
+                                        toolbar: [
+                                            ['bold', 'italic', 'underline', 'strike'],
+                                            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                                            ['link'],
+                                            ['clean']
+                                        ],
+                                    }}
+                                    formats={[
+                                        'bold', 'italic', 'underline', 'strike',
+                                        'list', 'bullet',
+                                        'link'
+                                    ]}
                                     className={styles.inputField}
+                                    placeholder="Answer"
+                                    required
                                 />
 
                                 <button onClick={updateFaq} disabled={loading} className={styles.actionButton}>

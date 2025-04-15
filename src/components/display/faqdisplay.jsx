@@ -71,7 +71,7 @@ const FaqDisplay = () => {
                   <strong>{faq.faq_question}</strong>
                 </div>
                 <div className={styles.faqAnswer} style={{ textAlign: "left" }}>
-                  <p>{faq.faq_answer}</p>
+                  <p dangerouslySetInnerHTML={{ __html: faq.faq_answer }} />
                 </div>
               </div>
             </>
@@ -82,7 +82,7 @@ const FaqDisplay = () => {
                   <strong>{faq.faq_question}</strong>
                 </div>
                 <div className={styles.faqAnswer} style={{ textAlign: "right" }}>
-                  <p>{faq.faq_answer}</p>
+                  <p dangerouslySetInnerHTML={{ __html: faq.faq_answer }} />
                 </div>
               </div>
               <div className={styles.faqIndex}>

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import ServicesSpecialAdmin from '../components/servicesspecialadmin.jsx';
 import ServicesIndividualAdmin from '../components/servicesindividualadmin.jsx';
+import ServicesPageAdmin from '../components/servicespageadmin.jsx';
 import styles from './myhomeadmin.module.css'; // Menggunakan gaya yang sama
 
 const MyServicesAdmin = () => {
     const [showSpecialServices, setShowSpecialServices] = useState(false);
     const [showIndividualServices, setShowIndividualServices] = useState(false);
+    const [showServicesPage, setShowServicesPage] = useState(false);
 
     const navigateTo = (path) => {
         window.location.href = path;
@@ -14,9 +16,9 @@ const MyServicesAdmin = () => {
     return (
         <div className={styles.adminContainer}>
             <h2>Services Admin Panel</h2>
-            <div style={{ fontSize: '0.8em', color: 'gray', marginBottom: '5px' }}>
-    Note: Uploads are limited to 5GB due to database constraints.
-</div>
+            <div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '5px' }}>
+                Note: Uploads are limited to 5GB due to database constraints.
+            </div>
 
             {/* Container untuk tombol "Go to" */}
             <div className={styles.goToContainer}>
@@ -41,10 +43,17 @@ const MyServicesAdmin = () => {
                 >
                     {showIndividualServices ? 'Hide Individual Services' : 'Show Individual Services'}
                 </button>
+                <button
+                    onClick={() => setShowServicesPage(!showServicesPage)}
+                    className={`${styles.adminButton} ${showServicesPage ? styles.active : ''}`}
+                >
+                    {showServicesPage ? 'Hide Services Page Admin' : 'Show Services Page Admin'}
+                </button>
             </div>
 
             {showSpecialServices && <ServicesSpecialAdmin />}
             {showIndividualServices && <ServicesIndividualAdmin />}
+            {showServicesPage && <ServicesPageAdmin />}
         </div>
     );
 };

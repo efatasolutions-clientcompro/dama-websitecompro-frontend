@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./visionmissiondisplay.module.css";
 
 const VisionMissionDisplay = () => {
+    const [visionMissionData, setVisionMissionData] = useState([]);
     const [visionData, setVisionData] = useState([]);
     const [missionData, setMissionData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -11,16 +12,19 @@ const VisionMissionDisplay = () => {
         const fetchVisionMissionData = async () => {
             setLoading(true);
             try {
+                const visionMissionResponse = await fetch("https://dama-backend.vercel.app/visionmission");
                 const visionResponse = await fetch("https://dama-backend.vercel.app/visions");
                 const missionResponse = await fetch("https://dama-backend.vercel.app/missions");
 
-                if (!visionResponse.ok || !missionResponse.ok) {
-                    throw new Error("Failed to fetch vision or mission data.");
+                if (!visionMissionResponse.ok || !visionResponse.ok || !missionResponse.ok) {
+                    throw new Error("Failed to fetch vision, mission, or vision/mission image data.");
                 }
 
+                const visionMission = await visionMissionResponse.json();
                 const vision = await visionResponse.json();
                 const mission = await missionResponse.json();
 
+                setVisionMissionData(visionMission);
                 setVisionData(vision);
                 setMissionData(mission);
             } catch (err) {
@@ -36,10 +40,22 @@ const VisionMissionDisplay = () => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
 
+    // Ambil URL gambar dari data visionMission
+    const backgroundImage = visionMissionData.length > 0 && visionMissionData[0].visionmission_img
+        ? `url(${visionMissionData[0].visionmission_img})`
+        : "";
+
+    const hasBackgroundImageClass = backgroundImage ? styles.hasBackgroundImage : "";
+
     return (
         <section
-            className={`${styles.visionMissionContainer} ${visionData.length > 0 && visionData[0].vision_img ? styles.hasBackgroundImage : ""}`}
-            style={visionData.length > 0 && visionData[0].vision_img ? { backgroundImage: `url(${visionData[0].vision_img})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' } : {}}
+            className={`${styles.visionMissionContainer} ${hasBackgroundImageClass}`}
+            style={backgroundImage ? {
+                backgroundImage: backgroundImage,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+            } : {}}
         >
             {visionData.length > 0 && (
                 <div className={styles.visionSection}>

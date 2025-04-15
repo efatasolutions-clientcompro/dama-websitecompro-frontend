@@ -4,6 +4,7 @@ import VisionAdmin from '../components/visionadmin.jsx';
 import MissionAdmin from '../components/missionadmin.jsx';
 import WhyAdmin from '../components/whyadmin.jsx';
 import PeopleAdmin from '../components/peopleadmin.jsx';
+import VisionMissionAdmin from '../components/visionmissionadmin.jsx';
 import styles from './myhomeadmin.module.css'; // Sesuaikan path jika perlu
 
 const MyAboutAdmin = () => {
@@ -12,6 +13,8 @@ const MyAboutAdmin = () => {
     const [showMission, setShowMission] = useState(false);
     const [showWhy, setShowWhy] = useState(false);
     const [showPeople, setShowPeople] = useState(false);
+    const [showServicesPage, setShowServicesPage] = useState(false);
+    const [showVisionMission, setShowVisionMission] = useState(false);
 
     const navigateTo = (path) => {
         window.location.href = path;
@@ -21,8 +24,8 @@ const MyAboutAdmin = () => {
         <div className={styles.adminContainer}>
             <h2>About Admin Panel</h2>
             <div style={{ fontSize: '0.8em', color: 'red',textAlign: 'left', marginBottom: '5px' }}>
-    Note: Uploads are limited to 5GB due to database constraints.
-</div>
+                Note: Uploads are limited to 5GB due to database constraints.
+            </div>
 
             {/* Container untuk tombol "Go to" */}
             <div className={styles.goToContainer}>
@@ -40,6 +43,12 @@ const MyAboutAdmin = () => {
                     className={`${styles.adminButton} ${showAbout ? styles.active : ''}`}
                 >
                     {showAbout ? 'Hide About Section' : 'Show About Section'}
+                </button>
+                <button
+                    onClick={() => setShowVisionMission(!showVisionMission)}
+                    className={`${styles.adminButton} ${showVisionMission ? styles.active : ''}`}
+                >
+                    {showVisionMission ? 'Hide Vision & Mission Image' : 'Show Vision & Mission Image'}
                 </button>
                 <button
                     onClick={() => setShowVision(!showVision)}
@@ -68,6 +77,7 @@ const MyAboutAdmin = () => {
             </div>
 
             {showAbout && <AboutAdmin />}
+            {showVisionMission && <VisionMissionAdmin />}
             {showVision && <VisionAdmin />}
             {showMission && <MissionAdmin />}
             {showWhy && <WhyAdmin />}
