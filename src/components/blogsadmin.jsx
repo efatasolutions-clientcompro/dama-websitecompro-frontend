@@ -405,8 +405,9 @@ const BlogsAdmin = () => {
                                 </button>
                                 <button onClick={() => { setShowForm(false); setEditIndex(null); setEditItemId(null); }} className={styles.cancelButton}>Cancel</button>
                             </form>
-                            
+
                         )}
+                        
                     </div>
                 ))}
             </div>
