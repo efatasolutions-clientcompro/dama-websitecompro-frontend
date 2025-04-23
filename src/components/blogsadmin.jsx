@@ -399,12 +399,13 @@ const BlogsAdmin = () => {
                                     ))}
                                     <button type="button" onClick={handleAddImageInput} className={styles.addButton}>Add Image</button>
                                 </div>
-                                
+
                                 <button onClick={selectedBlog ? updateBlog : addBlog} disabled={loading} className={styles.actionButton}>
                                     {loading ? (selectedBlog ? "Updating..." : "Adding...") : selectedBlog ? "Update Blog" : "Add Blog"}
                                 </button>
                                 <button onClick={() => { setShowForm(false); setEditIndex(null); setEditItemId(null); }} className={styles.cancelButton}>Cancel</button>
                             </form>
+                            
                         )}
                     </div>
                 ))}
